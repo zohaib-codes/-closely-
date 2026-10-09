@@ -1,0 +1,18 @@
+{
+  "name": "@closely/api",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "test": "vitest run src/app.test.ts",
+    "build": "tsc --project tsconfig.build.json",
+    "start": "node dist/server.js"
+  },
+  "devDependencies": {
+    "@closely/contracts": "workspace:*"
+  },
+  "dependencies": {
+    "fastify": "5.12.5"
+  }
+}
