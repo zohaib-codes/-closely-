@@ -1,0 +1,140 @@
+{
+  "recorded_date": "2026-10-08",
+  "timezone": "Asia/Karachi",
+  "frappe": {
+    "repository": "https://github.com/frappe/frappe",
+    "tag": "v16.51.0",
+    "commit": "6b450a166e076dd842e4db7ea0843f62881e62ac",
+    "role": "behavioral parity authority"
+  },
+  "twenty": {
+    "repository": "https://github.com/twentyhq/twenty",
+    "commit": "21a58879e43ee6ce8a6d13bb461d718a57ca0722",
+    "role": "engineering reference, not parity target"
+  },
+  "erpnext": {
+    "repository": "https://github.com/frappe/erpnext",
+    "tag": "v16.50.0",
+    "commit": "7474d9e786277383de1242ab882f16856d17a9c9",
+    "role": "future consumer architecture evidence; ERP parity not yet specified"
+  },
+  "snapshots": [
+    {
+      "path": "docs/research/snapshots/erpnext-general-ledger.py",
+      "sha256": "9a315ae0618d5e1ed6da0f0e09a03f01438c309cb5a22806ee4f405fc9a81702"
+    },
+    {
+      "path": "docs/research/snapshots/erpnext-pin.json",
+      "sha256": "68bef4295f5c1d8c11da2746683dc32d223acb12471fe063875366de76f60785"
+    },
+    {
+      "path": "docs/research/snapshots/erpnext-releases.json",
+      "sha256": "b10f406c08549c8e00464e0dcdd9cca782bd18ebe5bd46d3e9a031bd8df348f7"
+    },
+    {
+      "path": "docs/research/snapshots/erpnext-stock-ledger.py",
+      "sha256": "007938ccd4e8fba263379894a0a68840e7911c677404f08ac28ffa2ef864a975"
+    },
+    {
+      "path": "docs/research/snapshots/frappe-api-v1.py",
+      "sha256": "93996b93c3aa647df279cf0f14641262bacdf3d28aa84d4cdd03f1f409827abc"
+    },
+    {
+      "path": "docs/research/snapshots/frappe-api-v2.py",
+      "sha256": "c6f7519a26d51cbd294814e92e092c6bc8f6ce6703f4df2b5ef93b0f0875dde6"
+    },
+    {
+      "path": "docs/research/snapshots/frappe-app.py",
+      "sha256": "1e910e76bcbf596dc708dbd4d8f682f6a6e37368971afcca5f4512efeaa845f9"
+    },
+    {
+      "path": "docs/research/snapshots/frappe-automation-flow.json",
+      "sha256": "91a1151455a1110297e3a854b24957a42fddea086580cb30cb26f9a5675a450d"
+    },
+    {
+      "path": "docs/research/snapshots/frappe-base-document.py",
+      "sha256": "61f6242de337314a1ec36dc435d18d853686b9f25deec807d128913bb44cbacd"
+    },
+    {
+      "path": "docs/research/snapshots/frappe-contributing.md",
+      "sha256": "31ae04e17ec2a3256defe8d05740d5da8633eae87ce5d2c32d33ee2318424f4d"
+    },
+    {
+      "path": "docs/research/snapshots/frappe-db.py",
+      "sha256": "dc9fe0620ab7ceb300bee2b5da5c247d8979727139c785bb591e0a54e3bebf15"
+    },
+    {
+      "path": "docs/research/snapshots/frappe-docfield.json",
+      "sha256": "15301393029c0d6509901df6f5388ecb72517848461e40d76cf1329d1247e027"
+    },
+    {
+      "path": "docs/research/snapshots/frappe-document.py",
+      "sha256": "abf33ec888226c60b63b8f670e28ffb88d0371422413921a42ab4be4e35c6078"
+    },
+    {
+      "path": "docs/research/snapshots/frappe-handler.py",
+      "sha256": "29c0a830d5400bd03b053e2c2e6d8d35a95d26c2b40d8a5d881c32d798401d7e"
+    },
+    {
+      "path": "docs/research/snapshots/frappe-init.py",
+      "sha256": "52a805c197c823b8796b2843e9582df06e48d72e5a544f6c76a6d47fbb87749b"
+    },
+    {
+      "path": "docs/research/snapshots/frappe-model-init.py",
+      "sha256": "3dd22a7e924b42aaab41a84624af751c23796b0945151b7ae330dff133767f23"
+    },
+    {
+      "path": "docs/research/snapshots/frappe-permissions.py",
+      "sha256": "ae3c1285b87094fef39c27c4a5f73c258da11f955ce45169ca6b4996558f6bd8"
+    },
+    {
+      "path": "docs/research/snapshots/frappe-precommit.yaml",
+      "sha256": "2093ff164dfe4b1e980171e7b11fa7958d981c382472bd44101cd7a585d16b61"
+    },
+    {
+      "path": "docs/research/snapshots/frappe-pyproject.toml",
+      "sha256": "90ed444a340c0246975e8e8eb993da0770ac75f2f0ab7b06a77d988750f11c8e"
+    },
+    {
+      "path": "docs/research/snapshots/frappe-tests-document.py",
+      "sha256": "465248ae4ab24124e637fd4f54c78ce3b3b4eff61a1bf504db66dfee48197d34"
+    },
+    {
+      "path": "docs/research/snapshots/frappe-tree.json",
+      "sha256": "c1e07dc3ed2dca5db7e4214a42fdeb0dbc0a901cb064b94e2bdd2743cd991506"
+    },
+    {
+      "path": "docs/research/snapshots/twenty-agents.md",
+      "sha256": "6ebdb617a8104a7756d0cf36578ab01103dc9f07e4dc6feb751296b9c402faf7"
+    },
+    {
+      "path": "docs/research/snapshots/twenty-claude.md",
+      "sha256": "55cf11d1764d910990310ad1a58a3b8558c8fa05b0d866566d1d5c728c59f470"
+    },
+    {
+      "path": "docs/research/snapshots/twenty-main.json",
+      "sha256": "7306e81ef1a7d33832db9abb95e81750ab2961bb52f8e4d7bef2cfb3cfef8ad4"
+    },
+    {
+      "path": "docs/research/snapshots/twenty-package.json",
+      "sha256": "8e913abf5b20d039cc71dcbb4710339378452cbcf440a7f4b1bb50ad29ff0ad2"
+    },
+    {
+      "path": "docs/research/snapshots/twenty-rest-errors.ts",
+      "sha256": "ae86b421bd5136775ebbe9b6265baa666d5341602d3c03a5a9d2553388e11c5b"
+    },
+    {
+      "path": "docs/research/snapshots/twenty-server-package.json",
+      "sha256": "05c36a15a118d3b37fff33c21ad7a0b542529eaf1b9f0f819bb92839d934e8e9"
+    },
+    {
+      "path": "docs/research/snapshots/twenty-tree.json",
+      "sha256": "ddf0ad01255551dc149c37c5a083c6343b32232ceedf6fca1280ce6144f53bc3"
+    },
+    {
+      "path": "docs/research/snapshots/twenty-unhandled-errors.ts",
+      "sha256": "0355fc001b730e8a993d598514dbb65dac9f8e1a3f160b0bbfe8550d71796a7f"
+    }
+  ],
+  "evidence_note": "Pinned snapshots preserve selective source research. The assistant-created M0 harness and live fixtures were removed on 2026-10-08 for user-led learning. No runtime or UI parity is currently verified; source inventories are planning evidence only."
+}

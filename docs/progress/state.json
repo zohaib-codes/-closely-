@@ -1,0 +1,662 @@
+{
+  "schemaVersion": 2,
+  "updatedAt": "2026-10-10",
+  "currentMilestone": "M0",
+  "activeTaskIds": [
+    "SCAFFOLD-001"
+  ],
+  "nextTaskId": "SCAFFOLD-001",
+  "latestSession": "docs/progress/sessions/2026-10-10-git-foundation.md",
+  "tasks": [
+    {
+      "id": "FOUNDATION-001",
+      "title": "Engineering rules and pinned parity inventory",
+      "milestone": "M0",
+      "status": "done",
+      "dependencies": [],
+      "files": [
+        "docs/engineering/handbook.md",
+        "docs/research/reference-lock.json",
+        "docs/parity/features.json"
+      ],
+      "evidence": [
+        "Preserved engineering documents, pinned source lock and parity inventories; documentation completion only."
+      ],
+      "notes": []
+    },
+    {
+      "id": "LEARNING-001",
+      "title": "Explain repository, packages and monorepo before the first user action",
+      "milestone": "M0",
+      "status": "in_progress",
+      "dependencies": [
+        "FOUNDATION-001"
+      ],
+      "files": [
+        "docs/learning/LESSON-00.md",
+        "docs/learning/ROADMAP.md",
+        "docs/learning/READING-GUIDE.md"
+      ],
+      "evidence": [
+        "User response explains shared-engine behavior and correct ERP dependency direction.",
+        "2026-10-09 recap: user correctly distinguishes app.ts construction/route registration from server.ts startup. User recognizes immediate process.exit behavior; assistant clarified exitCode sets eventual status and allows pending asynchronous work, not only synchronous code. Clarification understanding not yet confirmed.",
+        "2026-10-09 first-test recap: user correctly distinguishes HTTP 200 from expected body content, explains finally cleanup when an assertion throws, and states inject does not open TCP or prove SIGTERM behavior; separate process/network integration verification needed.",
+        "2026-10-09 build/start recap: user correctly identifies old emitted version running without rebuild, and explains tests require typechecking but are excluded from runtime output. Assistant clarified start executes dist/server.js.",
+        "2026-10-09 null recap: user correctly explains explicit string annotation conflicts with null and contrasts omitted annotation. Assistant clarified omission still infers a type (null here); independent restatement of inference not assessed.",
+        "2026-10-10: user correctly explains generated health.d.ts supplies API type, type import erasure removes runtime dependency, and workspace:* ensures local-only package resolution. L06/L04 recap complete."
+      ],
+      "notes": [
+        "Conceptual discussion recorded; no quiz gate. User requested coding-led teaching and questions at session end. Understanding is not claimed complete."
+      ]
+    },
+    {
+      "id": "SCAFFOLD-001",
+      "title": "Workspace, build, strict TS, lint and boundaries",
+      "milestone": "M0",
+      "status": "in_progress",
+      "dependencies": [
+        "FOUNDATION-001"
+      ],
+      "files": [
+        "package.json",
+        "pnpm-workspace.yaml",
+        "pnpm-lock.yaml",
+        "apps/api/package.json",
+        "tsconfig.base.json",
+        "apps/api/tsconfig.json",
+        "apps/api/src/app.ts",
+        "apps/api/src/server.ts",
+        "apps/api/src/app.test.ts",
+        "apps/api/tsconfig.build.json",
+        "packages/contracts/src/health.ts",
+        "packages/contracts/package.json",
+        "packages/contracts/tsconfig.json",
+        ".gitignore"
+      ],
+      "evidence": [
+        "User reported manifest creation; read-only inspection confirms names, workspace patterns and apps/api/src.",
+        "Read-only inspection confirms TS7/TS6 aliases, tsx, Node types, Fastify manifests and dependency tree; no checks executed.",
+        "Read-only inspection confirms shared/API TS configs and esbuild@0.28.2 allowance true; app.ts remains empty.",
+        "Resume read-only review: app.ts contains named createApi factory, logger true, GET /health/live returning status ok and instance return. No typecheck/runtime result supplied.",
+        "User reports silent successful API no-emit typecheck on 2026-10-08; assistant did not run command.",
+        "2026-10-09: server.ts reviewed; intended local listener/startup catch present. User reports silent typecheck pass.",
+        "2026-10-09: shutdown source reviewed and user reports silent typecheck pass; no runtime evidence yet.",
+        "2026-10-09: user supplied live Fastify GET / and /favicon.ico request/completion logs with expected 404; health route still unverified.",
+        "2026-10-09: user supplied /health/live status ok body and matching req-3 HTTP 200 completion log.",
+        "2026-10-09: normal SIGINT shutdown passed using supplied startup/shutdown logs and returned shell prompt.",
+        "2026-10-09: normal SIGTERM shutdown passed with logs and shell prompt return for PID 86556.",
+        "2026-10-09: occupied-port startup failure emitted EADDRINUSE and exited 1 per user output. First instance PID 87220 remains running pending cleanup.",
+        "2026-10-09: user confirmed cleanup exit status 0. Manual API smoke checks complete for liveness, normal signals and occupied-port startup failure; automated coverage pending.",
+        "2026-10-09 handoff: user reports test-tool installation complete; manifest/lockfile/node_modules links confirm Vitest 5.0.3 and Vite 8.3.4. app.ts now restores status: ok; unused imports observed in both source files.",
+        "2026-10-09 resume: read-only source confirms the three unused imports and status: ok response; no API test file. Cleanup/typecheck remain pending; shutdown deadline lacks explicit timer cleanup.",
+        "2026-10-09: unused imports removed by user and confirmed by read-only review; user reports silent API typecheck success.",
+        "2026-10-09: user added finally/clearTimeout shutdown deadline cleanup; read-only source confirms; user reports silent API typecheck pass.",
+        "2026-10-09: user wrote first health inject test; source reviewed and supplied Vitest output confirms one test passed. Controlled failure/restoration pending.",
+        "2026-10-09: controlled health response mutation detected by body assertion; user supplied expected failure output. Restoration/green rerun pending.",
+        "2026-10-09: status ok restored and reviewed; user reports test passed again. Behavioral red/green demonstrated; typecheck including app.test.ts pending.",
+        "2026-10-09: user reports silent API no-emit typecheck including new health test after completed red/green execution.",
+        "2026-10-09: API typecheck/test scripts written by user and reviewed; filtered typecheck passed per supplied terminal output. Filtered test execution pending.",
+        "2026-10-09: user reports pnpm --filter @closely/api run test passed; fresh terminal summary not supplied. Both package scripts verified at recorded evidence levels; recap pending.",
+        "2026-10-09: separate build config reviewed; user reports successful emission. Generated app.js/server.js reviewed; compiled runtime smoke check pending.",
+        "2026-10-09: compiled-runtime health HTTP 200 supported by logs; shutdown exit 0 user-reported. Body/fresh shutdown logs not supplied. Build/start scripts pending.",
+        "2026-10-09: API build/start scripts reviewed; named build passed using supplied output. Named start verification pending.",
+        "2026-10-09: named start supplied listening log PID 118608; expected health body and cleanup exit 0 user-confirmed, fresh response/shutdown logs absent. Build/start verification complete at stated evidence levels; recap pending.",
+        "2026-10-09 L05: deliberate string/null assignment rejected with supplied TS2322 and exit 1. Restoration/green check pending; unused constrainedMemory import observed in app.ts.",
+        "2026-10-09 L05 null rejection/restoration demonstrated: restored status ok reviewed and green typecheck user-reported. Unused constrainedMemory import still present; cleanup pending. This establishes the null rejection exercise only, not every strict option or all L05 gates.",
+        "2026-10-09: user reported unused constrainedMemory import removed; read-only app.ts review confirms removal and status ok retained. No new compiler run required or claimed for import deletion. Null exercise recap pending.",
+        "2026-10-09: user created health.ts; read-only review confirms exported HealthResponse type, status literal ok. No package manifest exists yet and no compiler verification performed.",
+        "2026-10-09: contracts manifest created by user and reviewed, matching assigned identity/scripts/root exports. No contracts TS config or build output observed yet.",
+        "2026-10-09 contracts config reviewed and build supported by supplied compiler/prompt plus emitted declaration and JS review. No API local dependency or consumer import yet.",
+        "2026-10-09 API workspace dependency reviewed: devDependency workspace:*, lockfile link:../../packages/contracts, node_modules link resolves to local contracts. User reports install done; no terminal output. Type-only API consumer and compiler resolution pending.",
+        "2026-10-09: public package type-only import and async contract return annotation reviewed; API typecheck passed by user report. Local consumer/public type resolution established at reported evidence level; deep-import negative exercise pending.",
+        "2026-10-09: deep-import negative exercise supplied TS2307 for @closely/contracts/dist/health.js with exit 1. Public import restoration/green check pending.",
+        "Read-only review after supplied deep-import failure finds public root import already restored; post-restoration typecheck result not yet supplied.",
+        "2026-10-09: restored public root import typecheck passed by user report; unexported deep-import rejection/restoration exercise complete at supplied-failure/reported-pass levels. Contract mismatch exercise assigned, output pending.",
+        "2026-10-09: shared literal contract rejects wrong status with supplied TS2322 citing generated health.d.ts; source already restored ok on review. Post-restoration green check pending.",
+        "2026-10-09: post-contract-mismatch API typecheck passed by user report; source restored ok reviewed. Type-only consumer, deep-import rejection and shared literal mismatch demonstrated. Fresh API build/erasure review pending.",
+        "2026-10-09 L06/L04: supplied API build passes and emitted type import erasure reviewed. Public type consumer/local workspace dependency, denied deep import, literal mismatch and restored passing checks demonstrated at documented evidence levels. Recap pending; M0 remains in progress.",
+        "2026-10-10: user created root .gitignore; source reviewed with node_modules/ and dist/. Git initialization/ignore behavior verification pending.",
+        "2026-10-10: user initialized Git on main with supplied output; read-only branch/status confirms. Ignore verification, staging and first commit pending.",
+        "2026-10-10 ignore behavior verified by supplied check-ignore output for root/nested installed/emitted paths plus unignored source/lock. User stage/diff of .gitignore assigned, pending.",
+        "2026-10-10 .gitignore staged diff reviewed with supplied output and read-only index inventory. Only ignore file staged; final newline/restaging lesson assigned. Commit pending.",
+        "2026-10-10 corrected staged .gitignore diff supplied without missing-newline marker; only ignore file staged confirmed. Read-only git var author identity fails; local user-chosen identity configuration assigned before commit.",
+        "2026-10-10: local Git author identity setup user-reported, usable identity verified read-only without retaining values; staged inventory still only .gitignore. First commit assigned, result pending.",
+        "2026-10-10 user first commit bcf7bac verified, .gitignore only. Foundation source/config snapshot staging assigned; no broader commit yet.",
+        "2026-10-10: foundation staged summary supplied (13 files, 1878 insertions); staged source/config/index inventory reviewed. Matches intended API/contracts/workspace foundation; commit pending. Formatting cleanup remains future lesson, not a blocker for snapshot.",
+        "2026-10-10: foundation commit 8ba5d24 supplied and log verified. Assistant corrected stale README empty-app description within documentation scope; docs inventory/provenance reviewed. User docs staging assigned; result pending.",
+        "2026-10-10 documentation staging reviewed: supplied 79-file summary and index inventory; 29 staged research snapshot hashes match reference lock. Progress docs updated after staging, user restage/commit assigned. No live reference attestation implied."
+      ],
+      "notes": [
+        "L09 first-test lesson completed: health test pass, deliberate failure, restored pass, typecheck and user recap. Wider M0 foundation gates remain incomplete; next lesson selection pending roadmap review.",
+        "2026-10-09 continuation: remaining M0 gates/current files reviewed; L03/L04 package scripts selected, user edits and filtered typecheck pending. No assistant implementation or check execution.",
+        "2026-10-09: package scripts completed; L05/L10 separate API emit config lesson assigned. User write/build and emitted output review pending.",
+        "2026-10-09 requested chat-switch handoff: manifest/build config/dist inventory re-reviewed. Build/start work verified at stated evidence levels; recap unanswered. No repeat verification required solely for new chat.",
+        "2026-10-09 new-chat resume: checkpoint/source/config/dist inventory reviewed read-only and consistent. No new checks run or results supplied; unanswered previous-session build/start recap remains next action.",
+        "2026-10-09 L05 strictNullChecks rejection exercise assigned as temporary app.ts edit; diagnostic and subsequent restoration/green check pending. No implementation or check performed by assistant.",
+        "2026-10-09 L06/L04 selected: begin actual contracts responsibility with health response type; no packages directory currently present. Named exports/type alias/literal type teaching assigned. Package wiring and checks remain future dependent steps; no dependency installation or architecture change.",
+        "2026-10-09 next step: contracts manifest with compiled JS/declaration public root exports. Chosen emitted-package approach keeps package source under its own TS root; requires contracts build before consumer typecheck. No dependencies needed. Manifest/config/link/import checks pending.",
+        "2026-10-09 contracts config/build lesson assigned: shared strict options, ES2024 NodeNext, no ambient @types/DOM globals, declarations and noEmitOnError. types [] is not an import-boundary enforcement mechanism. User build result and dist review pending.",
+        "Next step: API devDependency @closely/contracts workspace:* because planned import is type-only and erased; runtime contracts imports would require dependencies placement. Root pnpm install and local link/lock review pending; no versioned registry package requested.",
+        "Public exports/local workspace dependency foundation example now demonstrated; do not list it as wholly unstarted. General lint boundaries, task ordering/cache, Desk, CI, reference baseline and broader strict/operational coverage remain incomplete.",
+        "2026-10-10: L06/L04 recap complete; L01 Git foundation selected before task/cache tooling. Read-only git status/rev-parse confirm no Git repository; no root gitignore found. User root .gitignore creation assigned; initialization/staging/commit not performed.",
+        "2026-10-10 restaging repeated but supplied diff still lacks final newline; read-only bytes confirm saved file lacks newline too. Exact printf rewrite of two-rule file explained/assigned to user; no assistant ignore-file edit."
+      ]
+    },
+    {
+      "id": "SCAFFOLD-002",
+      "title": "API liveness and Desk build shells",
+      "milestone": "M0",
+      "status": "todo",
+      "dependencies": [
+        "SCAFFOLD-001"
+      ],
+      "files": [],
+      "evidence": [],
+      "notes": [
+        "Assistant trial removed. Future user-built work; not implemented."
+      ]
+    },
+    {
+      "id": "HARNESS-001",
+      "title": "Reference manifests, capture, comparison and source audit",
+      "milestone": "M0",
+      "status": "todo",
+      "dependencies": [
+        "SCAFFOLD-001"
+      ],
+      "files": [],
+      "evidence": [],
+      "notes": [
+        "Assistant trial removed. Future user-built work; not implemented."
+      ]
+    },
+    {
+      "id": "HARNESS-002",
+      "title": "Boot exact Frappe runtime and capture live baseline",
+      "milestone": "M0",
+      "status": "todo",
+      "dependencies": [
+        "HARNESS-001"
+      ],
+      "files": [],
+      "evidence": [],
+      "notes": [
+        "Assistant trial removed. Future user-built work; not implemented."
+      ]
+    },
+    {
+      "id": "SESSION-001",
+      "title": "Manual learning progress and handoff protocol",
+      "milestone": "M0",
+      "status": "done",
+      "dependencies": [
+        "FOUNDATION-001"
+      ],
+      "files": [
+        "docs/progress/state.json",
+        "docs/progress/START-HERE.md"
+      ],
+      "evidence": [
+        "AGENTS.md",
+        "docs/learning/WORKING-AGREEMENT.md",
+        "docs/progress/START-HERE.md"
+      ],
+      "notes": []
+    },
+    {
+      "id": "CI-001",
+      "title": "Reproducible CI workflow",
+      "milestone": "M0",
+      "status": "todo",
+      "dependencies": [
+        "SCAFFOLD-001"
+      ],
+      "files": [],
+      "evidence": [],
+      "notes": [
+        "Assistant trial removed. Future user-built work; not implemented."
+      ]
+    },
+    {
+      "id": "META-FOUNDATION",
+      "title": "Site context and metadata registry/schema contract",
+      "milestone": "M1",
+      "status": "todo",
+      "dependencies": [
+        "SCAFFOLD-001",
+        "HARNESS-001"
+      ],
+      "files": [
+        "docs/engineering/data-and-documents.md"
+      ],
+      "evidence": [],
+      "notes": []
+    },
+    {
+      "id": "DB-FOUNDATION",
+      "title": "Real PostgreSQL adapter, migrations and transaction harness",
+      "milestone": "M1",
+      "status": "todo",
+      "dependencies": [
+        "META-FOUNDATION"
+      ],
+      "files": [
+        "docs/engineering/data-and-documents.md"
+      ],
+      "evidence": [],
+      "notes": []
+    },
+    {
+      "id": "DOCUMENTS-FOUNDATION",
+      "title": "Document lifecycle and permissions with real transactions",
+      "milestone": "M2",
+      "status": "todo",
+      "dependencies": [
+        "DB-FOUNDATION",
+        "HARNESS-002"
+      ],
+      "files": [
+        "docs/parity/frappe-v16.51.0.md"
+      ],
+      "evidence": [],
+      "notes": []
+    },
+    {
+      "id": "API-COMPATIBILITY",
+      "title": "Auth and legacy/native API contracts",
+      "milestone": "M3",
+      "status": "todo",
+      "dependencies": [
+        "DOCUMENTS-FOUNDATION"
+      ],
+      "files": [
+        "docs/engineering/errors-and-api.md"
+      ],
+      "evidence": [],
+      "notes": []
+    },
+    {
+      "id": "DESK-FORMS",
+      "title": "Metadata-driven Desk, forms and views",
+      "milestone": "M4",
+      "status": "todo",
+      "dependencies": [
+        "API-COMPATIBILITY"
+      ],
+      "files": [
+        "docs/engineering/frontend.md"
+      ],
+      "evidence": [],
+      "notes": []
+    },
+    {
+      "id": "EXTENSIONS",
+      "title": "Customizations, scripts, workflows and automations",
+      "milestone": "M5",
+      "status": "todo",
+      "dependencies": [
+        "DOCUMENTS-FOUNDATION"
+      ],
+      "files": [
+        "docs/parity/frappe-v16.51.0.md"
+      ],
+      "evidence": [],
+      "notes": []
+    },
+    {
+      "id": "REPORTS-IO",
+      "title": "Reports, printing, files and mail",
+      "milestone": "M6",
+      "status": "todo",
+      "dependencies": [
+        "API-COMPATIBILITY"
+      ],
+      "files": [
+        "docs/parity/frappe-v16.51.0.md"
+      ],
+      "evidence": [],
+      "notes": []
+    },
+    {
+      "id": "WEB-INTEGRATIONS",
+      "title": "Website/portal and configured integrations",
+      "milestone": "M7",
+      "status": "todo",
+      "dependencies": [
+        "API-COMPATIBILITY"
+      ],
+      "files": [
+        "docs/parity/frappe-v16.51.0.md"
+      ],
+      "evidence": [],
+      "notes": []
+    },
+    {
+      "id": "OPERATIONS",
+      "title": "Operational parity and restore drills",
+      "milestone": "M8",
+      "status": "todo",
+      "dependencies": [
+        "DB-FOUNDATION",
+        "REPORTS-IO"
+      ],
+      "files": [
+        "docs/engineering/testing-and-operations.md"
+      ],
+      "evidence": [],
+      "notes": []
+    },
+    {
+      "id": "PARITY-AUDIT",
+      "title": "Final reference parity audit and ERP readiness",
+      "milestone": "M9",
+      "status": "todo",
+      "dependencies": [
+        "DESK-FORMS",
+        "EXTENSIONS",
+        "REPORTS-IO",
+        "WEB-INTEGRATIONS",
+        "OPERATIONS"
+      ],
+      "files": [
+        "docs/parity/frappe-v16.51.0.md"
+      ],
+      "evidence": [],
+      "notes": []
+    },
+    {
+      "id": "ERP-PLANNING",
+      "title": "Separate ERPNext parity specification after framework readiness",
+      "milestone": "ERP",
+      "status": "todo",
+      "dependencies": [
+        "PARITY-AUDIT"
+      ],
+      "files": [],
+      "evidence": [],
+      "notes": []
+    }
+  ],
+  "checks": [
+    {
+      "command": "pnpm exec tsc --project apps/api/tsconfig.json --noEmit",
+      "result": "passed",
+      "evidence": "User reported silent return: yup it returned nothing.",
+      "source": "user_reported",
+      "date": "2026-10-08"
+    },
+    {
+      "command": "pnpm exec tsc --project apps/api/tsconfig.json --noEmit",
+      "result": "passed",
+      "evidence": "User reported silent completion after writing server.ts; source reviewed read-only.",
+      "source": "user_reported",
+      "date": "2026-10-09"
+    },
+    {
+      "command": "pnpm exec tsc --project apps/api/tsconfig.json --noEmit",
+      "result": "passed",
+      "evidence": "User reported a silent return after adding shutdown; assistant reviewed source.",
+      "source": "user_reported",
+      "date": "2026-10-09"
+    },
+    {
+      "check": "HTTP requests to / and /favicon.ico",
+      "result": "observed_expected_404",
+      "evidence": "User pasted Fastify incoming request and completed response logs for GET / and GET /favicon.ico, both 404. Demonstrates running listener handling requests; /health/live not yet checked.",
+      "source": "user_provided_logs",
+      "date": "2026-10-09"
+    },
+    {
+      "check": "GET /health/live",
+      "result": "passed",
+      "evidence": "User supplied browser body {\"status\":\"ok\"} and matching req-3 GET /health/live completion log with statusCode 200.",
+      "source": "user_provided_response_and_logs",
+      "date": "2026-10-09"
+    },
+    {
+      "check": "Normal SIGINT shutdown",
+      "result": "passed",
+      "evidence": "User supplied startup log for PID 85959, SIGINT shutdown started/completed logs and returned shell prompt. No exit status supplied.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-09"
+    },
+    {
+      "check": "Normal SIGTERM shutdown",
+      "result": "passed",
+      "evidence": "User supplied startup PID 86556, SIGTERM shutdown started/completed logs and returned shell prompt. Exit status not supplied.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-09"
+    },
+    {
+      "check": "Occupied-port startup failure",
+      "result": "passed",
+      "evidence": "User supplied first listener PID 87220, second instance PID 87395 error EADDRINUSE at 127.0.0.1:3000 with API startup failed, and echo $? output 1.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-09"
+    },
+    {
+      "check": "Successful SIGINT exit status and cleanup",
+      "result": "passed",
+      "evidence": "After requested Ctrl+C cleanup and immediate echo $?, user confirmed 0. No new shutdown log pasted; previous SIGINT logs already verified.",
+      "source": "user_reported",
+      "date": "2026-10-09"
+    },
+    {
+      "command": "pnpm exec tsc --project apps/api/tsconfig.json --noEmit",
+      "result": "passed",
+      "evidence": "User confirmed silent return after removing unused imports; read-only review confirms all three imports removed.",
+      "source": "user_reported",
+      "date": "2026-10-09"
+    },
+    {
+      "command": "pnpm exec tsc --project apps/api/tsconfig.json --noEmit",
+      "result": "passed",
+      "evidence": "User reports no output after adding finally/clearTimeout; read-only review confirms cleanup present.",
+      "source": "user_reported",
+      "date": "2026-10-09"
+    },
+    {
+      "command": "pnpm exec vitest run apps/api/src/app.test.ts",
+      "result": "passed",
+      "evidence": "User supplied Vitest output: Test Files 1 passed (1), Tests 1 passed (1), duration 507ms; Fastify completion log HTTP 200. Test source reviewed: status and body assertions with finally close.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-09"
+    },
+    {
+      "command": "pnpm exec vitest run apps/api/src/app.test.ts",
+      "result": "expected_failure",
+      "evidence": "Controlled response mutation: supplied Vitest 5.0.3 output shows one failed test at app.test.ts:16; expected status ok, received broken. Request completed HTTP 200. Duration 449ms.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-09"
+    },
+    {
+      "command": "pnpm exec vitest run apps/api/src/app.test.ts",
+      "result": "passed",
+      "evidence": "After controlled failure, user reports test passed following restoration; read-only review confirms status ok and unchanged test assertions. Fresh terminal summary not supplied.",
+      "source": "user_reported",
+      "date": "2026-10-09"
+    },
+    {
+      "command": "pnpm exec tsc --project apps/api/tsconfig.json --noEmit",
+      "result": "passed",
+      "evidence": "User confirmed silent return after test restoration; API configuration includes app.test.ts.",
+      "source": "user_reported",
+      "date": "2026-10-09"
+    },
+    {
+      "command": "pnpm --filter @closely/api run typecheck",
+      "result": "passed",
+      "evidence": "User supplied tsc --project tsconfig.json --noEmit output followed by returned prompt without diagnostics; API scripts reviewed read-only.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-09"
+    },
+    {
+      "command": "pnpm --filter @closely/api run test",
+      "result": "passed",
+      "evidence": "User reported testpassed; fresh terminal summary not supplied.",
+      "source": "user_reported",
+      "date": "2026-10-09"
+    },
+    {
+      "command": "pnpm --filter @closely/api exec tsc --project tsconfig.build.json",
+      "result": "passed",
+      "evidence": "User reports no errors and new dist files. Read-only inspection confirms build config, dist/app.js and dist/server.js; no app.test.js present. Compiled Node execution not yet verified.",
+      "source": "user_reported_and_read_only_review",
+      "date": "2026-10-09"
+    },
+    {
+      "check": "Compiled API HTTP health request",
+      "result": "http_200_observed",
+      "evidence": "User supplied PID 117446 req-2 GET /health/live incoming log and matching completion statusCode 200. Startup banner, response body and shutdown/exit result not supplied. Prior req-1 completed 404; its request URL absent.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-09"
+    },
+    {
+      "check": "Compiled API shutdown exit status",
+      "result": "passed",
+      "evidence": "After requested Ctrl+C and echo $?, user confirmed 0. Fresh shutdown logs and explicit health-body confirmation not supplied.",
+      "source": "user_reported",
+      "date": "2026-10-09"
+    },
+    {
+      "command": "pnpm --filter @closely/api run build",
+      "result": "passed",
+      "evidence": "Supplied output shows first build compiler invocation followed by returned prompt, then second invocation without diagnostics in pasted excerpt. Read-only manifest review confirms build/start commands.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-09"
+    },
+    {
+      "command": "pnpm --filter @closely/api run start",
+      "result": "startup_passed",
+      "evidence": "Supplied node dist/server.js invocation and Server listening at http://127.0.0.1:3000 log, PID 118608. This start run health body and shutdown pending.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-09"
+    },
+    {
+      "check": "Named start health body and cleanup",
+      "result": "passed",
+      "evidence": "After health-body confirmation and Ctrl+C/echo $? request, user replied yes , got 0. Recorded body confirmation and exit 0 as user-reported; fresh response/shutdown logs not supplied.",
+      "source": "user_reported",
+      "date": "2026-10-09"
+    },
+    {
+      "command": "pnpm --filter @closely/api run typecheck",
+      "result": "expected_failure",
+      "evidence": "User supplied TS2322 at src/app.ts:9: null is not assignable to string, one error and exit code 1. Read-only source confirms deliberate assignment. This verifies the strict null rejection exercise, not a passing typecheck.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-09"
+    },
+    {
+      "command": "pnpm --filter @closely/api run typecheck",
+      "result": "passed",
+      "evidence": "User reports no output after restoring health handler. Read-only source confirms status ok restored; unused constrainedMemory import remains. No fresh terminal output supplied.",
+      "source": "user_reported_and_read_only_review",
+      "date": "2026-10-09"
+    },
+    {
+      "command": "pnpm --filter @closely/contracts run build",
+      "result": "passed",
+      "evidence": "Requested build output supplied: tsc --project tsconfig.json followed by returned prompt without diagnostics. Read-only config and generated health.d.ts/health.js reviewed; declaration has status literal ok and JS has export {}. Exact command line not included in pasted excerpt.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-09"
+    },
+    {
+      "command": "pnpm --filter @closely/api run typecheck",
+      "result": "passed",
+      "evidence": "User reports no output after public type-only contract import and Promise<HealthResponse> annotation. Source reviewed; fresh terminal output absent.",
+      "source": "user_reported_and_read_only_review",
+      "date": "2026-10-09"
+    },
+    {
+      "command": "pnpm --filter @closely/api run typecheck",
+      "result": "expected_failure",
+      "evidence": "User supplied TS2307 at app.ts:2 for @closely/contracts/dist/health.js, one error and exit code 1. Demonstrates rejection of an unexported package subpath.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-09"
+    },
+    {
+      "command": "pnpm --filter @closely/api run typecheck",
+      "result": "passed",
+      "evidence": "User reports no output after restoring public root import; restoration previously reviewed. Fresh terminal output absent.",
+      "source": "user_reported",
+      "date": "2026-10-09"
+    },
+    {
+      "command": "pnpm --filter @closely/api run typecheck",
+      "result": "expected_failure",
+      "evidence": "User supplied TS2322 app.ts:11: wrong not assignable to ok; diagnostic cites packages/contracts/dist/health.d.ts:2. One error and script exit 1. Read-only source afterward already restored status ok.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-09"
+    },
+    {
+      "command": "pnpm --filter @closely/api run typecheck",
+      "result": "passed",
+      "evidence": "User reports no output after restoring status ok following contract mismatch rejection; source restoration reviewed. Fresh terminal output absent.",
+      "source": "user_reported_and_read_only_review",
+      "date": "2026-10-09"
+    },
+    {
+      "command": "pnpm --filter @closely/api run build",
+      "result": "passed",
+      "evidence": "Supplied exact command, compiler invocation and returned prompt without diagnostics. Read-only emitted app.js has Fastify/health route/status ok and no contracts type or old constrainedMemory import. Dist inventory has app.js/server.js and contracts health.js/health.d.ts.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-09"
+    },
+    {
+      "command": "git init --initial-branch=main",
+      "result": "passed",
+      "evidence": "User supplied Initialized empty Git repository in workspace .git. Read-only symbolic-ref confirms main; status shows untracked files only.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "git check-ignore --verbose --non-matching node_modules/ apps/api/node_modules/ apps/api/dist/app.js packages/contracts/dist/health.d.ts apps/api/src/app.ts pnpm-lock.yaml",
+      "result": "passed",
+      "evidence": "Supplied output matches .gitignore line 1 node_modules for first two, line 2 dist for next two; source and lockfile show empty :: match fields.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "git diff --cached -- .gitignore",
+      "result": "reviewed",
+      "evidence": "User supplies new-file diff containing node_modules/ and dist/; no final newline marker. Read-only index inventory confirms only .gitignore staged.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "git commit -m \"chore: ignore dependencies and build output\"",
+      "result": "passed",
+      "evidence": "Supplied root-commit bcf7bac, one file/two insertions .gitignore; read-only log confirms.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "git commit -m \"feat: add API foundation and shared health contract\"",
+      "result": "passed",
+      "evidence": "Supplied commit 8ba5d24, 13 files/1878 insertions; read-only log confirms.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-10"
+    },
+    {
+      "check": "Documentation staged scope and reference snapshot identities",
+      "result": "passed",
+      "evidence": "Supplied 79-file/21492-line stat, index inventory reviewed; read-only hash comparison checks 29 staged snapshot blobs against staged reference-lock.json with no mismatches. This is source identity evidence, not live runtime attestation or parity.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-10"
+    }
+  ],
+  "blockers": [],
+  "knownLimitations": [
+    "Manual liveness, SIGINT/SIGTERM, occupied-port exit 1 and successful cleanup exit 0 verified by supplied output/user report. No project server known running. Active-request draining, shutdown deadline/failure remain unverified; first health inject test passed.",
+    "All 116 parity capabilities remain not_started; no runtime fixtures are retained.",
+    "Progress is manual; no automated documentation/progress validation exists.",
+    "Previously downloaded system Docker images and shared package caches may remain; they are not active project infrastructure.",
+    "Health inject red/green demonstrated: initial success and deliberate failure supported by supplied output; restored success user-reported and source reviewed. API typecheck including new test passed by user report. Shutdown runtime failure/deadline checks remain pending; first-test learning recap completed."
+  ],
+  "workspaceState": "git_documentation_commit_pending",
+  "workingMode": "user_implements_assistant_teaches",
+  "lastUserConfirmedImplementationStep": "Supplied documentation staged summary: 79 files/21492 insertions. Read-only index inventory matches intended scope; all 29 staged research snapshot SHA256 hashes match staged reference lock.",
+  "projectName": "Closely",
+  "currentCheckpoint": "docs/progress/HANDOFF.md",
+  "nextUserAction": "Restage assistant-updated progress docs with git add docs/progress, then git commit -m \"docs: preserve engineering guidance and learning checkpoints\"; supply output. Documentation commit pending."
+}
