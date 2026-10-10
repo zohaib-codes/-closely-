@@ -1,16 +1,22 @@
 {
-    "name": "@closely/contracts",
-    "version": "0.0.0",
-    "private": true,
-    "type": "module",
-    "scripts": {
-        "typecheck": "tsc --project tsconfig.json --noEmit",
-        "build": "tsc --project tsconfig.json"
-    },
-    "exports": {
-        ".": {
-            "types": "./dist/health.d.ts",
-            "default": "./dist/health.js"
-        }
+  "name": "@closely/contracts",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "build": "tsc --project tsconfig.json"
+  },
+  "nx": {
+    "tags": [
+      "scope:platform",
+      "type:contract"
+    ]
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/health.d.ts",
+      "default": "./dist/health.js"
     }
+  }
 }

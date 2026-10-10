@@ -1,9 +1,7 @@
 {
-    "extends": "./tsconfig.json",
-    "compilerOptions": {
-        "noEmitOnError": true
-    },
-    "exclude": [
-        "src/**/*.test.ts"
-    ]
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmitOnError": true
+  },
+  "exclude": ["src/**/*.test.ts"]
 }

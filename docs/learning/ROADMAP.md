@@ -14,6 +14,8 @@ Do not silently diverge. An architectural/scope change requires a explained prop
 
 Pacing update from the user: start concrete workspace/API setup now, explain concepts during the work, and place learning questions at the end of a coding session. Foundation lesson IDs remain topic references rather than a mandatory lecture/quiz sequence; teach Git before recording the first implementation commit.
 
+2026-10-11 pacing update: user requested faster progress toward framework features. Bundle a small coherent edit and its user-run checks into one working chunk; omit routine save-only turns and redundant preparation probes. Keep explanations focused, preserve required milestone gates, and leave optional tooling exercises explicitly pending rather than expanding them before feature work. This changes teaching granularity, not product scope or acceptance requirements.
+
 Every lesson has a stable ID, prerequisite, engineering question, official reading, user artifact, verification and feature mapping where relevant. The user executes one manageable action at a time; a lesson may span several turns. Code is explained before it is written. Exercises are actual product work or clearly labeled disposable experiments, never quietly counted as parity.
 
 Before first use of every dependency, including small utilities and transitive integration tools:
@@ -31,25 +33,25 @@ Start with [reading guide](READING-GUIDE.md). Future library links/sections are 
 
 These are planned lessons, not tasks already performed. Advance one user action at a time.
 
-| Lesson | Engineering question / user artifact | Verification or learning evidence |
-| --- | --- | --- |
-| L00 | Repository, monorepo, apps and packages; explain the planned graph | User can trace a request and identify who owns a rule; no understanding assumed |
-| L01 | Git working tree, staging, commit, diff, ignore rules; user initializes history | User can inspect and explain a deliberate documentation change |
-| L02 | Node runtime versus TypeScript compiler versus package manager; inspect local versions | Compatible versions selected with official evidence, no broad installs |
-| L03 | package.json: private root, ESM, packageManager, scripts, dependencies/devDependencies | User explains every root field before creating it |
-| L04 | pnpm workspace declaration, workspace dependencies, lockfile, install reproducibility | An internal dependency resolves locally; no accidental registry resolution |
-| L05 | TypeScript strict configuration, Node/browser targets and module resolution | Deliberately invalid input/type code is rejected; emitted runtime understood |
-| L06 | Modules, named exports, type-only imports, public package exports | Consumer imports public surface; forbidden deep import is demonstrated |
-| L07 | Nx project graph, task graph, input/output and cache responsibilities | Dependency build order understood; changes invalidate the relevant cache |
-| L08 | Formatting versus lint versus typecheck; enforce planned dependency direction | A deliberate engine-to-HTTP/UI/ERP dependency is rejected |
-| L09 | First testing configuration; meaningful behavioral test and failure | User sees both red and green, explains assertion and error output |
-| L10 | Thin API bootstrap, dependency wiring, request ID, liveness and shutdown | Server starts/stops predictably; liveness is not mistaken for readiness |
-| L11 | Thin Desk bootstrap, browser boundary and Vite dev/build distinction | User explains entry point/bundle and sees no server imports in browser |
-| L12 | First CI workflow, frozen installation and local/remote evidence | Checks run from a clean checkout; remote execution recorded separately |
-| L13 | Pinned reference environment, source/runtime identity and isolated resources | Exact reference revision recorded; test resources cannot affect user sites |
-| L14 | Read-only reference capture: success, version envelope and denied access | Reviewed live observations, no credentials persisted |
-| L15 | Comparator, fixture identity, scoped nondeterminism and wrong-candidate test | Deliberate mismatch fails; synthetic checks distinguished from live parity |
-| L16 | Progress tooling only if useful now; manual records remain usable | Actual user work, check results and next lesson survive a new chat |
+| Lesson | Engineering question / user artifact                                                   | Verification or learning evidence                                               |
+| ------ | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| L00    | Repository, monorepo, apps and packages; explain the planned graph                     | User can trace a request and identify who owns a rule; no understanding assumed |
+| L01    | Git working tree, staging, commit, diff, ignore rules; user initializes history        | User can inspect and explain a deliberate documentation change                  |
+| L02    | Node runtime versus TypeScript compiler versus package manager; inspect local versions | Compatible versions selected with official evidence, no broad installs          |
+| L03    | package.json: private root, ESM, packageManager, scripts, dependencies/devDependencies | User explains every root field before creating it                               |
+| L04    | pnpm workspace declaration, workspace dependencies, lockfile, install reproducibility  | An internal dependency resolves locally; no accidental registry resolution      |
+| L05    | TypeScript strict configuration, Node/browser targets and module resolution            | Deliberately invalid input/type code is rejected; emitted runtime understood    |
+| L06    | Modules, named exports, type-only imports, public package exports                      | Consumer imports public surface; forbidden deep import is demonstrated          |
+| L07    | Nx project graph, task graph, input/output and cache responsibilities                  | Dependency build order understood; changes invalidate the relevant cache        |
+| L08    | Formatting versus lint versus typecheck; enforce planned dependency direction          | A deliberate engine-to-HTTP/UI/ERP dependency is rejected                       |
+| L09    | First testing configuration; meaningful behavioral test and failure                    | User sees both red and green, explains assertion and error output               |
+| L10    | Thin API bootstrap, dependency wiring, request ID, liveness and shutdown               | Server starts/stops predictably; liveness is not mistaken for readiness         |
+| L11    | Thin Desk bootstrap, browser boundary and Vite dev/build distinction                   | User explains entry point/bundle and sees no server imports in browser          |
+| L12    | First CI workflow, frozen installation and local/remote evidence                       | Checks run from a clean checkout; remote execution recorded separately          |
+| L13    | Pinned reference environment, source/runtime identity and isolated resources           | Exact reference revision recorded; test resources cannot affect user sites      |
+| L14    | Read-only reference capture: success, version envelope and denied access               | Reviewed live observations, no credentials persisted                            |
+| L15    | Comparator, fixture identity, scoped nondeterminism and wrong-candidate test           | Deliberate mismatch fails; synthetic checks distinguished from live parity      |
+| L16    | Progress tooling only if useful now; manual records remain usable                      | Actual user work, check results and next lesson survive a new chat              |
 
 M0 exit: reproducible user-built workspace, enforceable boundaries, meaningful checks, thin entry points and an attested reference baseline. Product capabilities remain pending. Reference tooling is part of verification, not the document engine.
 

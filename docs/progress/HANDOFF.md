@@ -1,55 +1,31 @@
 # Closely — current learning checkpoint
 
-Updated 2026-10-10 after completed contracts recap and selection of Git foundation. Read AGENTS.md, START-HERE.md, learning/WORKING-AGREEMENT.md, CURRENT.md/state.json and learning/ROADMAP.md. User writes code/runs commands; assistant teaches, reviews read-only and maintains docs. One manageable step, official reading and explanations; comprehension questions at session end.
+Updated 2026-10-11 for requested chat switch. Read AGENTS.md, START-HERE.md, WORKING-AGREEMENT.md, CURRENT.md/state.json and ROADMAP.md, then inspect relevant live files. User writes implementation and runs commands; assistant teaches, reviews read-only and maintains progress docs. Give one manageable step at a time with purpose, focused official docs, exact path/code/command and explanation. Learning questions belong at the end of practical work; no quiz gate or delegation.
 
-## Last completed user work
-User added API package scripts: typecheck, test, build and start. Created apps/api/tsconfig.build.json inheriting ./tsconfig.json, enabling noEmitOnError and excluding src/**/*.test.ts. User compiled and ran emitted JavaScript directly, then through named build/start scripts; confirmed expected health body and cleanup exit 0. Assistant edited only progress docs and ran no implementation/build/test commands.
+## Last completed user action
 
-Prior health inject lesson remains complete: supplied initial passing test and deliberate body-assertion failure, restored pass/typecheck by user report, and correct recap. Do not repeat that lesson or install tools again.
+User-created .github/workflows/ci.yml reviewed: assigned checkout@v7/pnpm setup@v3 Node24/install false, frozen install, format/lint/Nx uncached checks retained. Attachment supplies frozen install pnpm12.10.1/up-to-date lock, formatter/check pass, lint/all3 names/no diagnostics, contracts/Desk/API typechecks/builds and API one passing health test. Nx cache skipped; final explicit0. This is current local evidence, not clean-checkout or GitHub runner execution. Formatter pass predates this progress update.
 
-## Actual files reviewed
-apps/api/package.json scripts: typecheck = tsc --project tsconfig.json --noEmit; test = vitest run src/app.test.ts; build = tsc --project tsconfig.build.json; start = node dist/server.js. Build config reviewed, and dist contains app.js/server.js with no emitted test. Generated code reviewed earlier: erased types, ESM ./app.js import, status ok health route and shutdown timer cleanup preserved. Final handoff re-inspected manifest/build config and output inventory read-only.
+## Exact next working chunk
 
-Source roles unchanged: app.ts constructs Fastify/routes; server.ts listens on 127.0.0.1:3000 and handles guarded signals with a 10-second unrefed watchdog and finally/clearTimeout; app.test.ts asserts HTTP 200 and exact body with finally close. Existing Node 24/pnpm/TS tooling and Fastify/Vitest dependencies require no reinstall.
+User formats docs/progress, stages maintained workflow/foundation/docs files and supplies git diff --cached --stat and --check with exit status. Review staged scope before assigning commit. GitHub repository URL/create-private preference requested via input question; no remote currently configured. Remote setup/push/Actions result follow after staged review and user-owned commit. No assistant Git mutations or implementation commands.
 
-## Evidence and limits
-- Named typecheck: supplied compiler invocation and returned prompt without diagnostics.
-- Named test: user reported testpassed; fresh summary not supplied. Earlier first-test output remains historical evidence.
-- Initial build: no errors/new dist files by user report plus read-only output review.
-- Direct compiled run: supplied GET /health/live HTTP 200 logs for PID 117446; cleanup exit 0 user-reported. Startup banner/body were not separately supplied for that run.
-- Named build: first invocation supplied compiler command and returned prompt without diagnostics; second invocation excerpt lacks final prompt.
-- Named start: supplied node dist/server.js and listening log for PID 118608.
-- Named-run body/cleanup: user replied yes , got 0 to requested expected-body confirmation and Ctrl+C/echo $?; recorded body and exit 0 as user-reported, no fresh response/shutdown logs supplied.
-No known retained project service after reported cleanup; no fresh process inventory performed. Successful startup and health do not prove active-request draining, shutdown deadline/failure paths or production deployment readiness. noEmitOnError does not clean stale output; cleanup strategy remains future work.
+Faster pacing requested: coherent edit-and-check chunks, focused explanations, no routine save-only turns/redundant preparation probes. Scope and required gates retained. Optional L11 recap: HTML/main/App entry and tsc noEmit versus Vite build; no quiz gate. Static Node rule does not cover dynamic imports. Broader architecture boundaries still pending.
 
-## Understanding and exact resume point
-Build/start recap completed: old emitted code runs without rebuild, tests need typechecking but are excluded from runtime output. Null exercise recap completed; assistant clarified unannotated const initialized to null still infers null.
+## Retained L11 work and evidence
 
-L06/L04 foundation example now demonstrated. User created packages/contracts/src/health.ts (exported HealthResponse/status literal ok), private ESM manifest with public root types/default exports, and strict declaration-build config. Contracts emission reviewed with health.d.ts and empty-module health.js. API devDependency workspace:* recorded as local link in lockfile/node_modules; installation user-reported without terminal output. Public type-only consumer and Promise<HealthResponse> handler reviewed. Supplied TS2307 proves unexported package subpath rejection; supplied TS2322 citing contracts/dist/health.d.ts proves literal mismatch rejection. Restored green checks user-reported.
+Desk manifest/tags, strict browser TS config, React entry/App, HTML, Vite config and dev/typecheck/build/preview scripts are user-built and reviewed. Supplied Nx discovery and current-source typecheck pass with exit 0. Supplied first production build passes with exit 0; emitted HTML/bundle reviewed. Dev and preview display/no errors are user-reported; fresh runtime logs absent. Cleanup exit 0 recorded; no known retained Desk server, no fresh process inventory.
 
-Fresh API build supplied exact filtered command/compiler invocation and returned prompt without diagnostics. Emitted app.js reviewed: Fastify and status ok handler retained, contracts type import/annotation and old constrainedMemory import absent. No new runtime smoke. Package encapsulation demonstrated for package specifiers, not filesystem-relative imports; lint enforcement pending.
+Root typed/Nx lint scopes include TSX. Supplied JSON inventory has exactly eight eligible files with no diagnostics/exit 0. Browser Nx constraint rejects runtime:server internal targets and Fastify/pg external dependencies. Fastify re-export and temporary contracts runtime:server tag probes both fail as expected/exit 1; cleanup is reviewed and restored lint exit 0 supplied. PostgreSQL/subpath bans not individually exercised. Node rule baseline plus both denials and restored green evidenced; probe removed.
 
-L06/L04 recap completed on 2026-10-10: user correctly identifies generated declaration usage/type import erasure and workspace:* local-only resolution.
+## Retained earlier lessons and limits
 
-L01 root .gitignore created by user and reviewed: node_modules/ and dist/. Git ignore behavior not yet verified. Prior read-only Git inspection reports no repository.
+L09 first health inject test/red-green/recap complete. L10 focused normal startup/liveness/signals/occupied-port/build-start foundation retained; active-request draining/deadline/failure unverified. L07 focused task ordering/cache reuse/output restoration/source-dependency invalidation and recap complete; fresh-checkout/CI/shared-root invalidation unverified. L08 formatting/typed lint/current-package boundaries and recap retained; wider engine/UI/ERP boundary gates incomplete. Preserve TS7 CLI and TS6 compiler-API alias.
 
-User Git initialization on main passed using supplied output and read-only branch/status review. Status shows untracked source/config/docs, no staged entries observed.
+M0 remains in progress. All 116 parity features remain not_started. No automated progress harness exists. CI workflow configured, remote run pending. Working-tree work remains uncommitted; no commit assigned. Latest supplied formatter pass predates this progress update; no post-update result claimed. No assistant implementation edits or install/build/test/lint executions performed. Do not equate files, node_modules or dist with fresh check execution or parity.
 
-Ignore verification passed using supplied exact check-ignore output: root/nested node_modules ignored by line 1, API/contracts dist by line 2, source and lockfile unignored (:: fields).
+Details: [Desk session](sessions/2026-10-10-desk-bootstrap.md), [current summary](CURRENT.md), [manual state](state.json). Read older session notes only when current checkpoint lacks needed detail.
 
-User supplied corrected staged .gitignore diff with final newline. Read-only index confirms only .gitignore staged. Git author identity unavailable on read-only git var check; no values printed or retained.
+Latest CI evidence: [CI session](sessions/2026-10-11-ci-foundation.md).
 
-First ignore-only commit bcf7bac (chore: ignore dependencies and build output) supplied and confirmed by read-only log; one file/two insertions. Other foundation/docs files remain untracked. Author identity usable; values not retained.
-
-Foundation staging supplied: 13 files/1878 insertions. Read-only staged source/config and inventory reviewed, matching intended API/contracts/workspace files; no dist/node_modules. Existing formatting differences deferred to formatting lesson. Prior test/build evidence unchanged; no fresh checks executed.
-
-Foundation commit 8ba5d24 supplied (13 files/1878 insertions) and read-only log confirmed. Only AGENTS.md/README.md/docs remain untracked. Documentation inventory and research provenance reviewed; reference snapshots are evidence outside product packages. Assistant corrected stale README empty-app/no-runtime summary to present foundation and evidence limits.
-
-Documentation staged scope reviewed: supplied summary has 79 files/21492 insertions; index inventory matches AGENTS/README/docs. Read-only SHA256 comparison of 29 staged snapshots against staged reference lock has no mismatches. This does not attest live reference runtime or parity. Assistant refreshed progress docs after staging.
-
-Next single action: git add docs/progress, then git commit -m "docs: preserve engineering guidance and learning checkpoints"; supply output. Restaging captures these progress updates. Documentation commit pending; no assistant Git mutations. Then review status/history and close L01 recap.
-
-## Remaining M0 scope
-Build foundation has progressed; M0 and SCAFFOLD-001 remain in progress. The public exports/local workspace dependency foundation example is now demonstrated. Nx task/cache graph, formatting/lint/boundaries, Desk shell, CI and attested reference baseline remain incomplete. Strict-configuration rejection exercise and broader operational coverage are not established. All 116 parity features unchanged; tooling work earns no parity claim. No automated progress harness exists.
-
-Latest session: sessions/2026-10-10-git-foundation.md. Contracts lesson: sessions/2026-10-09-build-checkpoint-resume.md. Build evidence session: sessions/2026-10-09-api-build.md. Earlier package-script details: sessions/2026-10-09-package-scripts-resume.md. Earlier first-test recap: sessions/2026-10-09-source-review-resume.md. Architecture unchanged; separate build config is routine L05/L10 foundation work.
+Staging checkpoint: user supplied37-file stat/5096 insertions/353 deletions and whitespace check exit0. Read-only staged source/inventory confirms intended Desk/tooling/workflow/docs/lock scope, no generated outputs or temporary probes. Next: format/restage progress docs, check formatting/staged whitespace, user commit with message feat: add Desk bootstrap and automated foundation checks, inspect log/status. Commit and remote CI pending; GitHub repository question unanswered.

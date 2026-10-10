@@ -1,12 +1,10 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-10-10",
+  "updatedAt": "2026-10-11",
   "currentMilestone": "M0",
-  "activeTaskIds": [
-    "SCAFFOLD-001"
-  ],
+  "activeTaskIds": ["SCAFFOLD-001"],
   "nextTaskId": "SCAFFOLD-001",
-  "latestSession": "docs/progress/sessions/2026-10-10-git-foundation.md",
+  "latestSession": "docs/progress/sessions/2026-10-11-ci-foundation.md",
   "tasks": [
     {
       "id": "FOUNDATION-001",
@@ -29,9 +27,7 @@
       "title": "Explain repository, packages and monorepo before the first user action",
       "milestone": "M0",
       "status": "in_progress",
-      "dependencies": [
-        "FOUNDATION-001"
-      ],
+      "dependencies": ["FOUNDATION-001"],
       "files": [
         "docs/learning/LESSON-00.md",
         "docs/learning/ROADMAP.md",
@@ -43,7 +39,11 @@
         "2026-10-09 first-test recap: user correctly distinguishes HTTP 200 from expected body content, explains finally cleanup when an assertion throws, and states inject does not open TCP or prove SIGTERM behavior; separate process/network integration verification needed.",
         "2026-10-09 build/start recap: user correctly identifies old emitted version running without rebuild, and explains tests require typechecking but are excluded from runtime output. Assistant clarified start executes dist/server.js.",
         "2026-10-09 null recap: user correctly explains explicit string annotation conflicts with null and contrasts omitted annotation. Assistant clarified omission still infers a type (null here); independent restatement of inference not assessed.",
-        "2026-10-10: user correctly explains generated health.d.ts supplies API type, type import erasure removes runtime dependency, and workspace:* ensures local-only package resolution. L06/L04 recap complete."
+        "2026-10-10: user correctly explains generated health.d.ts supplies API type, type import erasure removes runtime dependency, and workspace:* ensures local-only package resolution. L06/L04 recap complete.",
+        "2026-10-10 L01 recap: user says old version saved; assistant clarifies last staged version rather than necessarily previous commit. User correctly explains reproducible node_modules/dist; assistant explains lockfile exact resolutions. Independent restatement of staged-version nuance not assessed.",
+        "2026-10-10 L07 recap: User correctly explains ^build dependency task ordering versus ^default dependency cache inputs, input invalidation versus output restoration, contracts-comment invalidation propagating to API, and cached tsc log replay versus actual execution. L07 focused practical lesson and recap complete.",
+        "2026-10-10 formatter recap: user correctly explains check/write and CI, reference and machine-generated exclusions, and formatting versus type correctness/import boundaries. Assistant clarified exact snapshot byte hashes; no quiz gate.",
+        "2026-10-10 lint recap: user correctly explains awaited cleanup completion versus void and && stopping after discovery failure. User describes source scope applicability but omits internal target restriction; assistant clarifies sourceTag selection versus onlyDependOnLibsWithTags target constraint and external Fastify ban. User identifies project discovery; assistant clarifies cached-graph refresh and absence of Nx project filtering. Clarification understanding not independently confirmed. User requests scope verification next and chat-switch handoff."
       ],
       "notes": [
         "Conceptual discussion recorded; no quiz gate. User requested coding-led teaching and questions at session end. Understanding is not claimed complete."
@@ -54,9 +54,7 @@
       "title": "Workspace, build, strict TS, lint and boundaries",
       "milestone": "M0",
       "status": "in_progress",
-      "dependencies": [
-        "FOUNDATION-001"
-      ],
+      "dependencies": ["FOUNDATION-001"],
       "files": [
         "package.json",
         "pnpm-workspace.yaml",
@@ -71,7 +69,11 @@
         "packages/contracts/src/health.ts",
         "packages/contracts/package.json",
         "packages/contracts/tsconfig.json",
-        ".gitignore"
+        ".gitignore",
+        "nx.json",
+        ".prettierrc.json",
+        ".prettierignore",
+        "eslint.config.mjs"
       ],
       "evidence": [
         "User reported manifest creation; read-only inspection confirms names, workspace patterns and apps/api/src.",
@@ -124,7 +126,33 @@
         "2026-10-10 user first commit bcf7bac verified, .gitignore only. Foundation source/config snapshot staging assigned; no broader commit yet.",
         "2026-10-10: foundation staged summary supplied (13 files, 1878 insertions); staged source/config/index inventory reviewed. Matches intended API/contracts/workspace foundation; commit pending. Formatting cleanup remains future lesson, not a blocker for snapshot.",
         "2026-10-10: foundation commit 8ba5d24 supplied and log verified. Assistant corrected stale README empty-app description within documentation scope; docs inventory/provenance reviewed. User docs staging assigned; result pending.",
-        "2026-10-10 documentation staging reviewed: supplied 79-file summary and index inventory; 29 staged research snapshot hashes match reference lock. Progress docs updated after staging, user restage/commit assigned. No live reference attestation implied."
+        "2026-10-10 documentation staging reviewed: supplied 79-file summary and index inventory; 29 staged research snapshot hashes match reference lock. Progress docs updated after staging, user restage/commit assigned. No live reference attestation implied.",
+        "2026-10-10: docs commit 0ed9196 verified using supplied output/read-only log; clean status observed before assistant completion records. L01 implementation steps complete, recap pending; new completion documentation uncommitted.",
+        "2026-10-10 requested chat-switch handoff: supplied Nx 23.3.0 install output reviewed; root manifest/lock/link/scoped lifecycle allowance verified read-only. No nx.json/project.json observed. Nx CLI/project graph/task order/cache unverified.",
+        "2026-10-10: local Nx CLI v23.3.0 verified by supplied pnpm exec nx --version output; global not found. Manual nx.json lesson assigned, not yet written or executed.",
+        "2026-10-10: user-written nx.json reviewed read-only; local schema and build/typecheck dependency build rules match lesson. Graph/execution/cache not verified.",
+        "2026-10-10: Nx generated cache/workspace-data ignore rules reviewed and verified by supplied git check-ignore output. Project discovery assigned; graph/order/cache execution pending.",
+        "2026-10-10: Nx discovers contracts/API per supplied show projects output. User disables analytics; persisted false reviewed. Resolved targets/task graph/order/cache remain pending.",
+        "2026-10-10: supplied resolved API JSON confirms apps/api root, build/typecheck/test/start nx:run-script targets, correct script content and ^build defaults. implicitDependencies [] does not establish absence of inferred dependency edges. Task graph preview pending.",
+        "2026-10-10: supplied task graph confirms inferred API-to-contracts static project edge and contracts:build prerequisite of api:typecheck. Both cache false. Actual ordered execution pending.",
+        "2026-10-10: ordered contracts build then API typecheck successfully executed per supplied Nx output; no cache hits. Fresh-checkout/reconstruction and API build target execution via Nx remain unverified.",
+        "2026-10-10: saved build cache configuration reviewed read-only and matches assigned inputs/output; no cache execution/hit/restoration/invalidation verified yet.",
+        "2026-10-10: first cache-enabled contracts/API build succeeds in order with supplied 0/2 hits and duration 1.7s. Identical rerun/cache reuse pending.",
+        "2026-10-10: identical build rerun demonstrates 2/2 cache hits and explicit commands not run. Output-restoration experiment pending; dist inventory reviewed: API app.js/server.js, contracts health.js/health.d.ts only.",
+        "2026-10-10: output restoration passes with 2/2 local cache hits after user removes both dist directories; restored four-file inventory supplied and all baseline SHA256s match on assistant read-only comparison. Source invalidation pending.",
+        "2026-10-10: deliberate contracts source comment invalidates contracts and API build cache (supplied 0/2 hits and successful ordered build). Read-only diff confirms only exercise comment in health.ts. Cleanup and original-input reuse pending.",
+        "2026-10-10: exercise comment removed, health.ts diff empty on read-only review; supplied 2/2 original-input cache hits. L07 project/task graph, ordered execution, cache reuse, artifact restoration and source/dependency invalidation exercises evidenced; learning recap pending, M0 remains in progress.",
+        "2026-10-10 L08 formatter practical section: Prettier 3.9.9 installed, root config and ignore scope exercised, focused red/green and root script red/green evidenced. Source/config changes reviewed as layout-only; pinned 29 snapshot hashes unchanged. Formatting recap and ESLint/boundaries remain pending.",
+        "2026-10-10: four lint tooling pins installed with supplied pnpm output and read-only saved versions; typescript-eslint lock resolves existing TS6.0.2 alias. CLI/configuration/lint/boundaries still pending.",
+        "2026-10-10: user reports saved root eslint.config.mjs; read-only review confirms exact assigned flat config with global ignores, scoped JS/TS recommended rules and eslint-config-prettier last. File presence/review is not successful config loading or lint execution.",
+        "2026-10-10: user saved root lint script; read-only package.json parsed successfully and scripts reviewed as format, format:check and lint eslint . --max-warnings 0. Repository-wide execution pending.",
+        "2026-10-10: supplied root lint script execution has no ESLint diagnostics and exit 0. Basic recommended-rule lint practical section complete; typed checks/boundaries not verified.",
+        "2026-10-10: user saved typed config; read-only review confirms recommendedTypeChecked/projectService/root directory for TS scope. Configuration loading, project association and typed rule results not yet evidenced.",
+        "2026-10-10: API nx.tags now present after renewed saved report; read-only JSON review confirms scope:platform/type:app/runtime:server. Earlier missing-field issue resolved; Nx recognition not yet verified.",
+        "2026-10-10: contracts nx.tags user saved and read-only JSON parsed as scope:platform/type:contract; API tags retained. Nx resolved configuration not yet supplied.",
+        "2026-10-10: user saved first boundary configuration; read-only file matches assigned Nx plugin/constraints. Rule execution and deliberate denial not yet verified.",
+        "2026-10-10: root lint graph-refresh correction saved by user/reviewed as nx show projects && eslint . --max-warnings 0. Execution pending; discovery does not build packages.",
+        "2026-10-10: supplied restored internal scope lint pass/exit0, tags reviewed as platform/contract. External Fastify type prohibition and platform internal scope constraints demonstrated red/green, graph-refresh root script verified. No full engine/UI/ERP boundary gate claimed."
       ],
       "notes": [
         "L09 first-test lesson completed: health test pass, deliberate failure, restored pass, typecheck and user recap. Wider M0 foundation gates remain incomplete; next lesson selection pending roadmap review.",
@@ -139,7 +167,20 @@
         "Next step: API devDependency @closely/contracts workspace:* because planned import is type-only and erased; runtime contracts imports would require dependencies placement. Root pnpm install and local link/lock review pending; no versioned registry package requested.",
         "Public exports/local workspace dependency foundation example now demonstrated; do not list it as wholly unstarted. General lint boundaries, task ordering/cache, Desk, CI, reference baseline and broader strict/operational coverage remain incomplete.",
         "2026-10-10: L06/L04 recap complete; L01 Git foundation selected before task/cache tooling. Read-only git status/rev-parse confirm no Git repository; no root gitignore found. User root .gitignore creation assigned; initialization/staging/commit not performed.",
-        "2026-10-10 restaging repeated but supplied diff still lacks final newline; read-only bytes confirm saved file lacks newline too. Exact printf rewrite of two-rule file explained/assigned to user; no assistant ignore-file edit."
+        "2026-10-10 restaging repeated but supplied diff still lacks final newline; read-only bytes confirm saved file lacks newline too. Exact printf rewrite of two-rule file explained/assigned to user; no assistant ignore-file edit.",
+        "L07 selected: core Nx 23.3.0 registry metadata verified (MIT, postinstall present), official Nx23 Node24 compatibility and manual installation read. Core will orchestrate existing tsc scripts; no @nx/js plugin/generator assigned. User scoped pnpm allowBuilds plus exact root dev install pending; compatibility execution not claimed.",
+        "Next focused L07 action: root nx.json local schema, build/typecheck dependsOn ^build. Existing tsc scripts retained. Generated Nx ignore rules follow before graph execution; cache configuration deferred until ordering verified.",
+        "2026-10-10 requested chat-switch handoff: L07 practical checks/recap complete at scoped evidence levels; L08 Prettier introduction/version verification next, no command yet assigned. M0 remains in progress; shared-root invalidation/fresh-checkout/CI not evidenced.",
+        "2026-10-10 L08 resumed from live files. No direct Prettier/ESLint dependency or config found. Official Prettier installation/comparison and pnpm add docs reviewed; npm latest metadata verified Prettier 3.9.9, MIT, Node >=14, no declared dependencies or lifecycle scripts. Exact root devDependency install assigned; no user execution or passing check claimed.",
+        "L08: user created ignore file; six assigned rules reviewed read-only with final newline. --file-info ignored snapshot versus eligible API verification assigned; output pending. Pinned local CLI source confirms flag behavior; no CLI run by assistant.",
+        "L08 root scripts user-created and reviewed read-only: format/prettier . --write and format:check/prettier . --check. Repository-wide check assigned, result pending.",
+        "L08 linting selected: exact root devDependencies eslint10.12.0, @eslint/js10.0.1, typescript-eslint8.71.1, eslint-config-prettier10.1.8; all MIT and declared metadata compatible with Node24/TS6.0.2. Registry and official docs verified. Nx boundary plugin deferred to boundary lesson. Install output pending; no tool execution assumed.",
+        "Requested chat-switch handoff: formatting practical section and recap complete; lint dependencies installed. Exact next single lesson: ESLint local CLI version verification expected v10.12.0, not yet assigned/executed. Broader L08/M0 incomplete; progress edits after green formatter run not covered by a fresh check.",
+        "2026-10-10 lint resume: checkpoint, agreement, roadmap, engineering guidance and actual root manifest/API source reviewed read-only. Local ESLint package metadata is 10.12.0; no lint config/script found. Official CLI/version and pnpm exec docs reviewed. Local version command explained/assigned; output pending. No implementation or checks executed by assistant.",
+        "2026-10-10: typed lint red/green complete with supplied root pass/exit0 and cleanup restoration inspected. Selected boundary plugin23.3.0 matching Nx; metadata/docs checked. User install assigned, not executed/evidenced. No new app/engine packages scaffolded; tags/rules and architecture acceptance remain pending.",
+        "2026-10-10: user reports API tags saved; read-only parsed manifest still has no nx field. No tag creation/completion or resolved Nx output claimed. Reassigned same edit with exact manifest context; no assistant implementation edit.",
+        "2026-10-10: Nx recognition supplied for API/contracts tags. Next boundary rules implement existing platform/contract direction and HTTP/UI external exclusions; no new engine/ERP scaffold. L08 broader deliberate engine-to-HTTP/UI/ERP gate remains pending until those packages exist; scoped present-package checks will not certify it.",
+        "2026-10-10: installed Nx rule graph utility readsCachedProjectGraph and warns/skips when absent. Root lint script should refresh graph first with nx show projects && eslint. Routine tooling correction explained, user edit pending. Existing external negative test valid; fresh-state graph provisioning and internal tag probe pending."
       ]
     },
     {
@@ -147,9 +188,7 @@
       "title": "API liveness and Desk build shells",
       "milestone": "M0",
       "status": "todo",
-      "dependencies": [
-        "SCAFFOLD-001"
-      ],
+      "dependencies": ["SCAFFOLD-001"],
       "files": [],
       "evidence": [],
       "notes": [
@@ -161,9 +200,7 @@
       "title": "Reference manifests, capture, comparison and source audit",
       "milestone": "M0",
       "status": "todo",
-      "dependencies": [
-        "SCAFFOLD-001"
-      ],
+      "dependencies": ["SCAFFOLD-001"],
       "files": [],
       "evidence": [],
       "notes": [
@@ -175,9 +212,7 @@
       "title": "Boot exact Frappe runtime and capture live baseline",
       "milestone": "M0",
       "status": "todo",
-      "dependencies": [
-        "HARNESS-001"
-      ],
+      "dependencies": ["HARNESS-001"],
       "files": [],
       "evidence": [],
       "notes": [
@@ -189,13 +224,8 @@
       "title": "Manual learning progress and handoff protocol",
       "milestone": "M0",
       "status": "done",
-      "dependencies": [
-        "FOUNDATION-001"
-      ],
-      "files": [
-        "docs/progress/state.json",
-        "docs/progress/START-HERE.md"
-      ],
+      "dependencies": ["FOUNDATION-001"],
+      "files": ["docs/progress/state.json", "docs/progress/START-HERE.md"],
       "evidence": [
         "AGENTS.md",
         "docs/learning/WORKING-AGREEMENT.md",
@@ -208,9 +238,7 @@
       "title": "Reproducible CI workflow",
       "milestone": "M0",
       "status": "todo",
-      "dependencies": [
-        "SCAFFOLD-001"
-      ],
+      "dependencies": ["SCAFFOLD-001"],
       "files": [],
       "evidence": [],
       "notes": [
@@ -222,13 +250,8 @@
       "title": "Site context and metadata registry/schema contract",
       "milestone": "M1",
       "status": "todo",
-      "dependencies": [
-        "SCAFFOLD-001",
-        "HARNESS-001"
-      ],
-      "files": [
-        "docs/engineering/data-and-documents.md"
-      ],
+      "dependencies": ["SCAFFOLD-001", "HARNESS-001"],
+      "files": ["docs/engineering/data-and-documents.md"],
       "evidence": [],
       "notes": []
     },
@@ -237,12 +260,8 @@
       "title": "Real PostgreSQL adapter, migrations and transaction harness",
       "milestone": "M1",
       "status": "todo",
-      "dependencies": [
-        "META-FOUNDATION"
-      ],
-      "files": [
-        "docs/engineering/data-and-documents.md"
-      ],
+      "dependencies": ["META-FOUNDATION"],
+      "files": ["docs/engineering/data-and-documents.md"],
       "evidence": [],
       "notes": []
     },
@@ -251,13 +270,8 @@
       "title": "Document lifecycle and permissions with real transactions",
       "milestone": "M2",
       "status": "todo",
-      "dependencies": [
-        "DB-FOUNDATION",
-        "HARNESS-002"
-      ],
-      "files": [
-        "docs/parity/frappe-v16.51.0.md"
-      ],
+      "dependencies": ["DB-FOUNDATION", "HARNESS-002"],
+      "files": ["docs/parity/frappe-v16.51.0.md"],
       "evidence": [],
       "notes": []
     },
@@ -266,12 +280,8 @@
       "title": "Auth and legacy/native API contracts",
       "milestone": "M3",
       "status": "todo",
-      "dependencies": [
-        "DOCUMENTS-FOUNDATION"
-      ],
-      "files": [
-        "docs/engineering/errors-and-api.md"
-      ],
+      "dependencies": ["DOCUMENTS-FOUNDATION"],
+      "files": ["docs/engineering/errors-and-api.md"],
       "evidence": [],
       "notes": []
     },
@@ -280,12 +290,8 @@
       "title": "Metadata-driven Desk, forms and views",
       "milestone": "M4",
       "status": "todo",
-      "dependencies": [
-        "API-COMPATIBILITY"
-      ],
-      "files": [
-        "docs/engineering/frontend.md"
-      ],
+      "dependencies": ["API-COMPATIBILITY"],
+      "files": ["docs/engineering/frontend.md"],
       "evidence": [],
       "notes": []
     },
@@ -294,12 +300,8 @@
       "title": "Customizations, scripts, workflows and automations",
       "milestone": "M5",
       "status": "todo",
-      "dependencies": [
-        "DOCUMENTS-FOUNDATION"
-      ],
-      "files": [
-        "docs/parity/frappe-v16.51.0.md"
-      ],
+      "dependencies": ["DOCUMENTS-FOUNDATION"],
+      "files": ["docs/parity/frappe-v16.51.0.md"],
       "evidence": [],
       "notes": []
     },
@@ -308,12 +310,8 @@
       "title": "Reports, printing, files and mail",
       "milestone": "M6",
       "status": "todo",
-      "dependencies": [
-        "API-COMPATIBILITY"
-      ],
-      "files": [
-        "docs/parity/frappe-v16.51.0.md"
-      ],
+      "dependencies": ["API-COMPATIBILITY"],
+      "files": ["docs/parity/frappe-v16.51.0.md"],
       "evidence": [],
       "notes": []
     },
@@ -322,12 +320,8 @@
       "title": "Website/portal and configured integrations",
       "milestone": "M7",
       "status": "todo",
-      "dependencies": [
-        "API-COMPATIBILITY"
-      ],
-      "files": [
-        "docs/parity/frappe-v16.51.0.md"
-      ],
+      "dependencies": ["API-COMPATIBILITY"],
+      "files": ["docs/parity/frappe-v16.51.0.md"],
       "evidence": [],
       "notes": []
     },
@@ -336,13 +330,8 @@
       "title": "Operational parity and restore drills",
       "milestone": "M8",
       "status": "todo",
-      "dependencies": [
-        "DB-FOUNDATION",
-        "REPORTS-IO"
-      ],
-      "files": [
-        "docs/engineering/testing-and-operations.md"
-      ],
+      "dependencies": ["DB-FOUNDATION", "REPORTS-IO"],
+      "files": ["docs/engineering/testing-and-operations.md"],
       "evidence": [],
       "notes": []
     },
@@ -358,9 +347,7 @@
         "WEB-INTEGRATIONS",
         "OPERATIONS"
       ],
-      "files": [
-        "docs/parity/frappe-v16.51.0.md"
-      ],
+      "files": ["docs/parity/frappe-v16.51.0.md"],
       "evidence": [],
       "notes": []
     },
@@ -369,9 +356,7 @@
       "title": "Separate ERPNext parity specification after framework readiness",
       "milestone": "ERP",
       "status": "todo",
-      "dependencies": [
-        "PARITY-AUDIT"
-      ],
+      "dependencies": ["PARITY-AUDIT"],
       "files": [],
       "evidence": [],
       "notes": []
@@ -643,6 +628,349 @@
       "evidence": "Supplied 79-file/21492-line stat, index inventory reviewed; read-only hash comparison checks 29 staged snapshot blobs against staged reference-lock.json with no mismatches. This is source identity evidence, not live runtime attestation or parity.",
       "source": "user_provided_terminal_output_and_read_only_review",
       "date": "2026-10-10"
+    },
+    {
+      "command": "git commit -m \"docs: preserve engineering guidance and learning checkpoints\"",
+      "result": "passed",
+      "evidence": "Supplied 0ed9196, 79 files/21505 insertions. Read-only log confirms all three commits; git status --short empty immediately after commit, before progress update.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm add --workspace-root --save-dev --save-exact nx@23.3.0",
+      "result": "passed",
+      "evidence": "Supplied pnpm success: devDependencies + nx 23.3.0, packages +100 -3, returned prompt. Read-only manifest exact pin, lockfile resolution, node_modules local link and allowBuilds nx@23.3.0 true confirmed. Postinstall/CLI execution not separately evidenced.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm exec nx --version",
+      "result": "passed",
+      "evidence": "Supplied output: Nx Version, Local: v23.3.0, Global: Not found, returned prompt.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "git check-ignore --verbose .nx/cache/example .nx/workspace-data/example",
+      "result": "passed",
+      "evidence": "Supplied output matches .gitignore line 3 /.nx/cache/ and line 4 /.nx/workspace-data/; saved file reviewed read-only.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm exec nx show projects",
+      "result": "passed",
+      "evidence": "Supplied output lists @closely/contracts and @closely/api and returned prompt. Analytics prompt answered No; output reports disabled; nx.json analytics false reviewed.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm exec nx show project @closely/api --json",
+      "result": "passed",
+      "evidence": "Supplied pnpm exec nx show project @closely/api --json output confirms apps/api root, four nx:run-script targets and build/typecheck dependsOn [^build]. No tasks executed by inspection.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm exec nx run @closely/api:typecheck --graph=stdout",
+      "result": "passed",
+      "evidence": "Supplied nx run @closely/api:typecheck --graph=stdout output confirms API static dependency on contracts and API typecheck prerequisite contracts build. Both tasks cache false; graph preview only, no task execution. Supplied graph lists contracts build as root and API typecheck dependency array containing contracts build.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm exec nx run @closely/api:typecheck --outputStyle=static",
+      "result": "passed",
+      "evidence": "User supplied successful Nx API typecheck execution: contracts build tsc first, API no-emit tsc second; Nx success for target and one dependency, 0/2 cache hits, duration 2.0s. Existing artifacts present; not clean-checkout evidence.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm exec nx run @closely/api:build --outputStyle=static",
+      "result": "passed",
+      "evidence": "Supplied cache-enabled Nx API build output shows contracts build first, API build second, both successful; 0/2 cache hits, duration 1.7s. Cache reuse/restoration/invalidation not yet verified.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm exec nx run @closely/api:build --outputStyle=static (unchanged rerun)",
+      "result": "passed",
+      "evidence": "Supplied identical Nx build rerun succeeds with 2/2 cache hits (100%), 53ms, both marked existing outputs match cache left as is. Nx explicitly reports commands not run. Reuse verified; restoration not yet tested.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "Generated dist removal followed by pnpm exec nx run @closely/api:build --outputStyle=static and ls",
+      "result": "passed",
+      "evidence": "User removed both generated dist directories and supplied successful Nx build with 2/2 local-cache hits and four restored files. Assistant read-only SHA256 comparison confirms all four match recorded pre-removal hashes. Supplied run duration 59ms; source/runtime not exercised.",
+      "source": "user_provided_terminal_output_and_assistant_read_only_hash_comparison",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm exec nx run @closely/api:build --outputStyle=static (contracts source comment change)",
+      "result": "passed",
+      "evidence": "Temporary contracts source comment reviewed as only health.ts diff. Supplied Nx build succeeds with contracts then API compilation and 0/2 cache hits, duration 1.9s. Source/dependency invalidation demonstrated; exercise comment still present.",
+      "source": "user_provided_terminal_output_and_read_only_source_diff_review",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm exec nx run @closely/api:build --outputStyle=static (restored original source)",
+      "result": "passed",
+      "evidence": "Removed temporary contracts comment; assistant read-only git diff for health.ts is empty. Supplied Nx build succeeds with 2/2 local-cache hits, explicit commands not run, duration 55ms. Original-input reuse and cleanup verified.",
+      "source": "user_provided_terminal_output_and_read_only_source_diff_review",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm add --workspace-root --save-dev --save-exact prettier@3.9.9",
+      "result": "passed",
+      "evidence": "Supplied pnpm v12.10.1 success: Packages +1, devDependencies prettier 3.9.9, Done in 808ms and returned prompt. Read-only root pin, lockfile 3.9.9, installed version and CLI file reviewed. CLI execution not yet evidenced.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm exec prettier --version",
+      "result": "passed",
+      "evidence": "User replied yup, 3.9.9; recorded as user-reported, fresh terminal excerpt not supplied.",
+      "source": "user_reported",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm exec prettier --find-config-path apps/api/src/app.ts",
+      "result": "passed",
+      "evidence": "Supplied output .prettierrc.json and returned prompt; root file reviewed as {}. Final newline absent; config lookup succeeds, formatting not yet checked.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm exec prettier --file-info docs/research/snapshots/twenty-rest-errors.ts; pnpm exec prettier --file-info apps/api/src/app.ts",
+      "result": "passed",
+      "evidence": "Supplied snapshot ignored true/inferredParser null; API ignored false/inferredParser typescript and returned prompt. Scoped ignore and source eligibility verified; other ignore rules not individually exercised.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm exec prettier apps/api/src/app.ts --check",
+      "result": "expected_failure",
+      "evidence": "Supplied Checking formatting, warning naming apps/api/src/app.ts and Code style issues found, followed by returned prompt. Numeric exit status not separately supplied. No files rewritten by --check.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm exec prettier apps/api/src/app.ts --write; pnpm exec prettier apps/api/src/app.ts --check",
+      "result": "passed",
+      "evidence": "Supplied write output app.ts 76ms and All matched files use Prettier code style. Pasted diff truncated; assistant full read-only diff confirms blank-line/spacing/trailing-comma/semicolon changes only. No runtime or typecheck run implied.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm run format:check",
+      "result": "expected_failure",
+      "evidence": "Supplied 19 formatting warnings across source/config/docs and explicit ELIFECYCLE exit code 1. No research snapshots, lockfile or generated outputs in warning list; warning absence alone not proof for each ignore rule.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm run format; pnpm run format:check",
+      "result": "passed",
+      "evidence": "Supplied repository formatter output and green all matched files style summary. Read-only source/config review shows formatting-only changes; 29 snapshots still match pinned lock and pre-write aggregate SHA256. No new typecheck/runtime verification. Assistant progress edits follow green run; no post-edit formatting check claimed.",
+      "source": "user_provided_terminal_output_and_assistant_read_only_review",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm add --workspace-root --save-dev --save-exact eslint@10.12.0 @eslint/js@10.0.1 typescript-eslint@8.71.1 eslint-config-prettier@10.1.8",
+      "result": "passed",
+      "evidence": "Supplied four devDependency versions, Packages +84, Done in 9.9s using pnpm12.10.1 and returned prompt. Read-only exact root pins/local package versions confirmed; lockfile resolves typescript-eslint to TypeScript6.0.2 alias and ESLint10.12.0. No eslint CLI/config/lint execution evidenced.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm exec eslint --version",
+      "result": "passed",
+      "evidence": "User replied yes same version to expected v10.12.0; fresh terminal excerpt absent.",
+      "source": "user_reported",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm exec eslint eslint.config.mjs apps/api/src/app.ts --max-warnings 0; echo $?",
+      "result": "passed",
+      "evidence": "User reports nothing from ESLint then 0 from exit status; fresh terminal excerpt absent. Covers config JS scope and API factory TS scope only.",
+      "source": "user_reported",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm exec eslint apps/api/src/app.ts --max-warnings 0; echo $? (temporary unused variable)",
+      "result": "expected_failure",
+      "evidence": "Supplied terminal output: app.ts 4:7 lintProbe assigned but never used, @typescript-eslint/no-unused-vars; 1 error, 0 warnings; explicit exit 1.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm exec eslint eslint.config.mjs apps/api/src/app.ts --max-warnings 0; echo $? (after probe removal)",
+      "result": "passed",
+      "evidence": "User reports no output then 0. Read-only app.ts confirms lintProbe removed and original API behavior retained; extra blank lines remain, formatting not verified. No fresh terminal excerpt.",
+      "source": "user_reported_and_read_only_review",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm run lint; echo $?",
+      "result": "passed",
+      "evidence": "Supplied root command, script output eslint . --max-warnings 0, no diagnostics, explicit exit 0. Applies current configured scopes/ignores and recommended untyped rules only.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm run lint; echo $? (first typed configuration)",
+      "result": "failed",
+      "evidence": "Supplied app.ts 7:61 require-await error for async arrow with no await, one error/zero warnings, ELIFECYCLE exit 1 and explicit 1. Typed rules executed; no typed green claimed.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "Lint check after synchronous health-handler correction",
+      "result": "no_diagnostics_reported",
+      "evidence": "User says saved and ran lint check which returned nothing. Exact command, terminal excerpt and numeric exit status not supplied. Read-only source confirms synchronous (): HealthResponse handler with unchanged status ok body.",
+      "source": "user_reported_and_read_only_review",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm --filter @closely/api run test; echo $? (synchronous health handler)",
+      "result": "passed",
+      "evidence": "Supplied Vitest5.0.3 output: src/app.test.ts one passing test, GET /health/live returns a healthy response; request completed HTTP200; explicit exit0. Existing test asserts exact status ok body. TCP/shutdown not exercised.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm exec nx run @closely/api:typecheck --outputStyle=static; echo $? (synchronous health handler)",
+      "result": "passed",
+      "evidence": "Supplied Nx success for API typecheck plus contracts build prerequisite; contracts existing outputs match cache, API tsc --project tsconfig.json --noEmit executed. Cache1/2, explicit exit0. Fresh API typecheck, cached contracts build distinguished.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm exec eslint apps/api/src/app.test.ts --max-warnings 0; echo $? (await removed from cleanup)",
+      "result": "expected_failure",
+      "evidence": "Supplied app.test.ts 18:5 no-floating-promises error, one error/zero warnings, explicit exit1. Typed promise rejection confirmed.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm run lint; echo $? (await restored, typed configuration)",
+      "result": "passed",
+      "evidence": "Supplied root lint command/script output eslint . --max-warnings 0, no diagnostics and explicit exit0. Read-only test confirms await api.close restored. Current typed config scopes checked; boundaries not configured.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm add --workspace-root --save-dev --save-exact @nx/eslint-plugin@23.3.0",
+      "result": "passed",
+      "evidence": "Supplied pnpm12.10.1 success: +168 packages, devDependency @nx/eslint-plugin23.3.0, 9.7s and returned prompt; read-only exact root pin/local package version confirmed. Rule loading/enforcement not exercised.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm exec nx show project @closely/api --json; pnpm exec nx show project @closely/contracts --json",
+      "result": "passed",
+      "evidence": "Supplied resolved project JSON: API npm:private/scope:platform/type:app/runtime:server; contracts npm:private/scope:platform/type:contract; roots/targets retained. Configuration inspection, not task execution or rule enforcement.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm run lint; echo $? (first boundary-enabled baseline)",
+      "result": "passed",
+      "evidence": "Supplied script output eslint . --max-warnings 0 and explicit exit0, no diagnostics or Nx warnings shown. First current-import baseline under boundary config; denial not yet verified.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm exec eslint packages/contracts/src/health.ts --max-warnings 0; echo $? (temporary Fastify type export)",
+      "result": "expected_failure",
+      "evidence": "Supplied health.ts5:1 @nx/enforce-module-boundaries: type:contract not allowed to import fastify, one error/no warnings and explicit exit1. External Fastify type dependency denied; internal tag-direction and other banned modules not exercised.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm run lint; echo $? (Fastify probe removed)",
+      "result": "passed",
+      "evidence": "Supplied script output eslint . --max-warnings 0 and exit0 after observed Fastify export removal. Cached graph available during exercise; fresh graph provisioning not yet verified.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm run lint; echo $? (graph-refresh script)",
+      "result": "passed",
+      "evidence": "Supplied script header nx show projects && eslint . --max-warnings 0; lists @closely/contracts/@closely/api, no diagnostics/warnings, explicit exit0. Graph-refresh script successful; missing-cache recovery not specifically exercised.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm run lint; echo $? (contracts temporarily tagged scope:erp)",
+      "result": "expected_failure",
+      "evidence": "Supplied graph-refresh header/both project names, app.ts2:1 @nx/enforce-module-boundaries scope:platform may only depend on scope:platform, one error/no warnings, ELIFECYCLE and explicit exit1. Existing internal type import denied after tag change.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm run lint; echo $? (contracts platform scope restored)",
+      "result": "passed",
+      "evidence": "Supplied graph-refresh script header, both projects, no diagnostics and explicit exit0. Read-only contracts manifest confirms scope:platform/type:contract restored. Internal scope red/green verified.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm run format:check; echo $? (after lint/boundary lesson)",
+      "result": "failed",
+      "evidence": "Supplied prettier . --check output warns only docs/progress/state.json; ELIFECYCLE exit1 and explicit1. User reports actively formatting; all other matched files passed current check. Progress JSON serialization by assistant caused remaining layout warning.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm exec prettier docs/progress/state.json --write; pnpm run format:check; echo $?",
+      "result": "passed",
+      "evidence": "Supplied focused state.json formatter149ms; root prettier . --check All matched files use Prettier code style and explicit exit0. Result covers files at check time, before following targeted documentation edits. No runtime files edited by assistant.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm run lint --format json; echo $?",
+      "result": "passed",
+      "evidence": "Supplied script header nx show projects && eslint . --max-warnings 0 --format json; lists contracts/API. JSON has exactly app.test.ts, app.ts, server.ts, eslint.config.mjs and contracts health.ts absolute paths, empty messages/suppressedMessages, zero error/fatal/warning counts; explicit exit0. Verifies current file inventory, not individual rule activation or full architecture gates.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-10"
+    },
+    {
+      "command": "pnpm run lint; echo $? (Node-import rule baseline)",
+      "result": "passed",
+      "evidence": "User supplied nx show projects && eslint . --max-warnings 0 header, contracts/desk/api names, no diagnostics and explicit0 after saved Node-import rule. Baseline loading/current source passes; no Node-import negative check yet.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-11"
+    },
+    {
+      "command": "pnpm run lint; echo $? (temporary node:fs re-export)",
+      "result": "expected_failure",
+      "evidence": "Supplied nx show projects header and all three projects; App.tsx1:1 node:fs pattern restriction/custom Node message, no-restricted-imports, one error/zero warnings, ELIFECYCLE and explicit exit1. Prefixed Node static re-export denied; bare spelling and cleanup pending.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-11"
+    },
+    {
+      "command": "pnpm run lint; echo $? (temporary bare fs re-export)",
+      "result": "expected_failure",
+      "evidence": "Supplied graph-refresh script header/all3 project names, App.tsx1:1 fs restriction via no-restricted-imports, one error/zero warnings, ELIFECYCLE and explicit exit1. Bare builtin paths denial evidenced; read-only App retains probe. Cleanup/restored green pending.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-11"
+    },
+    {
+      "command": "pnpm run lint; echo $?; pnpm run format; pnpm run format:check; echo $? (Node probe removed)",
+      "result": "passed",
+      "evidence": "Supplied graph-refresh lint lists all3 projects with no diagnostics and explicit0. Repository format output mostly unchanged, Desk session formatted; format:check says All matched files use Prettier code style with explicit0. Cleanup reviewed read-only. Covers files before subsequent progress edits; no fresh CI/clean-checkout evidence.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-11"
+    },
+    {
+      "command": "L12 local frozen-install/format/lint/Nx typecheck,test,build batch; echo $?",
+      "result": "passed",
+      "evidence": "Attachment supplies frozen install all4 workspace projects/root included, pnpm12.10.1, up-to-date lockfile and skipped resolution; cached supply-chain policy result verified44m ago. Formatting/check pass, lint all3 Nx projects/no diagnostics, Nx contracts/Desk/API typechecks/builds plus API one passing health test, explicit cache Skipped and final0. Read-only CI workflow matches assigned source; no fresh-checkout/GitHub runner evidence.",
+      "source": "user_provided_terminal_output_and_read_only_workflow_review",
+      "date": "2026-10-11"
     }
   ],
   "blockers": [],
@@ -651,12 +979,13 @@
     "All 116 parity capabilities remain not_started; no runtime fixtures are retained.",
     "Progress is manual; no automated documentation/progress validation exists.",
     "Previously downloaded system Docker images and shared package caches may remain; they are not active project infrastructure.",
-    "Health inject red/green demonstrated: initial success and deliberate failure supported by supplied output; restored success user-reported and source reviewed. API typecheck including new test passed by user report. Shutdown runtime failure/deadline checks remain pending; first-test learning recap completed."
+    "Health inject red/green demonstrated: initial success and deliberate failure supported by supplied output; restored success user-reported and source reviewed. API typecheck including new test passed by user report. Shutdown runtime failure/deadline checks remain pending; first-test learning recap completed.",
+    "Nx 23.3.0 installed with supplied output; CLI v23.3.0 verified by supplied output; nx.json reviewed read-only; project identities discovered, but API-to-contracts static edge and typecheck task graph verified; contracts build before API typecheck execution verified; fresh-checkout proof, Nx API build execution verified; cache reuse verified; artifact restoration verified; source/dependency invalidation verified; shared-root input invalidation not exercised. Temporary comment cleanup verified; focused L07 recap complete. Nx generated-directory ignore rules verified; resolved API configuration verified; build cache configuration reviewed; first cache-enabled build passed; exercise cleanup/original-input reuse verified; focused L07 recap complete."
   ],
-  "workspaceState": "git_documentation_commit_pending",
+  "workspaceState": "l12_foundation_staged_reviewed_commit_pending",
   "workingMode": "user_implements_assistant_teaches",
-  "lastUserConfirmedImplementationStep": "Supplied documentation staged summary: 79 files/21492 insertions. Read-only index inventory matches intended scope; all 29 staged research snapshot SHA256 hashes match staged reference lock.",
+  "lastUserConfirmedImplementationStep": "User supplied progress formatting output, staged stat37 files/5096 insertions/353 deletions and whitespace check exit0. Assistant read-only staged inventory/source review confirms workflow/Desk/tooling/docs/lock changes, no dist/node_modules/Nx generated outputs or temporary probes. Commit pending.",
   "projectName": "Closely",
   "currentCheckpoint": "docs/progress/HANDOFF.md",
-  "nextUserAction": "Restage assistant-updated progress docs with git add docs/progress, then git commit -m \"docs: preserve engineering guidance and learning checkpoints\"; supply output. Documentation commit pending."
+  "nextUserAction": "User formats/restages latest docs/progress, checks formatting/staged whitespace, commits with message feat: add Desk bootstrap and automated foundation checks, then supplies commit/log/status output. GitHub URL/private-repository answer and remote CI pending."
 }

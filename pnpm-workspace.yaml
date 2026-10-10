@@ -4,6 +4,7 @@ packages:
 
 allowBuilds:
   "esbuild@0.28.2": true
+  "nx@23.3.0": true
 
 minimumReleaseAgeExclude:
   - vite@8.3.4

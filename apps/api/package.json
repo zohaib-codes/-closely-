@@ -9,6 +9,13 @@
     "build": "tsc --project tsconfig.build.json",
     "start": "node dist/server.js"
   },
+  "nx": {
+    "tags": [
+      "scope:platform",
+      "type:app",
+      "runtime:server"
+    ]
+  },
   "devDependencies": {
     "@closely/contracts": "workspace:*"
   },

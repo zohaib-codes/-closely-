@@ -1,0 +1,6 @@
+node_modules/
+dist/
+coverage/
+/.nx/
+/docs/research/snapshots/
+/pnpm-lock.yaml

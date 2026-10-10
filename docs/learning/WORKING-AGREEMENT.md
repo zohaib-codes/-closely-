@@ -12,7 +12,7 @@ Build a serious Frappe-like framework in TypeScript and later an ERPNext-like ap
 2. Explain the chosen approach, reference behavior and alternatives with tradeoffs. Separate Frappe behavior, Twenty engineering examples and our adaptations.
 3. Introduce only the files, concepts and dependencies needed for this step. Before first use, provide official documentation with specific sections and a reading goal. Explain what each package supplies, why it fits and what we still must implement ourselves.
 4. Explain the code before asking the user to write it. Provide exact paths and commands, explain flags and expected results. Teach unfamiliar TypeScript and framework mechanics without assuming prior understanding.
-5. Give one manageable action, then wait. Answer questions before moving on.
+5. Give one manageable working chunk, including its user-run verification, then wait for output. Avoid separate save-only confirmation turns for routine edits. Answer questions before moving on.
 6. Review the user's actual result. Explain failures and guide corrections; do not silently fix implementation files.
 7. Record what the user completed, verification evidence, open questions and the next lesson.
 
@@ -33,6 +33,10 @@ Follow [ROADMAP.md](ROADMAP.md) and [READING-GUIDE.md](READING-GUIDE.md). Plan c
 ## Updated pacing preference
 
 The user requested coding-led lessons on 2026-10-08. Explain briefly before each concrete action; reserve comprehension questions for the end of the coding session. Waiting for command results remains necessary for dependent steps, but conceptual quizzes are not prerequisites to starting. Begin with workspace/API package setup; weave Git and architecture explanations into the work. The user still writes files and runs commands.
+
+## Faster pacing — 2026-10-11
+
+User requested faster progress toward actual framework features. Default to a small coherent implementation chunk with its verification in one reply; user writes and runs everything. Keep explanations and official reading focused, avoid repeated save/review/run turns and redundant setup probes, and deepen teaching when asked or when a failure needs diagnosis. Preserve required milestone gates and evidence limits; do not silently declare preparation or parity complete. Prioritize prerequisites for the next useful feature and defer optional tooling exercises with explicit pending status.
 
 ## Preferred response style
 

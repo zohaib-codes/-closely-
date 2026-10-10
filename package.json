@@ -5,11 +5,23 @@
   "engines": {
     "node": ">=24 <25"
   },
+  "scripts": {
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "lint": "nx show projects && eslint . --max-warnings 0"
+  },
   "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@nx/eslint-plugin": "23.3.0",
     "@types/node": "24.19.1",
     "@typescript/native": "npm:typescript@7.0.2",
+    "eslint": "10.12.0",
+    "eslint-config-prettier": "10.1.8",
+    "nx": "23.3.0",
+    "prettier": "3.9.9",
     "tsx": "4.23.15",
     "typescript": "npm:@typescript/typescript6@6.0.2",
+    "typescript-eslint": "8.71.1",
     "vite": "8.3.4",
     "vitest": "5.0.3"
   }

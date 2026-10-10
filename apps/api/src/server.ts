@@ -1,6 +1,4 @@
-
 import { createApi } from "./app.js";
-
 
 const api = createApi();
 
@@ -8,7 +6,7 @@ let isShutingDown = false;
 
 async function shutDown(signal: "SIGINT" | "SIGTERM"): Promise<void> {
   if (isShutingDown) {
-    return
+    return;
   }
 
   isShutingDown = true;
@@ -26,31 +24,25 @@ async function shutDown(signal: "SIGINT" | "SIGTERM"): Promise<void> {
   } catch (error: unknown) {
     api.log.error({ err: error }, "Api shutdown failed");
     process.exitCode = 1;
-  } finally{
+  } finally {
     clearTimeout(shutdownDeadline);
   }
-
 }
-
-
-
 
 try {
   await api.listen({
     host: "127.0.0.1",
-    port: 3000
-  })
+    port: 3000,
+  });
 
   process.on("SIGINT", () => {
-    void shutDown("SIGINT")
-  })
+    void shutDown("SIGINT");
+  });
 
   process.on("SIGTERM", () => {
-    void shutDown("SIGTERM")
-  })
+    void shutDown("SIGTERM");
+  });
 } catch (error: unknown) {
   api.log.error({ err: error }, "Api startup failed");
   process.exitCode = 1;
 }
-
-
