@@ -1,0 +1,1 @@
+tests/parity/fixtures/**/*.http -text whitespace=cr-at-eol

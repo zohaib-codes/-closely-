@@ -4,7 +4,7 @@
   "currentMilestone": "M0",
   "activeTaskIds": ["SCAFFOLD-001"],
   "nextTaskId": "SCAFFOLD-001",
-  "latestSession": "docs/progress/sessions/2026-10-11-ci-foundation.md",
+  "latestSession": "docs/progress/sessions/2026-10-11-reference-environment.md",
   "tasks": [
     {
       "id": "FOUNDATION-001",
@@ -199,24 +199,32 @@
       "id": "HARNESS-001",
       "title": "Reference manifests, capture, comparison and source audit",
       "milestone": "M0",
-      "status": "todo",
+      "status": "in_progress",
       "dependencies": ["SCAFFOLD-001"],
-      "files": [],
-      "evidence": [],
+      "files": [
+        "tests/parity/fixtures/frappe-v16.51.0/manifest.json",
+        "tests/parity/fixtures/frappe-v16.51.0/SHA256SUMS"
+      ],
+      "evidence": [
+        "User formatted fixture manifest then supplied six sha256sum --check OK lines for compose/bootstrap/manifest/three raw responses. Assistant reviewed manifest and SHA256SUMS read-only; pinned source, previously verified tools, captured timestamp and requests agree with recorded evidence. No fresh runtime tool inventory or independent checksum execution claimed."
+      ],
       "notes": [
-        "Assistant trial removed. Future user-built work; not implemented."
+        "User raw capture/provenance now exist; comparator, automated identity validation, full harness and capability verification remain pending."
       ]
     },
     {
       "id": "HARNESS-002",
       "title": "Boot exact Frappe runtime and capture live baseline",
       "milestone": "M0",
-      "status": "todo",
+      "status": "in_progress",
       "dependencies": ["HARNESS-001"],
-      "files": [],
-      "evidence": [],
+      "files": ["infra/reference/compose.yaml", "infra/reference/bootstrap.sh"],
+      "evidence": [
+        "User bootstrap exit0 at exact pinned source and site16.51.0; supplied live HTTP baseline200/message pong,200/data pong,403/PermissionError. Persisted capture pending.",
+        "Three persisted raw HTTP files reviewed and user checksum verification passed; provenance manifest reviewed. HTTP startup log not supplied. Broader isolated seed/identity automation incomplete."
+      ],
       "notes": [
-        "Assistant trial removed. Future user-built work; not implemented."
+        "Current isolated reference runtime user-built. Source/bootstrap and three live responses evidenced; manifest/capture/comparison incomplete. Dependency HARNESS-001 remains incomplete; environment work proceeded before comparator per recorded L13/L14 sequence."
       ]
     },
     {
@@ -971,21 +979,77 @@
       "evidence": "Attachment supplies frozen install all4 workspace projects/root included, pnpm12.10.1, up-to-date lockfile and skipped resolution; cached supply-chain policy result verified44m ago. Formatting/check pass, lint all3 Nx projects/no diagnostics, Nx contracts/Desk/API typechecks/builds plus API one passing health test, explicit cache Skipped and final0. Read-only CI workflow matches assigned source; no fresh-checkout/GitHub runner evidence.",
       "source": "user_provided_terminal_output_and_read_only_workflow_review",
       "date": "2026-10-11"
+    },
+    {
+      "command": "curl v1 ping, v2 ping and unauthenticated User-list GETs with explicit Host reference.localhost",
+      "result": "passed",
+      "evidence": "Supplied responses200/message pong,200/data pong,403/PermissionError. Guest cookies observed; exact nested _server_messages error body and WWW-Authenticate header retained in user output. No persisted fixture/comparison yet; startup log not supplied.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-11"
+    },
+    {
+      "command": "curl --output three .http fixtures with --write-out HTTP status",
+      "result": "passed",
+      "evidence": "User capture prints200/200/403. Assistant read-only inspected all three persisted .http files: status/headers/JSON bodies match live baseline; v1 message pong, v2 data pong, guest User403 PermissionError. Each captured Date is2026-10-10T23:31:14Z; Guest cookies and variable error ID retained. Raw fixture review completed, provenance/checksums/comparator pending.",
+      "source": "user_provided_terminal_output_and_read_only_fixture_review",
+      "date": "2026-10-11"
+    },
+    {
+      "command": "prettier fixture manifest --write; sha256sum --check fixture SHA256SUMS",
+      "result": "passed",
+      "evidence": "User formatted fixture manifest then supplied six sha256sum --check OK lines for compose/bootstrap/manifest/three raw responses. Assistant reviewed manifest and SHA256SUMS read-only; pinned source, previously verified tools, captured timestamp and requests agree with recorded evidence. No fresh runtime tool inventory or independent checksum execution claimed.",
+      "source": "user_provided_terminal_output_and_read_only_manifest_review",
+      "date": "2026-10-11"
+    },
+    {
+      "command": "First tests/parity typecheck, vitest response.test.ts, root lint",
+      "result": "partial_failure",
+      "evidence": "User supplied first comparator run: explicit typecheck failed with10 TS1295/TS1287/TS1470 errors because root package lacks type:module and new .ts files inherit CommonJS classification under NodeNext/verbatimModuleSyntax. Vitest5.0.3 passed8 tests; root lint lists three projects/no diagnostics, but exit code not separately supplied. Read-only source/config review confirms cause. Assistant omitted local ESM declaration in lesson; no correction implemented.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-11"
+    },
+    {
+      "command": "ESM correction: focused format && tests/parity typecheck && Vitest && root lint; echo $?",
+      "result": "passed",
+      "evidence": "User ESM-boundary correction batch supplied: parity package.json formatted, chained tests/parity typecheck succeeded before Vitest, all8 comparator tests pass, root lint lists original3 Nx projects/no diagnostics, final0. Read-only package.json confirms private:true,type:module scoped boundary. No fixture files altered; full header/denial/identity/CI coverage remains pending.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-11"
+    },
+    {
+      "command": "Focused denial-policy format && parity typecheck && Vitest && lint; echo $?",
+      "result": "passed",
+      "evidence": "User denial-policy batch passed: focused formatting, tests/parity typecheck,12 tests and root lint, explicit final0. Assistant read-only reviewed exact-default and explicit guest-user-denial policy, nested unknown shape checks, preserved fields and ID-only substitution. Candidate checks are synthetic; recorded live responses preserved. No new remote CI run or identity validation yet.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-11"
+    },
+    {
+      "command": "Root format && strict fixture hashes && parity typecheck &&13 tests && lint && format:check; echo $?",
+      "result": "passed",
+      "evidence": "Latest attachment supplies root format, six strict checksum OKs, parity typecheck success via chained batch,13 passing Vitest tests, root lint/no diagnostics, root format:check pass, explicit final0. Read-only workflow includes checksum step and explicit parity tsc/Vitest step; pinned-reference manifest test reviewed. Remote run for new workflow not yet exists. HTTP raw fixture CRLF bytes must survive Git checkout.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-11"
+    },
+    {
+      "command": "Root formatting/hashes and explicit staging; staged diff --check/stat; read-only staged blob hash review",
+      "result": "passed_with_exit_output_pending",
+      "evidence": "User staging batch supplies root format/check pass, all6 strict checksum OKs, staged whitespace check reached summary,19 staged files640 insertions24 deletions. Terminal remains in pager at END; final shell status not supplied yet. Assistant read-only index review confirms intended attrs/workflow/progress/harness/reference infra/parity files only; hashes of6 staged blobs match staged SHA256SUMS. .gitattributes preserves raw HTTP bytes. Prior parity typecheck/13 tests/lint final0 retained.",
+      "source": "user_provided_terminal_output_and_read_only_staged_review",
+      "date": "2026-10-11"
     }
   ],
   "blockers": [],
   "knownLimitations": [
     "Manual liveness, SIGINT/SIGTERM, occupied-port exit 1 and successful cleanup exit 0 verified by supplied output/user report. No project server known running. Active-request draining, shutdown deadline/failure remain unverified; first health inject test passed.",
-    "All 116 parity capabilities remain not_started; no runtime fixtures are retained.",
+    "All 116 parity capabilities remain not_started; three pinned raw HTTP reference fixtures and provenance are retained. Comparator checks use synthetic candidates; no Closely compatibility endpoint parity established.",
     "Progress is manual; no automated documentation/progress validation exists.",
     "Previously downloaded system Docker images and shared package caches may remain; they are not active project infrastructure.",
     "Health inject red/green demonstrated: initial success and deliberate failure supported by supplied output; restored success user-reported and source reviewed. API typecheck including new test passed by user report. Shutdown runtime failure/deadline checks remain pending; first-test learning recap completed.",
     "Nx 23.3.0 installed with supplied output; CLI v23.3.0 verified by supplied output; nx.json reviewed read-only; project identities discovered, but API-to-contracts static edge and typecheck task graph verified; contracts build before API typecheck execution verified; fresh-checkout proof, Nx API build execution verified; cache reuse verified; artifact restoration verified; source/dependency invalidation verified; shared-root input invalidation not exercised. Temporary comment cleanup verified; focused L07 recap complete. Nx generated-directory ignore rules verified; resolved API configuration verified; build cache configuration reviewed; first cache-enabled build passed; exercise cleanup/original-input reuse verified; focused L07 recap complete."
   ],
-  "workspaceState": "l12_foundation_staged_reviewed_commit_pending",
+  "workspaceState": "l15_staged_snapshot_reviewed_commit_push_pending",
   "workingMode": "user_implements_assistant_teaches",
-  "lastUserConfirmedImplementationStep": "User supplied progress formatting output, staged stat37 files/5096 insertions/353 deletions and whitespace check exit0. Assistant read-only staged inventory/source review confirms workflow/Desk/tooling/docs/lock changes, no dist/node_modules/Nx generated outputs or temporary probes. Commit pending.",
+  "lastUserConfirmedImplementationStep": "User staging batch supplies root format/check pass, all6 strict checksum OKs, staged whitespace check reached summary,19 staged files640 insertions24 deletions. Terminal remains in pager at END; final shell status not supplied yet. Assistant read-only index review confirms intended attrs/workflow/progress/harness/reference infra/parity files only; hashes of6 staged blobs match staged SHA256SUMS. .gitattributes preserves raw HTTP bytes. Prior parity typecheck/13 tests/lint final0 retained.",
   "projectName": "Closely",
   "currentCheckpoint": "docs/progress/HANDOFF.md",
-  "nextUserAction": "User formats/restages latest docs/progress, checks formatting/staged whitespace, commits with message feat: add Desk bootstrap and automated foundation checks, then supplies commit/log/status output. GitHub URL/private-repository answer and remote CI pending."
+  "nextUserAction": "User exits Git pager with q. After latest progress edits, format docs/progress, root format:check, restage docs/progress, git --no-pager diff --cached --check, commit test: add pinned Frappe reference fixtures and comparator, git push, echo status. Supply commit/push output; assistant then verifies new remote CI for exact commit. No new remote result assumed. Keep local reference services/HTTP running until explicit cleanup lesson."
 }

@@ -1,0 +1,15 @@
+HTTP/1.1 403 FORBIDDEN
+Server: Werkzeug/3.1.6 Python/3.14.8
+Date: Sat, 10 Oct 2026 23:31:14 GMT
+Content-Type: application/json
+Content-Length: 340
+Cache-Control: no-store,no-cache,must-revalidate,max-age=0
+WWW-Authenticate: Bearer resource_metadata="http://reference.localhost/.well-known/oauth-protected-resource"
+Set-Cookie: sid=Guest; Expires=Sun, 18 Oct 2026 01:31:14 GMT; Max-Age=612000; HttpOnly; Path=/; SameSite=Lax
+Set-Cookie: system_user=no; Path=/; SameSite=Lax
+Set-Cookie: full_name=Guest; Path=/; SameSite=Lax
+Set-Cookie: user_id=Guest; Path=/; SameSite=Lax
+Set-Cookie: user_lang=en; Path=/; SameSite=Lax
+Connection: close
+
+{"exc_type":"PermissionError","_server_messages":"[\"{\\\"message\\\":\\\"Insufficient Permission for <strong>User</strong>\\\",\\\"as_table\\\":false,\\\"title\\\":\\\"Permission Error\\\",\\\"indicator\\\":\\\"red\\\",\\\"raise_exception\\\":1,\\\"__frappe_exc_id\\\":\\\"4cd4d7e481329678bc34f181a528054dc66b82002dcf2e9e1f9acd6e\\\"}\"]"}

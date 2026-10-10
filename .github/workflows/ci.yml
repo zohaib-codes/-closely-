@@ -28,6 +28,9 @@ jobs:
       - name: Install locked dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Verify reference fixture checksums
+        run: sha256sum --check --strict tests/parity/fixtures/frappe-v16.51.0/SHA256SUMS
+
       - name: Check formatting
         run: pnpm run format:check
 
@@ -36,3 +39,8 @@ jobs:
 
       - name: Typecheck, test and build
         run: pnpm exec nx run-many --targets=typecheck,test,build --skipNxCache --outputStyle=static
+
+      - name: Check parity tooling
+        run: |
+          pnpm exec tsc --project tests/parity/tsconfig.json
+          pnpm exec vitest run tests/parity/response.test.ts

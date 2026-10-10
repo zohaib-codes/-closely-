@@ -1,0 +1,6 @@
+1638654d3b5db1069ad542c3e4d07f61787ed8be1d1255993f86da740612e371  infra/reference/compose.yaml
+17fc028d187bda5659ad1cd8bdca3f27478b2ae9c937dd96fb7da49e615e721d  infra/reference/bootstrap.sh
+ae526e42ad66f9816af643bcf79570def629a40ed886a4b61417e6d01df5b699  tests/parity/fixtures/frappe-v16.51.0/manifest.json
+82cc51ba054432bc8459d7e34f904438dff4c3d7cb952e97b56c3c9c5679e021  tests/parity/fixtures/frappe-v16.51.0/v1-ping.http
+91d29468853cb59a9c77b7b8f37be6fb02a314aac105152d5c4e25bf7810bf96  tests/parity/fixtures/frappe-v16.51.0/v2-ping.http
+97f73dda821950e691a9382a766af2a0473cef73d9a3e581942538b1f7e77197  tests/parity/fixtures/frappe-v16.51.0/guest-user-list.http

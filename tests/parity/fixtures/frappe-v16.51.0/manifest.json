@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-10T23:31:14Z",
+  "reference": {
+    "repository": "https://github.com/frappe/frappe",
+    "tag": "v16.51.0",
+    "commit": "6b450a166e076dd842e4db7ea0843f62881e62ac"
+  },
+  "previouslyVerifiedTools": {
+    "python": "3.14.8",
+    "node": "24.21.0",
+    "yarn": "1.22.22",
+    "bench": "5.31.0"
+  },
+  "environment": {
+    "compose": "infra/reference/compose.yaml",
+    "bootstrap": "infra/reference/bootstrap.sh",
+    "site": "reference.localhost",
+    "actor": "Guest",
+    "seed": "fresh site created by bootstrap; no custom seed",
+    "baseUrl": "http://127.0.0.1:8001",
+    "hostHeader": "reference.localhost"
+  },
+  "observations": [
+    {
+      "method": "GET",
+      "path": "/api/method/frappe.ping",
+      "file": "v1-ping.http",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/method/ping",
+      "file": "v2-ping.http",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/resource/User",
+      "file": "guest-user-list.http",
+      "status": 403
+    }
+  ]
+}

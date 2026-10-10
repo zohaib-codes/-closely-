@@ -1,6 +1,8 @@
-# Reference harness — future design
+# Reference harness — baseline and future design
 
-Status: not implemented. The assistant-created harness and captured fixtures were removed on 2026-10-08 so the user can build them personally through explained lessons. No harness commands currently exist.
+Status: initial user-built baseline exists as of 2026-10-11. The earlier assistant-created harness was removed on 2026-10-08. User-created infrastructure lives in infra/reference; three raw HTTP fixtures, a provenance manifest and SHA256SUMS live in tests/parity/fixtures/frappe-v16.51.0. tests/parity/response.ts parses stored responses and compares status/JSON; an explicit guest-user-denial policy substitutes only nested __frappe_exc_id values after validation.
+
+Supplied local checks: six strict checksum checks, parity typecheck, 13 comparator/identity tests and root lint/format pass with exit 0. Workflow source includes checksum and parity checks; the new remote execution is pending. Candidate tests are synthetic; this baseline does not establish live Closely compatibility. Header comparison, general manifest validation, automated capture/identity attestation, controlled scenarios and broader feature coverage remain future work.
 
 ## Purpose
 
@@ -21,4 +23,4 @@ A reference harness runs controlled scenarios against the pinned Frappe release 
 
 Source identity, synthetic comparator tests, live observations and complete capability verification are separate evidence categories. A three-probe baseline does not verify a broad API capability. Promote fixtures only after review and maintain per-feature coverage. Browser comparisons need fixed viewport, locale, fonts and seeded data.
 
-The user will build each responsibility after its purpose, dependencies, code and verification have been explained. Concrete scripts and paths will be chosen during those lessons; this document is a design, not an executable guide.
+The user will build each responsibility after its purpose, dependencies, code and verification have been explained. The recorded baseline paths above are implemented; remaining scripts and scenarios will be chosen during those lessons. This document describes scope and evidence limits.
