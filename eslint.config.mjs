@@ -59,6 +59,18 @@ export default defineConfig(
               notDependOnLibsWithTags: ["runtime:server"],
               bannedExternalImports: ["fastify", "fastify/*", "pg", "pg/*"],
             },
+            {
+              sourceTag: "type:engine",
+              onlyDependOnLibsWithTags: ["type:metadata", "type:contract"],
+              bannedExternalImports: [
+                "fastify",
+                "fastify/*",
+                "react",
+                "react/*",
+                "react-dom",
+                "react-dom/*",
+              ],
+            },
           ],
         },
       ],

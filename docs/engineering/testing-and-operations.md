@@ -1,6 +1,6 @@
 # Testing, review, and production rules
 
-These are agreed future requirements, not installed tools or existing automated checks. All scaffold and harness code was removed for user-led learning on 2026-10-08.
+This document defines the full engineering requirements. The original scaffold was removed for user-led learning on 2026-10-08; foundation checks and focused reference tooling have since been rebuilt by the user. Current coverage is recorded in ../progress/state.json; the complete suite below remains planned.
 
 ## Tests selected by risk
 
@@ -46,4 +46,4 @@ Run a restore into an isolated environment, verify integrity and representative 
 
 ## Enforcement status
 
-No automated enforcement is currently implemented. Build/typecheck, ESLint/Nx boundaries, formatting, CI, reference capture and all product suites are future user-built work. The documentation describes intended standards. See ../progress/state.json for actual current progress.
+Foundation build/typecheck, formatting, ESLint/Nx boundaries, a health test, CI and focused reference capture/comparator checks are implemented with recorded evidence. Current engine changes still need their combined local and remote checkpoint. Database, permissions, document lifecycle, broader browser/parity and recovery suites remain planned. See ../progress/state.json for actual coverage and limitations.

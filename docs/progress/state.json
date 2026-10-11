@@ -4,7 +4,7 @@
   "currentMilestone": "M0",
   "activeTaskIds": ["SCAFFOLD-001"],
   "nextTaskId": "SCAFFOLD-001",
-  "latestSession": "docs/progress/sessions/2026-10-11-reference-environment.md",
+  "latestSession": "docs/progress/sessions/2026-10-11-engine-context.md",
   "tasks": [
     {
       "id": "FOUNDATION-001",
@@ -46,7 +46,8 @@
         "2026-10-10 lint recap: user correctly explains awaited cleanup completion versus void and && stopping after discovery failure. User describes source scope applicability but omits internal target restriction; assistant clarifies sourceTag selection versus onlyDependOnLibsWithTags target constraint and external Fastify ban. User identifies project discovery; assistant clarifies cached-graph refresh and absence of Nx project filtering. Clarification understanding not independently confirmed. User requests scope verification next and chat-switch handoff."
       ],
       "notes": [
-        "Conceptual discussion recorded; no quiz gate. User requested coding-led teaching and questions at session end. Understanding is not claimed complete."
+        "Conceptual discussion recorded; no quiz gate. User requested coding-led teaching and questions at session end. Understanding is not claimed complete.",
+        "2026-10-11 correction: user says engine/context purpose and big-picture placement were not understood from prior instructions. Explain why through real finished-system flow before every new artifact; use plain language and teach engineering decisions. Explanation provided; understanding not assumed."
       ]
     },
     {
@@ -152,7 +153,14 @@
         "2026-10-10: contracts nx.tags user saved and read-only JSON parsed as scope:platform/type:contract; API tags retained. Nx resolved configuration not yet supplied.",
         "2026-10-10: user saved first boundary configuration; read-only file matches assigned Nx plugin/constraints. Rule execution and deliberate denial not yet verified.",
         "2026-10-10: root lint graph-refresh correction saved by user/reviewed as nx show projects && eslint . --max-warnings 0. Execution pending; discovery does not build packages.",
-        "2026-10-10: supplied restored internal scope lint pass/exit0, tags reviewed as platform/contract. External Fastify type prohibition and platform internal scope constraints demonstrated red/green, graph-refresh root script verified. No full engine/UI/ERP boundary gate claimed."
+        "2026-10-10: supplied restored internal scope lint pass/exit0, tags reviewed as platform/contract. External Fastify type prohibition and platform internal scope constraints demonstrated red/green, graph-refresh root script verified. No full engine/UI/ERP boundary gate claimed.",
+        "User supplied engine baseline batch: pnpm12.10.1 workspace operations report five projects/up-to-date; root formatting ran. Nx uncached engine typecheck and build report success, then DB transaction SqliteFailure foreign-key constraint787 and explicit exit1. Chained root lint and format:check not reached. Read-only engine manifest/config/context and ESLint constraint match supplied lesson. No fresh remote CI or negative engine-boundary evidence.",
+        "User supplied recovery output: Nx daemon/workspace reset succeeds; uncached engine typecheck/build succeeds with Cache Skipped and no SQLite error. Root lint discovers contracts/engine/Desk/API and has no diagnostics. Root format/check completes with All matched files use Prettier code style and explicit final0. Read-only engine source unchanged; only operation-context.ts exists. Recovery successful for this run; root cause and recurrence unresolved. No negative engine-boundary or remote CI result yet.",
+        "User supplies two expected @nx/enforce-module-boundaries errors in engine boundary-probe.ts: type:engine rejects fastify1:1 and react2:1, zero warnings, explicit exit1. Read-only probe matches the two type re-exports. External HTTP/UI type dependency denial demonstrated; probe remains. Removal/restored green and internal ERP denial pending.",
+        "User supplied probe-cleanup batch: graph-refresh lint lists contracts/engine/Desk/API with no diagnostics; root format and format:check pass, explicit final0. Read-only source inventory confirms boundary-probe.ts removed and operation-context.ts retained. External HTTP/UI denial plus restored-green cycle complete. Internal ERP denial and broader M0 gate review remain pending.",
+        "User supplied ERP-label probe lint: graph refresh discovers four projects; API app.ts2:1 and engine boundary-probe.ts1:1 each rejected by scope:platform onlyDependOnLibsWithTags scope:platform, two errors/zero warnings, explicit exit1. Read-only contracts manifest confirms temporary scope:erp/type:contract and engine probe confirms HealthResponse type re-export. Internal engine-to-ERP-labelled target denial evidenced; actual ERP package not built. Restoration/green pending.",
+        "User supplies ERP-probe restoration batch: root formatting runs; graph-refresh lint lists all four projects/no diagnostics; engine typecheck/build succeeds with Cache Skipped; format:check passes and explicit final0. Read-only contracts tags scope:platform/type:contract restored; engine source inventory has only operation-context.ts. External HTTP/UI and internal ERP-labelled engine dependency denial/restoration cycles complete for current slice.",
+        "User supplied combined foundation batch passed with explicit final0: frozen install pnpm12.10.1 five workspace projects, six strict checksum OKs, root format/check and graph-refresh lint/no diagnostics, uncached Nx typecheck/test/build across four projects including one API health test, explicit parity typecheck and13 comparator tests. No SQLite error. Read-only diff confirms engine source/config, boundary rule and teaching/progress/engineering docs; probes absent, contracts restored, no staged changes. New engine revision not committed/remote-verified yet."
       ],
       "notes": [
         "L09 first-test lesson completed: health test pass, deliberate failure, restored pass, typecheck and user recap. Wider M0 foundation gates remain incomplete; next lesson selection pending roadmap review.",
@@ -180,7 +188,9 @@
         "2026-10-10: typed lint red/green complete with supplied root pass/exit0 and cleanup restoration inspected. Selected boundary plugin23.3.0 matching Nx; metadata/docs checked. User install assigned, not executed/evidenced. No new app/engine packages scaffolded; tags/rules and architecture acceptance remain pending.",
         "2026-10-10: user reports API tags saved; read-only parsed manifest still has no nx field. No tag creation/completion or resolved Nx output claimed. Reassigned same edit with exact manifest context; no assistant implementation edit.",
         "2026-10-10: Nx recognition supplied for API/contracts tags. Next boundary rules implement existing platform/contract direction and HTTP/UI external exclusions; no new engine/ERP scaffold. L08 broader deliberate engine-to-HTTP/UI/ERP gate remains pending until those packages exist; scoped present-package checks will not certify it.",
-        "2026-10-10: installed Nx rule graph utility readsCachedProjectGraph and warns/skips when absent. Root lint script should refresh graph first with nx show projects && eslint. Routine tooling correction explained, user edit pending. Existing external negative test valid; fresh-state graph provisioning and internal tag probe pending."
+        "2026-10-10: installed Nx rule graph utility readsCachedProjectGraph and warns/skips when absent. Root lint script should refresh graph first with nx show projects && eslint. Routine tooling correction explained, user edit pending. Existing external negative test valid; fresh-state graph provisioning and internal tag probe pending.",
+        "2026-10-11 resume: current checkpoint and live manifests/configuration/source inventory reviewed read-only. Engine package absent; type:engine rule absent. First engine context contract and boundary baseline assigned as remaining M0 preparation toward M1.01. All user edits/checks and negative boundary probes pending; M0 not marked complete.",
+        "2026-10-11 M0 gate review: public/deep import and literal mismatch exercise already recorded; focused Nx cache, test, API/Desk, CI and attested reference checks retained. Current engine boundary negative/restore gates complete. Current combined local and new exact-SHA remote checks pending before milestone exit. Advanced dynamic-import, draining/deadline and broader product harness coverage remain limitations, not claims of foundation completion."
       ]
     },
     {
@@ -206,7 +216,8 @@
         "tests/parity/fixtures/frappe-v16.51.0/SHA256SUMS"
       ],
       "evidence": [
-        "User formatted fixture manifest then supplied six sha256sum --check OK lines for compose/bootstrap/manifest/three raw responses. Assistant reviewed manifest and SHA256SUMS read-only; pinned source, previously verified tools, captured timestamp and requests agree with recorded evidence. No fresh runtime tool inventory or independent checksum execution claimed."
+        "User formatted fixture manifest then supplied six sha256sum --check OK lines for compose/bootstrap/manifest/three raw responses. Assistant reviewed manifest and SHA256SUMS read-only; pinned source, previously verified tools, captured timestamp and requests agree with recorded evidence. No fresh runtime tool inventory or independent checksum execution claimed.",
+        "Focused reference/comparator checkpoint committed72390de; exact remote CI run38096611743 success. Broader scenario/capture/identity automation remains outside current baseline."
       ],
       "notes": [
         "User raw capture/provenance now exist; comparator, automated identity validation, full harness and capability verification remain pending."
@@ -221,7 +232,8 @@
       "files": ["infra/reference/compose.yaml", "infra/reference/bootstrap.sh"],
       "evidence": [
         "User bootstrap exit0 at exact pinned source and site16.51.0; supplied live HTTP baseline200/message pong,200/data pong,403/PermissionError. Persisted capture pending.",
-        "Three persisted raw HTTP files reviewed and user checksum verification passed; provenance manifest reviewed. HTTP startup log not supplied. Broader isolated seed/identity automation incomplete."
+        "Three persisted raw HTTP files reviewed and user checksum verification passed; provenance manifest reviewed. HTTP startup log not supplied. Broader isolated seed/identity automation incomplete.",
+        "Focused reference/comparator checkpoint committed72390de; exact remote CI run38096611743 success. Broader scenario/capture/identity automation remains outside current baseline."
       ],
       "notes": [
         "Current isolated reference runtime user-built. Source/bootstrap and three live responses evidenced; manifest/capture/comparison incomplete. Dependency HARNESS-001 remains incomplete; environment work proceeded before comparator per recorded L13/L14 sequence."
@@ -1035,6 +1047,55 @@
       "evidence": "User staging batch supplies root format/check pass, all6 strict checksum OKs, staged whitespace check reached summary,19 staged files640 insertions24 deletions. Terminal remains in pager at END; final shell status not supplied yet. Assistant read-only index review confirms intended attrs/workflow/progress/harness/reference infra/parity files only; hashes of6 staged blobs match staged SHA256SUMS. .gitattributes preserves raw HTTP bytes. Prior parity typecheck/13 tests/lint final0 retained.",
       "source": "user_provided_terminal_output_and_read_only_staged_review",
       "date": "2026-10-11"
+    },
+    {
+      "command": "User commit/push; read-only gh view/watch run38096611743 for72390de",
+      "result": "passed",
+      "evidence": "User format/check/staged-whitespace batch, commit72390de3d2d1e59a4fa99ea528e4c8ace6a61756 and push main succeeded/explicit0. Assistant read-only gh verified run38096611743 completed success for exact SHA on fresh runner: frozen install, six fixture checksum checks, root format/lint, uncached Nx foundation checks and explicit parity typecheck/13 tests. Before this documentation update working tree clean. Focused L13-L15 baseline complete; live Closely compatibility and broader harness features not certified.",
+      "source": "user_provided_terminal_output_and_read_only_github_actions_review",
+      "date": "2026-10-11"
+    },
+    {
+      "command": "Nx daemon/workspace reset && uncached verbose engine typecheck/build && root lint && root format && format:check; echo $?",
+      "result": "passed",
+      "evidence": "User supplied recovery output: Nx daemon/workspace reset succeeds; uncached engine typecheck/build succeeds with Cache Skipped and no SQLite error. Root lint discovers contracts/engine/Desk/API and has no diagnostics. Root format/check completes with All matched files use Prettier code style and explicit final0. Read-only engine source unchanged; only operation-context.ts exists. Recovery successful for this run; root cause and recurrence unresolved. No negative engine-boundary or remote CI result yet.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-11"
+    },
+    {
+      "command": "pnpm run lint; echo $? with engine Fastify/React type re-export probe",
+      "result": "expected_failure",
+      "evidence": "User supplies two expected @nx/enforce-module-boundaries errors in engine boundary-probe.ts: type:engine rejects fastify1:1 and react2:1, zero warnings, explicit exit1. Read-only probe matches the two type re-exports. External HTTP/UI type dependency denial demonstrated; probe remains. Removal/restored green and internal ERP denial pending.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-11"
+    },
+    {
+      "command": "Root lint && format && format:check; echo $? after engine external probe removal",
+      "result": "passed",
+      "evidence": "User supplied probe-cleanup batch: graph-refresh lint lists contracts/engine/Desk/API with no diagnostics; root format and format:check pass, explicit final0. Read-only source inventory confirms boundary-probe.ts removed and operation-context.ts retained. External HTTP/UI denial plus restored-green cycle complete. Internal ERP denial and broader M0 gate review remain pending.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-11"
+    },
+    {
+      "command": "Root lint; echo $? with contracts temporarily scope:erp and engine HealthResponse probe",
+      "result": "expected_failure",
+      "evidence": "User supplied ERP-label probe lint: graph refresh discovers four projects; API app.ts2:1 and engine boundary-probe.ts1:1 each rejected by scope:platform onlyDependOnLibsWithTags scope:platform, two errors/zero warnings, explicit exit1. Read-only contracts manifest confirms temporary scope:erp/type:contract and engine probe confirms HealthResponse type re-export. Internal engine-to-ERP-labelled target denial evidenced; actual ERP package not built. Restoration/green pending.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-11"
+    },
+    {
+      "command": "Root format && lint && uncached engine typecheck/build && format:check; echo $? after ERP-label cleanup",
+      "result": "passed",
+      "evidence": "User supplies ERP-probe restoration batch: root formatting runs; graph-refresh lint lists all four projects/no diagnostics; engine typecheck/build succeeds with Cache Skipped; format:check passes and explicit final0. Read-only contracts tags scope:platform/type:contract restored; engine source inventory has only operation-context.ts. External HTTP/UI and internal ERP-labelled engine dependency denial/restoration cycles complete for current slice.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-11"
+    },
+    {
+      "command": "Frozen install && strict fixture hashes && root format/check/lint && uncached all-project Nx checks && parity tsc/Vitest; echo $?",
+      "result": "passed",
+      "evidence": "User supplied combined foundation batch passed with explicit final0: frozen install pnpm12.10.1 five workspace projects, six strict checksum OKs, root format/check and graph-refresh lint/no diagnostics, uncached Nx typecheck/test/build across four projects including one API health test, explicit parity typecheck and13 comparator tests. No SQLite error. Read-only diff confirms engine source/config, boundary rule and teaching/progress/engineering docs; probes absent, contracts restored, no staged changes. New engine revision not committed/remote-verified yet.",
+      "source": "user_provided_terminal_output_and_read_only_review",
+      "date": "2026-10-11"
     }
   ],
   "blockers": [],
@@ -1046,10 +1107,15 @@
     "Health inject red/green demonstrated: initial success and deliberate failure supported by supplied output; restored success user-reported and source reviewed. API typecheck including new test passed by user report. Shutdown runtime failure/deadline checks remain pending; first-test learning recap completed.",
     "Nx 23.3.0 installed with supplied output; CLI v23.3.0 verified by supplied output; nx.json reviewed read-only; project identities discovered, but API-to-contracts static edge and typecheck task graph verified; contracts build before API typecheck execution verified; fresh-checkout proof, Nx API build execution verified; cache reuse verified; artifact restoration verified; source/dependency invalidation verified; shared-root input invalidation not exercised. Temporary comment cleanup verified; focused L07 recap complete. Nx generated-directory ignore rules verified; resolved API configuration verified; build cache configuration reviewed; first cache-enabled build passed; exercise cleanup/original-input reuse verified; focused L07 recap complete."
   ],
-  "workspaceState": "l15_staged_snapshot_reviewed_commit_push_pending",
+  "workspaceState": "combined_m0_checks_passed_engine_commit_push_pending",
   "workingMode": "user_implements_assistant_teaches",
-  "lastUserConfirmedImplementationStep": "User staging batch supplies root format/check pass, all6 strict checksum OKs, staged whitespace check reached summary,19 staged files640 insertions24 deletions. Terminal remains in pager at END; final shell status not supplied yet. Assistant read-only index review confirms intended attrs/workflow/progress/harness/reference infra/parity files only; hashes of6 staged blobs match staged SHA256SUMS. .gitattributes preserves raw HTTP bytes. Prior parity typecheck/13 tests/lint final0 retained.",
+  "lastUserConfirmedImplementationStep": "User supplied combined foundation batch passed with explicit final0: frozen install pnpm12.10.1 five workspace projects, six strict checksum OKs, root format/check and graph-refresh lint/no diagnostics, uncached Nx typecheck/test/build across four projects including one API health test, explicit parity typecheck and13 comparator tests. No SQLite error. Read-only diff confirms engine source/config, boundary rule and teaching/progress/engineering docs; probes absent, contracts restored, no staged changes. New engine revision not committed/remote-verified yet.",
   "projectName": "Closely",
   "currentCheckpoint": "docs/progress/HANDOFF.md",
-  "nextUserAction": "User exits Git pager with q. After latest progress edits, format docs/progress, root format:check, restage docs/progress, git --no-pager diff --cached --check, commit test: add pinned Frappe reference fixtures and comparator, git push, echo status. Supply commit/push output; assistant then verifies new remote CI for exact commit. No new remote result assumed. Keep local reference services/HTTP running until explicit cleanup lesson."
+  "nextUserAction": "User formats/checks latest documentation, stages explicit reviewed engine/ESLint and documentation paths, checks staged whitespace, commits feat: add explicit engine operation context and dependency boundaries, pushes current main tracking branch, supplies commit/push/final-status output. Assistant then performs read-only exact-SHA GitHub CI verification; M0 remains open until that result. No source/build checks need repeat solely for current progress-document changes.",
+  "sessionRecap": {
+    "date": "2026-10-11",
+    "status": "explained_understanding_not_confirmed",
+    "evidence": "User said they did not know the two recap answers and requested explanation before switching chats. Explained: a captured response establishes observed behavior of the pinned live Frappe environment for the specific request/actor/site; a synthetic candidate tests assumptions/comparator logic but cannot establish actual upstream behavior. Example: actual v1 message pong vs v2 data pong and Guest User403. Explained __frappe_exc_id presence/nonempty-string shape remains required while only its generated value is normalized; allowing missing field would hide a compatibility regression. These are explained concepts, not user-demonstrated understanding. Do not repeat the quiz as a gate."
+  }
 }

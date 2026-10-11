@@ -1,6 +1,6 @@
 # Engineering handbook
 
-Status: adopted project rules, 2026-10-08. The original assistant scaffold was removed at the learning reset. The user is now building foundation manifests/configuration; automated gates and runtime behavior remain unverified. The user builds through explained lessons; see ../learning/WORKING-AGREEMENT.md and ../progress/state.json.
+Status: adopted project rules, 2026-10-08. The original assistant scaffold was removed at the learning reset. The user has built foundation packages, formatting/lint/typecheck/build checks, a focused API test, CI and reference-response tooling. Coverage is limited to recorded checks; see current progress for evidence and remaining gates. The user builds through explained lessons; see ../learning/WORKING-AGREEMENT.md and ../progress/state.json.
 
 ## How we learn from stable systems
 
@@ -51,4 +51,4 @@ Exact legacy error payloads, frontend script API coverage, dynamic-link delete/r
 
 ## Enforcement implementation order
 
-First scaffold package boundaries and strict TS checks. Then implement the contract/error adapter and site context. Add real-database document/permission tests before expanding Desk features. No CI workflow or reference launcher currently exists. The user will implement these through explained lessons. Record actual local/remote checks when available; configuration alone does not establish successful execution.
+First scaffold package boundaries and strict TS checks. Then implement the contract/error adapter and site context. Add real-database document/permission tests before expanding Desk features. Foundation CI and an isolated reference launcher now exist, with focused execution evidence recorded in ../progress/state.json. Broader engine/database/product suites remain future user-built work. Record local and remote checks separately; configuration alone does not establish successful execution.

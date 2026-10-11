@@ -2,7 +2,7 @@
 
 Status: initial user-built baseline exists as of 2026-10-11. The earlier assistant-created harness was removed on 2026-10-08. User-created infrastructure lives in infra/reference; three raw HTTP fixtures, a provenance manifest and SHA256SUMS live in tests/parity/fixtures/frappe-v16.51.0. tests/parity/response.ts parses stored responses and compares status/JSON; an explicit guest-user-denial policy substitutes only nested __frappe_exc_id values after validation.
 
-Supplied local checks: six strict checksum checks, parity typecheck, 13 comparator/identity tests and root lint/format pass with exit 0. Workflow source includes checksum and parity checks; the new remote execution is pending. Candidate tests are synthetic; this baseline does not establish live Closely compatibility. Header comparison, general manifest validation, automated capture/identity attestation, controlled scenarios and broader feature coverage remain future work.
+Supplied local checks: six strict checksum checks, parity typecheck, 13 comparator/identity tests and root lint/format pass with exit 0. Workflow includes checksum and parity checks. Remote run38096611743 passed for commit72390de, including the explicit parity checks. Candidate tests are synthetic; this baseline does not establish live Closely compatibility. Header comparison, general manifest validation, automated capture/identity attestation, controlled scenarios and broader feature coverage remain future work.
 
 ## Purpose
 

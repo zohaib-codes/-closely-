@@ -1,0 +1,23 @@
+{
+  "name": "@closely/engine",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "build": "tsc --project tsconfig.json"
+  },
+  "nx": {
+    "tags": [
+      "scope:platform",
+      "type:engine",
+      "runtime:server"
+    ]
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/operation-context.d.ts",
+      "default": "./dist/operation-context.js"
+    }
+  }
+}
