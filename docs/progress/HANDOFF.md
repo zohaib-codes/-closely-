@@ -14,13 +14,13 @@ Existing hostname registry, configuration decoder, immutable operation context a
 
 ## Next single lesson
 
-User output confirms successful push of implementation commit 15179c2d137ccf6051142d7745758a2fc3be7ca2 to origin/codex/site-foundation-checkpoint and upstream tracking. Next user formats and stages AGENTS.md, the four changed learning documents, and docs/progress for the second documentation commit; supplies staged summary and whitespace-check result. Then review, commit and push documentation, open a PR and verify current-head CI before merging. No PR, CI or merge confirmed.
+PR #1 https://github.com/zohaib-codes/-closely-/pull/1 is open from codex/site-foundation-checkpoint into main. Both checkpoint commits are pushed; head is 63c51cc6b861b87ad6b89dcbc7ae710f71fc8a98. Assistant read-only GitHub inspection confirms pull_request CI run 38836332274 succeeded for that exact head and GitHub reports mergeable/clean. No formal approval or merge recorded. Review found stale project-structure wording about the engine metadata consumer; assistant corrected documentation only and recorded this evidence. Next user formats, commits and pushes these documentation corrections, then supplies output. Verify CI again for the new head before guiding merge.
 
 ## Evidence limits
 
 Typed startup registrations are not an unknown-input decoder or authentication boundary. Site selection is locally checked in memory, not actual tenant database isolation. Raw flags/default decoding, complete field/mode/options/permission support, module/controller/route checks, customization, cache invalidation and storage remain pending. Source review is not Frappe runtime parity. Logical identifier limits do not establish physical SQL identifier safety.
 
-No new remote CI inspected. Local implementation commit is 15179c2; recorded remote CI still predates these changes. User output shows closely-development-postgres-1 running healthy; no assistant live service inventory. Documentation updates postdate the passing formatter and await the next normal check batch. No missing output from this batch. User correctly answered the site-selection recap; broader architecture understanding needs guided explanation. Questions are not a prerequisite gate.
+Remote PR CI passed for 63c51cc; later documentation corrections require fresh CI before merge. User output shows closely-development-postgres-1 running healthy; no assistant live service inventory. Documentation updates postdate the passing formatter and await the next normal check batch. No missing output from this batch. User correctly answered the site-selection recap; broader architecture understanding needs guided explanation. Questions are not a prerequisite gate.
 
 Details: [session](sessions/2026-10-13-site-metadata-integration.md), [state](state.json).
 

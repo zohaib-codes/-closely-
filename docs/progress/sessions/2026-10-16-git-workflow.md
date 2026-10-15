@@ -37,3 +37,7 @@ User output confirms commit 15179c2d137ccf6051142d7745758a2fc3be7ca2 on codex/si
 ## Implementation push confirmed
 
 User output confirms successful push of implementation commit 15179c2d137ccf6051142d7745758a2fc3be7ca2 to origin/codex/site-foundation-checkpoint and upstream tracking. Next user formats and stages AGENTS.md, the four changed learning documents, and docs/progress for the second documentation commit; supplies staged summary and whitespace-check result. Then review, commit and push documentation, open a PR and verify current-head CI before merging. No PR, CI or merge confirmed.
+
+## PR and exact-commit CI inspected
+
+PR #1 https://github.com/zohaib-codes/-closely-/pull/1 is open from codex/site-foundation-checkpoint into main. Both checkpoint commits are pushed; head is 63c51cc6b861b87ad6b89dcbc7ae710f71fc8a98. Assistant read-only GitHub inspection confirms pull_request CI run 38836332274 succeeded for that exact head and GitHub reports mergeable/clean. No formal approval or merge recorded. Review found stale project-structure wording about the engine metadata consumer; assistant corrected documentation only and recorded this evidence. Next user formats, commits and pushes these documentation corrections, then supplies output. Verify CI again for the new head before guiding merge.
