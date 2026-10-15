@@ -29,6 +29,16 @@ Before first use of every dependency, including small utilities and transitive i
 
 Start with [reading guide](READING-GUIDE.md). Future library links/sections are expanded and verified before their lesson. Never infer that linked documentation has been read or understood.
 
+## Complete usable features first — 2026-10-13
+
+User explicitly replaces the component-first lesson sequence with small complete feature journeys, similar to implementing create/save in a CRUD app across UI, API and database. Every work unit must have a visible outcome and an agreed completion checklist. Build the real storage, startup/request wiring, user interaction and meaningful failure handling needed for that outcome before switching to an unrelated feature. A command is a valid user interaction for a server administration feature; a browser feature includes its actual UI. Do not add disconnected helpers or diagnostic endpoints as substitutes for usable product behavior.
+
+Explain the feature in ordinary language first, trace its full journey, map existing and missing parts, show the short implementation sequence and explain each file at its point of use. User still writes source and runs commands. Tests support the feature and do not replace demonstrating it in the running app. Complete means the agreed behavior works with its required failure cases; it does not mean every future extension of the whole subsystem is finished.
+
+Roadmap lesson IDs remain scope and acceptance references, not a requirement to finish all components in milestone order before connecting a feature. Bring forward only the prerequisites needed for the chosen feature; preserve dependency/security gates, record outstanding scope and do not declare whole milestones or Frappe parity complete. This changes delivery sequence, not adopted architecture or full target scope.
+
+The proposed /__debug/site detour is withdrawn. Proposed first real feature for scoping: create a local site with real PostgreSQL storage, persist its setup and reopen it after restarting the server. Exact command, schema, setup lifecycle and failure acceptance must be designed against pinned evidence before coding; this proposal is not yet an implemented or complete Frappe site lifecycle.
+
 ## Detailed foundation sequence — M0
 
 These are planned lessons, not tasks already performed. Advance one user action at a time.
@@ -208,3 +218,7 @@ Planned teaching order: shared company/currency/fiscal masters and precision rul
 Every lesson records explained, user-performed and checked states separately. A stage completes on its acceptance evidence. To assess engineering skills, the user should explain the design, implement a nearby change, diagnose a failure, defend a tradeoff and review a boundary violation with decreasing guidance. These are learning assessments, not a guaranteed title.
 
 The full module/feature backlog remains in [state.json](../progress/state.json) and [features.json](../parity/features.json). Detailed lesson/file lists expand before each stage. Do not pre-create empty packages or install future tools to make the roadmap look complete.
+
+## Active feature sequence — 2026-10-14
+
+First usable feature: create and reopen a local site; see progress/sessions/2026-10-14-create-site-start.md (relative from docs: ../progress/sessions/2026-10-14-create-site-start.md). This brings forward a bounded OPS-001/M8.01/M8.02 slice with required M1.06 storage, M1.08 setup history/recovery and M1.10 site separation checks. Begin with persistent local PostgreSQL, then site creation/saved setup, startup use and restart/failure/two-site evidence. No complete M1/M8 or Frappe new-site parity claim. Details are expanded before user edits.
