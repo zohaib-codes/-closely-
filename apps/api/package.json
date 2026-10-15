@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "typecheck": "tsc --project tsconfig.json --noEmit",
-    "test": "vitest run src/app.test.ts",
+    "test": "vitest run src",
     "build": "tsc --project tsconfig.build.json",
     "start": "node dist/server.js"
   },
@@ -20,6 +20,7 @@
     "@closely/contracts": "workspace:*"
   },
   "dependencies": {
+    "@closely/engine": "workspace:*",
     "fastify": "5.12.5"
   }
 }

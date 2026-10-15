@@ -36,6 +36,18 @@ One database per site, following Frappe's site boundary. PostgreSQL clusters may
 
 API/CLI/jobs always use an explicit site context. Redis keys, locks, job payloads, Socket.IO rooms, file namespaces and search all include site identity. Socket reconnects reauthenticate. Permission changes invalidate authorization caches, including active delivery subscriptions.
 
+### Initial hostname boundary lesson
+
+M1.01/M1.02 initial implemented policy: registrations and lookups share one pure normalizer accepting unknown input. The initial supported grammar is ASCII labels of 1–63 characters, alphanumeric at both ends, with internal hyphens; canonical total length is at most 253 characters. Single labels are allowed. Lowercase ASCII and remove one optional terminal DNS root dot before duplicate detection/lookup. Reject whitespace, empty labels, URL/port/path syntax and non-string inputs; do not trim or coerce them. Malformed input throws a stable code; a valid unregistered hostname remains an explicit unknown-site lookup result. HTTP error translation is separate.
+
+This is an incremental project policy, not verified Frappe parsing parity or complete hostname support. Unicode/IDNA conversion, IP classification, raw Host authority/port parsing, forwarded-header trust and provisioning-state resolution remain pending. No arbitrary tenant connection is derived from these strings; only approved registry entries resolve sites. Local verification recorded on 2026-10-12: user-supplied engine typecheck/build, 11 behavioral tests and root lint/format pass with exit0; source reviewed read-only. These checks do not establish HTTP/database isolation or pinned Frappe parity.
+
+### Initial fixed configuration decoder
+
+M1.02 initial configuration boundary: decodeSiteRegistrations accepts unknown JSON-like server configuration, requires exact own enumerable hostname/site keys and nested siteName, checks string types without coercion and rejects blank site names. It returns independent typed copies. createSiteRegistry owns hostname grammar, canonicalization and duplicate rejection. This decoder checks shape, not configuration provenance, authentication or provisioning authority; no HTTP registration endpoint or production configuration loader exists. Strict unknown-key rejection is project policy, not verified Frappe parsing parity. TypeBox/Ajv HTTP schema tooling and metadata-driven dynamic document validation remain planned.
+
+User-supplied local root lint/format and uncached engine/API typecheck/test/build pass on 2026-10-12 with engine21/API8 tests and exit0; source/public consumer reviewed read-only. This does not establish tenant database isolation or product parity.
+
 ## Migrations and app upgrades
 
 Plan schema/metadata/fixture/data changes before execution. Track app version, migration identifier, checksum, start/end/failure and metadata revision per site. Applied migrations are immutable; corrections are new migrations. Take a verified recovery point for destructive changes.

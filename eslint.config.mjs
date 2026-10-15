@@ -71,6 +71,18 @@ export default defineConfig(
                 "react-dom/*",
               ],
             },
+            {
+              sourceTag: "type:metadata",
+              onlyDependOnLibsWithTags: ["type:contract"],
+              bannedExternalImports: [
+                "fastify",
+                "fastify/*",
+                "react",
+                "react/*",
+                "react-dom",
+                "react-dom/*",
+              ],
+            },
           ],
         },
       ],

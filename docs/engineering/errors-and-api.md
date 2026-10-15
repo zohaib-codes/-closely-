@@ -37,6 +37,12 @@ Reads do not produce business mutations. Compatibility exceptions must match a v
 
 Authentication with cookies requires CSRF validation for state-changing requests, same-origin defaults, explicit allowed origins, and secure HttpOnly cookies. Logout invalidates sessions. Public API credentials have revocation and audit semantics. Request body limits, query complexity, and per-site quotas are explicit.
 
+### Initial direct Host adapter lesson
+
+Implemented initial M1.01 native adapter: validate the complete direct Host authority before resolving the approved hostname registry. Explicit trustProxy:false; forwarded and X-Frappe-Site-Name headers do not select sites. Initial authority support is ASCII hostname plus optional decimal port1–65535; port does not change site identity. RequestSiteError uses stable INVALID_HOST400/UNKNOWN_SITE404 codes; known hostname validation failure is translated and unexpected failures remain thrown.
+
+This is an incremental API boundary lesson exercised through a test-only route, not a shipped tenant diagnostic endpoint or authenticated document operation. Fastify's current error representation is temporary; centralized RFC9457 serialization, unknown-error redaction and Frappe compatibility payloads remain separate pending work. HTTP/2 authority, raw duplicate/missing-header socket behavior, IPv6, Unicode/IDNA and a deployment-specific trusted proxy configuration still need implementation/evidence. Local user-supplied engine11/API7 tests/typecheck/build/root lint/format pass on 2026-10-12 with exit0; boolean proxy option reviewed. Successful HTTP cases use inject and a test-only route, not production tenant resources. No operation may infer a tenant connection from an unregistered hostname.
+
 ## Retrying and frontend handling
 
 Mutation retries require a scoped idempotency key and stored request hash/result where supported. Never retry a failed write simply because the connection closed: it may already have committed. Reference adapters preserve legacy endpoints while exposing stronger optional safeguards through native contracts.
