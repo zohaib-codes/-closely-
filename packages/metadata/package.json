@@ -1,0 +1,24 @@
+{
+  "name": "@closely/metadata",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "build": "tsc --project tsconfig.build.json",
+    "test": "vitest run src"
+  },
+  "nx": {
+    "tags": [
+      "scope:platform",
+      "type:metadata",
+      "runtime:server"
+    ]
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  }
+}

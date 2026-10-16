@@ -8,7 +8,7 @@
   "scripts": {
     "format": "prettier . --write",
     "format:check": "prettier . --check",
-    "lint": "nx show projects && eslint . --max-warnings 0"
+    "lint": "nx run-many --projects=@closely/contracts,@closely/metadata,@closely/engine,@closely/database --targets=build --outputStyle=static && nx show projects && eslint . --max-warnings 0"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",

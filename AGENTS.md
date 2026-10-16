@@ -34,6 +34,21 @@ Start every session with `docs/progress/START-HERE.md`, `docs/progress/HANDOFF.m
 - Do not spawn agents unless the user explicitly requests delegation.
 - Do not copy upstream code into product packages without recording attribution and license compatibility. Research snapshots are reference material.
 
+## Git workflow: branch, verify, commit, push, review, merge
+
+Adopted 2026-10-16 at the user's request. Git checkpoints are part of each feature, not an optional task deferred until the end of the project.
+
+- Before new implementation, inspect the current branch, working tree and upstream status read-only. Work on a focused `codex/<feature-name>` branch, not directly on `main`. Start fresh work from an updated `main` only after existing changes are safely preserved; never reset, overwrite or silently stash unfinished work.
+- Keep a branch focused on one usable feature or coherent prerequisite. A feature may need several commits and sessions. If it grows too large to review, split it into independently working increments and record the remaining scope.
+- Prompt for a commit after each coherent, reviewed edit-and-check chunk passes its relevant checks, before moving to unrelated work, and before a chat switch when there is meaningful uncommitted progress. Do not require a commit after every file or a formatting-only documentation update.
+- Before committing, explain the change, inspect the diff and stage explicit intended paths or hunks. Include related tests, docs and lockfile changes. Do not blindly stage the entire working tree or include unrelated work, secrets, database contents or generated build output. Use a concise imperative commit message describing the outcome.
+- Push the feature branch after each verified checkpoint commit and before ending a session with unpushed work. Confirm the push result and remote branch; a local commit alone is not a remote backup. Do not claim a push succeeded without output.
+- If work is incomplete at a handoff, preserve it on the feature branch with a clearly labelled WIP commit/push when the user chooses to do so. Record failed or missing checks and keep it out of main; never describe WIP as verified.
+- Open a pull request when a coherent increment is ready for review (or a draft when useful). Before merging, review the full diff, resolve feedback/conflicts, confirm relevant local checks and required CI against the current PR head, and ensure the agreed increment's acceptance criteria pass. Record explicitly what remains outside that increment.
+- Merge through the pull request into main using a normal merge commit by default, preserving the reviewed checkpoint commits. Do not force-push or rewrite published history without specific user authorization. After a confirmed merge, update local main with a fast-forward-only pull; remove the feature branch only after confirming it contains no unique unmerged/unpushed work.
+- The user executes branch/stage/commit/push/PR/merge commands in this learning workflow. The assistant explains commands and reviews results; this policy is not blanket authorization for the assistant to execute Git mutations or remote actions. A specific human request can authorize a specific action.
+- Record the branch, last confirmed commit, push/PR/CI/merge evidence and outstanding changes in progress handoffs. Keep local check results, pushed revisions and remote CI evidence separate.
+
 ## Handoff
 
 Maintain `docs/progress/state.json`, `docs/progress/CURRENT.md` and a session note manually. Record actual evidence, the user's last completed step, unanswered questions and the next single lesson. Do not claim automated checks exist: the scaffold and harness were removed at the user's request on 2026-10-08. The enforcement checklist in `docs/engineering/testing-and-operations.md` is planned future work.

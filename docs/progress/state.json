@@ -1,10 +1,10 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-10-11",
-  "currentMilestone": "M0",
-  "activeTaskIds": ["SCAFFOLD-001"],
-  "nextTaskId": "SCAFFOLD-001",
-  "latestSession": "docs/progress/sessions/2026-10-11-engine-context.md",
+  "updatedAt": "2026-10-16",
+  "currentMilestone": "M1",
+  "activeTaskIds": ["META-FOUNDATION"],
+  "nextTaskId": "META-FOUNDATION",
+  "latestSession": "docs/progress/sessions/2026-10-16-git-workflow.md",
   "tasks": [
     {
       "id": "FOUNDATION-001",
@@ -26,7 +26,7 @@
       "id": "LEARNING-001",
       "title": "Explain repository, packages and monorepo before the first user action",
       "milestone": "M0",
-      "status": "in_progress",
+      "status": "done",
       "dependencies": ["FOUNDATION-001"],
       "files": [
         "docs/learning/LESSON-00.md",
@@ -43,18 +43,20 @@
         "2026-10-10 L01 recap: user says old version saved; assistant clarifies last staged version rather than necessarily previous commit. User correctly explains reproducible node_modules/dist; assistant explains lockfile exact resolutions. Independent restatement of staged-version nuance not assessed.",
         "2026-10-10 L07 recap: User correctly explains ^build dependency task ordering versus ^default dependency cache inputs, input invalidation versus output restoration, contracts-comment invalidation propagating to API, and cached tsc log replay versus actual execution. L07 focused practical lesson and recap complete.",
         "2026-10-10 formatter recap: user correctly explains check/write and CI, reference and machine-generated exclusions, and formatting versus type correctness/import boundaries. Assistant clarified exact snapshot byte hashes; no quiz gate.",
-        "2026-10-10 lint recap: user correctly explains awaited cleanup completion versus void and && stopping after discovery failure. User describes source scope applicability but omits internal target restriction; assistant clarifies sourceTag selection versus onlyDependOnLibsWithTags target constraint and external Fastify ban. User identifies project discovery; assistant clarifies cached-graph refresh and absence of Nx project filtering. Clarification understanding not independently confirmed. User requests scope verification next and chat-switch handoff."
+        "2026-10-10 lint recap: user correctly explains awaited cleanup completion versus void and && stopping after discovery failure. User describes source scope applicability but omits internal target restriction; assistant clarifies sourceTag selection versus onlyDependOnLibsWithTags target constraint and external Fastify ban. User identifies project discovery; assistant clarifies cached-graph refresh and absence of Nx project filtering. Clarification understanding not independently confirmed. User requests scope verification next and chat-switch handoff.",
+        "2026-10-11 engine/context recap: User answers: shared engine rules are to avoid duplication; site/actor let it figure out who is accessing and from where. User identifies duplication and acting identity. Assistant clarifies shared rules also keep permission/validation behavior consistent; site means which company/tenant data, actor means who, while operation source identifies HTTP/job/CLI entry point. User phrase from where is ambiguous; independent understanding of site-versus-source distinction not yet demonstrated. No repeat quiz as a gate."
       ],
       "notes": [
         "Conceptual discussion recorded; no quiz gate. User requested coding-led teaching and questions at session end. Understanding is not claimed complete.",
-        "2026-10-11 correction: user says engine/context purpose and big-picture placement were not understood from prior instructions. Explain why through real finished-system flow before every new artifact; use plain language and teach engineering decisions. Explanation provided; understanding not assumed."
+        "2026-10-11 correction: user says engine/context purpose and big-picture placement were not understood from prior instructions. Explain why through real finished-system flow before every new artifact; use plain language and teach engineering decisions. Explanation provided; understanding not assumed.",
+        "Introductory explanations delivered and working agreement clarified. Done records delivery of this introductory task, not mastery or demonstrated understanding of all concepts; teaching continues in M1."
       ]
     },
     {
       "id": "SCAFFOLD-001",
       "title": "Workspace, build, strict TS, lint and boundaries",
       "milestone": "M0",
-      "status": "in_progress",
+      "status": "done",
       "dependencies": ["FOUNDATION-001"],
       "files": [
         "package.json",
@@ -160,7 +162,8 @@
         "User supplied probe-cleanup batch: graph-refresh lint lists contracts/engine/Desk/API with no diagnostics; root format and format:check pass, explicit final0. Read-only source inventory confirms boundary-probe.ts removed and operation-context.ts retained. External HTTP/UI denial plus restored-green cycle complete. Internal ERP denial and broader M0 gate review remain pending.",
         "User supplied ERP-label probe lint: graph refresh discovers four projects; API app.ts2:1 and engine boundary-probe.ts1:1 each rejected by scope:platform onlyDependOnLibsWithTags scope:platform, two errors/zero warnings, explicit exit1. Read-only contracts manifest confirms temporary scope:erp/type:contract and engine probe confirms HealthResponse type re-export. Internal engine-to-ERP-labelled target denial evidenced; actual ERP package not built. Restoration/green pending.",
         "User supplies ERP-probe restoration batch: root formatting runs; graph-refresh lint lists all four projects/no diagnostics; engine typecheck/build succeeds with Cache Skipped; format:check passes and explicit final0. Read-only contracts tags scope:platform/type:contract restored; engine source inventory has only operation-context.ts. External HTTP/UI and internal ERP-labelled engine dependency denial/restoration cycles complete for current slice.",
-        "User supplied combined foundation batch passed with explicit final0: frozen install pnpm12.10.1 five workspace projects, six strict checksum OKs, root format/check and graph-refresh lint/no diagnostics, uncached Nx typecheck/test/build across four projects including one API health test, explicit parity typecheck and13 comparator tests. No SQLite error. Read-only diff confirms engine source/config, boundary rule and teaching/progress/engineering docs; probes absent, contracts restored, no staged changes. New engine revision not committed/remote-verified yet."
+        "User supplied combined foundation batch passed with explicit final0: frozen install pnpm12.10.1 five workspace projects, six strict checksum OKs, root format/check and graph-refresh lint/no diagnostics, uncached Nx typecheck/test/build across four projects including one API health test, explicit parity typecheck and13 comparator tests. No SQLite error. Read-only diff confirms engine source/config, boundary rule and teaching/progress/engineering docs; probes absent, contracts restored, no staged changes. New engine revision not committed/remote-verified yet.",
+        "User format/check/staged-whitespace, commit d383b295bdf8bdfa502ee39909c6c5f1ddb6f447 and push main succeeded with explicit0. Read-only Git status clean before this documentation update. Assistant read-only gh verified run38146717183 completed success for exact SHA: frozen install, six fixture checksum OKs, root formatting/lint, uncached Nx checks across four packages including engine typecheck/build and one API health test, explicit parity typecheck and13 tests. Current M0 foundation exit criteria reviewed and met at focused baseline scope; product parity/production suites remain pending."
       ],
       "notes": [
         "L09 first-test lesson completed: health test pass, deliberate failure, restored pass, typecheck and user recap. Wider M0 foundation gates remain incomplete; next lesson selection pending roadmap review.",
@@ -190,53 +193,68 @@
         "2026-10-10: Nx recognition supplied for API/contracts tags. Next boundary rules implement existing platform/contract direction and HTTP/UI external exclusions; no new engine/ERP scaffold. L08 broader deliberate engine-to-HTTP/UI/ERP gate remains pending until those packages exist; scoped present-package checks will not certify it.",
         "2026-10-10: installed Nx rule graph utility readsCachedProjectGraph and warns/skips when absent. Root lint script should refresh graph first with nx show projects && eslint. Routine tooling correction explained, user edit pending. Existing external negative test valid; fresh-state graph provisioning and internal tag probe pending.",
         "2026-10-11 resume: current checkpoint and live manifests/configuration/source inventory reviewed read-only. Engine package absent; type:engine rule absent. First engine context contract and boundary baseline assigned as remaining M0 preparation toward M1.01. All user edits/checks and negative boundary probes pending; M0 not marked complete.",
-        "2026-10-11 M0 gate review: public/deep import and literal mismatch exercise already recorded; focused Nx cache, test, API/Desk, CI and attested reference checks retained. Current engine boundary negative/restore gates complete. Current combined local and new exact-SHA remote checks pending before milestone exit. Advanced dynamic-import, draining/deadline and broader product harness coverage remain limitations, not claims of foundation completion."
+        "2026-10-11 M0 gate review: public/deep import and literal mismatch exercise already recorded; focused Nx cache, test, API/Desk, CI and attested reference checks retained. Current engine boundary negative/restore gates complete. Current combined local and new exact-SHA remote checks pending before milestone exit. Advanced dynamic-import, draining/deadline and broader product harness coverage remain limitations, not claims of foundation completion.",
+        "M0 foundation exit reviewed2026-10-11 against ROADMAP: strict/public-export, current-package boundary denials, tests, shells, fresh CI and attested reference baseline met. Advanced dynamic-import, drain/deadline, cache input and broad production gates retained as limitations/future work."
       ]
     },
     {
       "id": "SCAFFOLD-002",
       "title": "API liveness and Desk build shells",
       "milestone": "M0",
-      "status": "todo",
+      "status": "done",
       "dependencies": ["SCAFFOLD-001"],
-      "files": [],
-      "evidence": [],
+      "files": [
+        "apps/api/src/app.ts",
+        "apps/api/src/server.ts",
+        "apps/api/src/app.test.ts",
+        "apps/desk/package.json",
+        "apps/desk/src/App.tsx",
+        "apps/desk/src/main.tsx",
+        "apps/desk/index.html"
+      ],
+      "evidence": [
+        "Recorded user API liveness/normal signal/occupied-port observations, meaningful inject red/green; Desk dev/preview user-reported, build/typecheck passed. Current exact-SHA CI run38146717183 verifies package build/typecheck and health test."
+      ],
       "notes": [
-        "Assistant trial removed. Future user-built work; not implemented."
+        "Stale reset-era todo reconciled from existing records. Advanced shutdown/draining and broad browser behavior remain unverified."
       ]
     },
     {
       "id": "HARNESS-001",
-      "title": "Reference manifests, capture, comparison and source audit",
+      "title": "Pinned reference baseline provenance and focused response comparator",
       "milestone": "M0",
-      "status": "in_progress",
+      "status": "done",
       "dependencies": ["SCAFFOLD-001"],
       "files": [
         "tests/parity/fixtures/frappe-v16.51.0/manifest.json",
-        "tests/parity/fixtures/frappe-v16.51.0/SHA256SUMS"
+        "tests/parity/fixtures/frappe-v16.51.0/SHA256SUMS",
+        "tests/parity/response.ts",
+        "tests/parity/response.test.ts"
       ],
       "evidence": [
         "User formatted fixture manifest then supplied six sha256sum --check OK lines for compose/bootstrap/manifest/three raw responses. Assistant reviewed manifest and SHA256SUMS read-only; pinned source, previously verified tools, captured timestamp and requests agree with recorded evidence. No fresh runtime tool inventory or independent checksum execution claimed.",
-        "Focused reference/comparator checkpoint committed72390de; exact remote CI run38096611743 success. Broader scenario/capture/identity automation remains outside current baseline."
+        "Focused reference/comparator checkpoint committed72390de; exact remote CI run38096611743 success. Broader scenario/capture/identity automation remains outside current baseline.",
+        "User format/check/staged-whitespace, commit d383b295bdf8bdfa502ee39909c6c5f1ddb6f447 and push main succeeded with explicit0. Read-only Git status clean before this documentation update. Assistant read-only gh verified run38146717183 completed success for exact SHA: frozen install, six fixture checksum OKs, root formatting/lint, uncached Nx checks across four packages including engine typecheck/build and one API health test, explicit parity typecheck and13 tests. Current M0 foundation exit criteria reviewed and met at focused baseline scope; product parity/production suites remain pending."
       ],
       "notes": [
-        "User raw capture/provenance now exist; comparator, automated identity validation, full harness and capability verification remain pending."
+        "M0 baseline task scoped explicitly to ROADMAP L14-L15 and attested-reference exit gate: three reviewed raw responses, provenance/checksums, comparator identity/wrong-candidate/narrow-normalization tests. Broader capture automation, general manifest/header validation and full scenario harness remain required future verification work in docs/parity/harness.md; no product scope removed."
       ]
     },
     {
       "id": "HARNESS-002",
       "title": "Boot exact Frappe runtime and capture live baseline",
       "milestone": "M0",
-      "status": "in_progress",
+      "status": "done",
       "dependencies": ["HARNESS-001"],
       "files": ["infra/reference/compose.yaml", "infra/reference/bootstrap.sh"],
       "evidence": [
         "User bootstrap exit0 at exact pinned source and site16.51.0; supplied live HTTP baseline200/message pong,200/data pong,403/PermissionError. Persisted capture pending.",
         "Three persisted raw HTTP files reviewed and user checksum verification passed; provenance manifest reviewed. HTTP startup log not supplied. Broader isolated seed/identity automation incomplete.",
-        "Focused reference/comparator checkpoint committed72390de; exact remote CI run38096611743 success. Broader scenario/capture/identity automation remains outside current baseline."
+        "Focused reference/comparator checkpoint committed72390de; exact remote CI run38096611743 success. Broader scenario/capture/identity automation remains outside current baseline.",
+        "Pinned isolated bootstrap/live capture and persisted provenance previously reviewed; six fixture checksum checks pass on exact-SHA current CI."
       ],
       "notes": [
-        "Current isolated reference runtime user-built. Source/bootstrap and three live responses evidenced; manifest/capture/comparison incomplete. Dependency HARNESS-001 remains incomplete; environment work proceeded before comparator per recorded L13/L14 sequence."
+        "Focused L13-L14 baseline satisfied from recorded source/runtime/bootstrap/capture evidence. Startup log remains unsupplied; current running-service inventory not refreshed. Broader seeds/identity/scenario automation remains future harness work."
       ]
     },
     {
@@ -257,23 +275,109 @@
       "id": "CI-001",
       "title": "Reproducible CI workflow",
       "milestone": "M0",
-      "status": "todo",
+      "status": "done",
       "dependencies": ["SCAFFOLD-001"],
-      "files": [],
-      "evidence": [],
+      "files": [".github/workflows/ci.yml"],
+      "evidence": [
+        "User format/check/staged-whitespace, commit d383b295bdf8bdfa502ee39909c6c5f1ddb6f447 and push main succeeded with explicit0. Read-only Git status clean before this documentation update. Assistant read-only gh verified run38146717183 completed success for exact SHA: frozen install, six fixture checksum OKs, root formatting/lint, uncached Nx checks across four packages including engine typecheck/build and one API health test, explicit parity typecheck and13 tests. Current M0 foundation exit criteria reviewed and met at focused baseline scope; product parity/production suites remain pending."
+      ],
       "notes": [
-        "Assistant trial removed. Future user-built work; not implemented."
+        "Reconciled reset-era todo: user-built workflow and successive exact-SHA fresh-runner CI evidence now exist."
       ]
     },
     {
       "id": "META-FOUNDATION",
       "title": "Site context and metadata registry/schema contract",
       "milestone": "M1",
-      "status": "todo",
+      "status": "in_progress",
       "dependencies": ["SCAFFOLD-001", "HARNESS-001"],
-      "files": ["docs/engineering/data-and-documents.md"],
-      "evidence": [],
-      "notes": []
+      "files": [
+        "docs/engineering/data-and-documents.md",
+        "packages/engine/src/operation-context.ts",
+        "packages/engine/package.json",
+        "packages/engine/tsconfig.json",
+        "packages/engine/src/site-registry.ts",
+        "packages/engine/src/site-registry.test.ts",
+        "packages/engine/tsconfig.build.json",
+        "packages/engine/src/site-hostname.ts",
+        "packages/engine/src/site-hostname.test.ts",
+        "packages/engine/src/index.ts",
+        "apps/api/src/engine-public-entry.test.ts",
+        "apps/api/package.json",
+        "nx.json",
+        "pnpm-lock.yaml",
+        "package.json",
+        "apps/api/src/resolve-request-site.ts",
+        "apps/api/src/resolve-request-site.test.ts",
+        "apps/api/src/app.ts",
+        "packages/engine/src/decode-site-registrations.ts",
+        "packages/engine/src/decode-site-registrations.test.ts",
+        "packages/metadata/package.json",
+        "packages/metadata/src/doctype-definition.ts",
+        "packages/metadata/src/index.ts",
+        "packages/metadata/tsconfig.json",
+        "packages/metadata/tsconfig.build.json",
+        "packages/engine/src/site-metadata-registry.ts",
+        "packages/engine/src/site-metadata-registry.test.ts"
+      ],
+      "evidence": [
+        "Explicit readonly site/guest-or-user actor/operation type contract created by user and checked in exact-SHA CI d383b29. Runtime registry, validation, metadata/storage behavior remain unimplemented.",
+        "User supplied first registry batch: install up-to-date, root formatting and lint succeed, uncached engine build succeeds and all4 registry tests pass; engine typecheck fails with20 missing Node-global errors in Vitest/Vite/tinybench declarations, final exit1. Final format:check was skipped by &&. Read-only registry/test/manifest/build-config review matches assigned implementation. Engine tsconfig types:[] omits Node ambient globals needed by test tooling; installed @types/node24.19.1 defines Event/EventTarget/AbortSignal/WebSocket. Correction assigned, not implemented or verified.",
+        "User correction batch passed with explicit exit0: root format/lint, uncached engine typecheck/test/build, all4 registry tests, and final format:check. Read-only configs confirm types:[\"node\"] for source/test checking and build override types:[] with test exclusion. Registry source reviewed previously matches the lesson. Local registry slice is checked; no new commit/remote CI or HTTP/database/Frappe parity evidence.",
+        "User hostname-boundary batch passed with explicit exit0: root format/lint, uncached engine typecheck/test/build, 11 tests across hostname4/registry7, and final format:check. Read-only source review confirms unknown input checking, bounded ASCII label validation, shared lowercase/root-dot normalization before duplicate detection and lookup, malformed input throwing INVALID_SITE_HOSTNAME, and valid unregistered names returning unknown_site. No fresh remote CI/HTTP/database/Frappe routing parity evidence.",
+        "User public-entry batch: pnpm install succeeds and lockfile links API to local engine; root formatting succeeds; lint fails with6 no-unsafe errors in engine-public-entry.test.ts, final exit1. Chained Nx checks/final format:check did not run. Read-only index/exports/API manifest/test/Nx review matches lesson. Engine dist lacks index.js/index.d.ts while exports points there; workspace symlink is correct. Missing built declarations explain unresolved consumer types. Existing 11 engine tests retain prior passing evidence, not a new result.",
+        "User public-entry recovery batch passed with explicit exit0: root lint first builds contracts/engine then graph refresh/typed ESLint succeeds; uncached Nx engine+API typecheck/test/build succeeds, with engine11 tests and API2 tests (health plus public package consumer). Supplied task output shows engine build before API tests. Final format:check passes. Read-only root script and emitted index.js/index.d.ts confirm runtime factory and type exports. Workspace link/lockfile reviewed previously. Local public consumer integration checked; no new commit/exact-SHA remote CI, HTTP routing, authentication or database isolation evidence.",
+        "User first Host-adapter batch: root format/lint passes; uncached engine11 tests and engine/API typecheck/build pass; API2 tests pass and5 fail, final exit1. All HTTP/liveness tests fail during createApi before adapter execution because live app.ts has trustProxy:\"false\" (string). Fastify interprets it as a trusted proxy address and rejects invalid IP address:false. Read-only adapter/tests otherwise match assigned chunk. Final format:check skipped. No successful new HTTP host-resolution evidence yet.",
+        "User Host-adapter correction batch passed with explicit exit0: root lint/format, uncached engine+API typecheck/test/build, engine11/API7 tests and final format:check. Read-only app.ts confirms boolean trustProxy:false. Five adapter tests now pass: two-site host selection ignoring overrides, unknown-host404, malformed-authority400 with no success marker, site-independent liveness, and direct unexpected registry failure propagation. Prior source/test review retained. Tests use an injected test-only route; no shipped tenant route, authentication/database isolation, native unknown-error serializer or Frappe routing parity verified.",
+        "User context-import correction batch passes with explicit exit0: root format/lint, uncached engine/API typecheck/test/build, engine16 tests (5 context,4 hostname,7 registry), API8 tests (6 site/context, health and public consumer), and final format:check. Read-only review confirms corrected runtime/type imports and immutable factory. Prior source/test review retained. Behavioral evidence covers Guest construction, user snapshot/freeze, invalid identifiers/discriminants, supported sources and two request-local Guest contexts with distinct IDs/sites despite forged identity header. No authentication, database isolation or Frappe parity established.",
+        "User decoder batch passes with explicit exit0: root format/lint, uncached engine/API typecheck/test/build, engine21 tests (5 decoder,5 context,4 hostname,7 registry), API8 tests and final format:check. Read-only decoder/tests/public export/consumer review matches assigned chunk. Cases verify malformed shapes/types, extra/inherited fields, independent copied values and registry hostname/duplicate rules. Public consumer composes unknown config -> decoder -> registry. No production config loader, provisioning, authentication, database isolation or Frappe parity established.",
+        "User metadata package/type batch passes with explicit exit0: pnpm12.10.1 install recognizes6 workspace projects including root; root format/lint succeeds and Nx discovers5 named projects including @closely/metadata; uncached metadata typecheck/build and final format:check pass. Read-only manifests/configs/types/public entry/ESLint constraint and emitted declarations match assigned chunk. No new runtime behavior or tests, no engine metadata consumer or negative metadata dependency probe executed; prior engine21/API8 evidence remains historical, not rerun in this batch.",
+        "User supplied first metadata construction batch: workspace install up-to-date, root formatting succeeds; lint prerequisites use two cached dependency builds and Nx discovers five named projects; ESLint fails once at test line69 with no-unsafe-return for any[] from Array.prototype.reverse.call, final exit1. Chained metadata typecheck/test/build and final format:check did not run. Read-only factory/tests/public export/package script review matches assigned chunk. Correction assigned; no runtime metadata pass claimed.",
+        "User supplied metadata construction correction batch passes with explicit exit0: root formatting/lint succeeds, lint dependency builds are cached, five named Nx projects discovered; uncached metadata typecheck/test/build succeeds with3 tests; final format:check passes. Read-only constructor/tests/public export/test script and emitted factory declaration match assignment, including Object.assign array-length correction. No engine/API tests rerun, metadata consumer integration, naming validation, registry or Frappe parity established.",
+        "User duplicate fieldname batch passes with explicit exit0: root format/lint succeeds, contracts/engine lint-prerequisite builds use cache; uncached metadata typecheck/test/build succeeds with5 tests; final format:check passes. Read-only guard and tests match assignment: per-call Set detects exact duplicate fieldnames before construction, rejected input stays unchanged/unfrozen, and different DocTypes reuse names. No engine/API tests rerun or Frappe parity/metadata consumer/registry evidence added.",
+        "User-supplied explicit fieldname normalization batch passes with final exit0: root format/lint succeeds, contracts/engine lint-prerequisite builds use cache; uncached metadata typecheck/test/build succeeds with7 tests; final format:check passes. Read-only normalizer/constructor/tests/public entry match assignment: specified punctuation removal and lowercase on copied fields, duplicate check after normalization, then freezing; input names and labels/DocType name remain unchanged, normalization collisions rejected. Normalizer remains internal. No engine/API tests rerun, registry/storage or Frappe runtime parity evidence added.",
+        "User restricted/reserved-name batch passes with final exit0: root format/lint succeeds with cached contracts/engine declaration builds; uncached metadata typecheck/test/build succeeds with10 tests; final format:check passes. Read-only validator/name lists/constructor/tests/public entry match assignment: raw restricted guard, copied explicit normalization, normalized reserved guard with exact DocType autoname exception, duplicate guard, freeze. Helpers remain internal. No engine/API rerun, reference runtime parity, registry/storage or complete metadata validation established.",
+        "User name-grammar batch passes with explicit final exit0: root format/lint succeeds with cached contracts/engine declarations; uncached metadata typecheck/test/build succeeds with14 tests; final format:check passes. Read-only DocType/field validators, constructor ordering, tests and public entry match assignment. Covers2-to61 ASCII logical DocType names/no padding, normalized nonempty Unicode letter/number/underscore fieldnames up to64 codepoints, invalid syntax/65 limits and representative Unicode/astral boundaries. Helpers remain internal. No engine/API rerun, full Unicode/reference runtime parity, module/controller/route checks, registry or storage evidence.",
+        "User label-derivation batch passes with final exit0: root format/lint succeeds with cached contracts/engine declaration builds; uncached metadata typecheck/test/build succeeds with19 tests; final format:check passes. Read-only shared restricted helper, normalizer, constructor and tests match assignment: empty supplied name derives from label, restricted generated names gain1, blank/unusable labels and reserved/colliding generated names reject without input mutation, obsolete empty-name invalid case removed. Both collision scenarios present. No engine/API rerun, raw metadata decoding, registry/storage or Frappe runtime parity evidence.",
+        "User DocType registry batch passes with final exit0: root format/lint succeeds with cached contracts/engine builds; uncached metadata typecheck/test/build succeeds with25 tests (constructor19, registry6); final format:check passes. Read-only registry/tests/public index and emitted JS/declarations match assignment. Covers normalized known lookup, exact-case unknown/malformed distinction, duplicate model rejection, constructor validation during admission, frozen snapshot ownership and independent collections/no fallback. No engine metadata dependency/consumer, actual site integration/isolation, registry cache/database or Frappe runtime parity checked.",
+        "User-supplied site metadata integration batch passes with final exit0: pnpm install, root format/lint with contracts/metadata/engine prerequisite builds, uncached metadata/engine/API typecheck/test/build, metadata25/engine26/API8 tests, final format:check. Read-only factory/tests/public exports/manifest/lockfile and emitted declaration/index review match assignment. Covers explicit site selection, no fallback, duplicate/blank bindings, metadata validation propagation and caller mutation protection. No production route wiring, authentication, database isolation or Frappe runtime parity established."
+      ],
+      "notes": [
+        "M1 admitted after explicit M0 baseline exit review; context types alone do not authenticate, validate or enforce tenant isolation.",
+        "M1.01 pure registry and behavioral test chunk assigned on resume; source/config edits and user-run results pending. No new parity evidence.",
+        "M1.01/M1.02 hostname boundary validation assigned: shared normalization, unknown input narrowing and behavioral cases. No new implementation/check evidence yet.",
+        "Public engine entry and API consumer resolution chunk assigned; test dependency build ordering required for exports targeting dist. Implementation/install/check output pending.",
+        "Direct Host authority adapter and test-only HTTP route chunk assigned. Explicit no-proxy-trust default; canonical registered hostname is the site key. Native 400/404 stable errors are incremental transport behavior, not Frappe compatibility or completed native problem schema.",
+        "2026-10-12 resumed from live files: immutable context factory and per-request test chunk assigned; user implementation/check output pending. No new parity or authentication evidence.",
+        "2026-10-12 first context chunk implemented and reviewed; batch fails at typed lint because API test omitted factory/type imports. Import correction and rerun pending; no new test pass claimed.",
+        "2026-10-12 initial immutable context factory/public export and per-request test seam locally checked. M1 remains in progress; next M1.02 boundary-validation chunk not assigned. Session recap answers pending, not an advancement gate.",
+        "2026-10-12 context recap demonstrated: User correctly explains copying site/actor creates independent objects without freezing caller-owned objects, and trusted authentication must verify Alice before supplying a user actor. Assistant clarifies authentication establishes identity while engine authorization separately decides allowed actions on the resolved site. Authorization clarification not independently assessed.",
+        "2026-10-12 M1.02 narrow configuration decoder assigned for existing site-registration contract. Handwritten checks teach unknown narrowing for this small shape; planned TypeBox/Ajv HTTP-contract tooling remains unchanged. No generic validation framework or new dependency. Strict shape is project policy, not Frappe parity; implementation/checks pending.",
+        "2026-10-12 fixed configuration decoder checked locally; M1.03 metadata definitions next. Narrow JSON-like config decoder is not a generic schema validator; HTTP TypeBox/Ajv and dynamic document schemas remain pending. Decoder recap answers pending.",
+        "2026-10-12 decoder recap: User correctly explains that input as SiteRegistration[] asks TypeScript to trust a type without runtime validation, and that hostname normalization/duplicate rejection belong to registry domain rules beyond structural validation. Assistant clarifies registry rules apply to every caller, including already-typed callers. Decoder/runtime versus domain-policy responsibility recap demonstrated.",
+        "2026-10-12 M1.03 initial metadata package/type chunk assigned. Pinned Frappe DocType controller and retained DocField snapshot inspected; no behavior parity inferred. First normalized Data-field slice, full field catalog/modes/permissions/options remain pending; metadata-to-contracts-only boundary added to assignment. No runtime code implemented or source/check completion claimed.",
+        "2026-10-12 @closely/metadata package/types checked locally; configured metadata -> contracts-only internal dependency rule reviewed, no negative probe. User asked whether these are types of DocType/DocField; assistant explained TS contract versus actual metadata object versus document record. Independent metadata-layer recap not assessed; continue coding rather than quiz gate.",
+        "2026-10-12 requested chat switch: metadata type-layer checkpoint synchronized; constructor/registry not yet assigned; no unsupplied output from last assigned batch. Live Git HEAD d383b295bdf8bdfa502ee39909c6c5f1ddb6f447 and modified/untracked implementation/docs reviewed, no commit or new CI. New handoff docs postdate formatting pass.",
+        "2026-10-12 new chat read-only review confirms metadata type-only checkpoint. Pinned Frappe naming/scrubbing/restricted/reserved/duplicate responsibilities inspected. Constructor lesson split into immutable construction/tests first, then name validation before registry admission; full M1.03 scope unchanged. Assignment pending user edits/output; no new executed checks or parity claims.",
+        "Assistant-provided prototype reverse assertion caused unsafe-return lint failure. Replace with typed Object.assign array-length mutation, preserving frozen-array behavior coverage; user owns correction and rerun.",
+        "2026-10-12 immutable metadata constructor locally checked after unsafe prototype-return assertion correction. No name validation or registry admission yet; next focused lesson preserves pinned normalization/reserved/duplicate responsibilities. Optional recap pending; no gate.",
+        "2026-10-12 User construction recap: correctly states freezing prevents later changes and validation checks expected input. Corrections needed: copying creates independence from caller-owned input; freezing protects the returned snapshot, and freezing is shallow. Current constructor accepts reserved name and duplicate fieldnames because no naming validation exists. Clarification delivered; independent corrected restatement not yet assessed. Continue naming validation alongside code, no quiz gate.",
+        "2026-10-12 user requests purpose/connections of every existing apps/packages folder and file, using a gradually expanded map, before more coding. Read-only inventory and initial apps/API walkthrough delivered. Next tour node Desk; metadata naming lesson deferred until tour complete. No implementation/test changes.",
+        "2026-10-12 user selects packages/engine next instead of Desk. Read-only current engine source/config/test inventory reviewed; all authored engine files, generated outputs, initialization versus lookup and explicit actor/context connection explained. Tour delivery is not assessed understanding or new execution evidence.",
+        "2026-10-12 user reports understanding engine tour and explicitly requests return to coding. Remaining folder tour deferred by user; no tour completion gate. Duplicate fieldname guard/tests assigned as focused M1.03 validation increment, full normalization/reserved/name/registry behavior remains pending; no new implementation/check evidence.",
+        "2026-10-12 exact duplicate fieldname guard locally checked; normalization and reserved identifiers remain pending. Five tests prove focused constructor behavior, not complete naming/Frappe parity. Next lesson not yet assigned.",
+        "2026-10-12 pinned explicit fieldname punctuation removal/lowercase and post-normalization duplicate order inspected. Restricted supplied-name checks versus later reserved-key checks/autoname DocType exception kept separate; no blanket stronger policy invented. Normalization/collision chunk assigned; implementation/checks pending.",
+        "2026-10-13 normalization chunk checked locally with7 tests; full reserved/grammar/DocType name and registry behavior incomplete. Interrupted preceding turn had no executed work; pasted output and live files reviewed on resume. No additional checks executed by assistant.",
+        "2026-10-13 user authorizes next teaching lesson, requests restricted/reserved explanation. Pinned checks and BaseDocument cached property keys inspected. Source-order restricted/raw then normalized reserved/autoname exception assigned; does not invent stronger normalized restricted check. Name case quirk explained as incomplete safety/parity caveat. User edits/checks pending.",
+        "2026-10-13 raw restricted and normalized reserved checks with autoname DocType exception checked locally. Source-order Name caveat retained; complete grammar/name/length/controller/registry behavior pending. No new Frappe runtime or broader suite evidence.",
+        "2026-10-13 grammar/length source research: shared Database MAX_COLUMN_LENGTH64, Postgres no override observed, DocType limit61; schema Python Unicode word grammar. Preserve logical source limits and defer physical PostgreSQL63-byte safe identifiers to adapter mapping. JS Unicode Letter/Number/underscore translation with codepoint counting assigned, broad Unicode runtime parity unclaimed. Explicit internal field names nonempty; label derivation remains pending.",
+        "2026-10-13 explicit-name grammar/length chunk locally checked with14 tests. Logical61/64 limits separate from physical PostgreSQL63-byte mapping. Missing-name label derivation is next reference-backed increment; complete metadata/registry/runtime parity unclaimed.",
+        "2026-10-13 missing-name Data label derivation assigned from pinned scrub_field_names. Empty string represents absent name in current typed contract, not unknown JSON undefined/null acceptance. Suffix1 only restricted generated candidate, not arbitrary reserved keys or collision allocator; explicit supplied-name restriction order retained. Update previous empty-name invalid test; new19-test expected output pending.",
+        "2026-10-13 Data label derivation checked locally with19 tests. Next registry lesson not assigned; must preserve metadata/engine dependency direction and caller-scoped tenant ownership. Full raw field/mode/config behavior and Frappe reference/runtime parity remain pending.",
+        "2026-10-13 caller-owned fixed DocType registry and6 tests assigned. Exact-case logical keys, native unknown union/malformed error are initial project API, not Frappe load/cache/error parity. Factory admission reuses existing constructor and publishes only after full loop; no partial/global registry. Typed admission inherits current incomplete flag/module/controller/route/raw decoding checks and raw restricted-name revalidation caveat.",
+        "2026-10-13 initial fixed registry checked locally with25 metadata tests. Emitted entry reviewed; engine metadata dependency/consumer absent and engine dependency rule already permits metadata. Next site-bound public consumer lesson not assigned. Independent registry instances are not tenant/database isolation or complete M1.03/parity proof.",
+        "2026-10-13 requested chat switch: registry25-test/exit0 checkpoint synchronized; next engine public metadata/site binding lesson remains unassigned. Clarified still focused M1.03 integration, not M1.10 real isolation or full M1 exit; M1.04 field catalog follows initial slice. Read-only Git HEAD d383b295bdf8bdfa502ee39909c6c5f1ddb6f447 and modified/untracked state confirmed; no commit/new CI/test execution. No unsupplied check output or unanswered user question."
+      ]
     },
     {
       "id": "DB-FOUNDATION",
@@ -1096,6 +1200,174 @@
       "evidence": "User supplied combined foundation batch passed with explicit final0: frozen install pnpm12.10.1 five workspace projects, six strict checksum OKs, root format/check and graph-refresh lint/no diagnostics, uncached Nx typecheck/test/build across four projects including one API health test, explicit parity typecheck and13 comparator tests. No SQLite error. Read-only diff confirms engine source/config, boundary rule and teaching/progress/engineering docs; probes absent, contracts restored, no staged changes. New engine revision not committed/remote-verified yet.",
       "source": "user_provided_terminal_output_and_read_only_review",
       "date": "2026-10-11"
+    },
+    {
+      "command": "User commit/push d383b29; assistant read-only gh view/log run38146717183",
+      "result": "passed",
+      "evidence": "User format/check/staged-whitespace, commit d383b295bdf8bdfa502ee39909c6c5f1ddb6f447 and push main succeeded with explicit0. Read-only Git status clean before this documentation update. Assistant read-only gh verified run38146717183 completed success for exact SHA: frozen install, six fixture checksum OKs, root formatting/lint, uncached Nx checks across four packages including engine typecheck/build and one API health test, explicit parity typecheck and13 tests. Current M0 foundation exit criteria reviewed and met at focused baseline scope; product parity/production suites remain pending.",
+      "source": "user_provided_terminal_output_and_read_only_github_actions_review",
+      "date": "2026-10-11"
+    },
+    {
+      "command": "First registry root format/lint and uncached engine typecheck/test/build; echo $?",
+      "result": "partial_failure",
+      "evidence": "User supplied first registry batch: install up-to-date, root formatting and lint succeed, uncached engine build succeeds and all4 registry tests pass; engine typecheck fails with20 missing Node-global errors in Vitest/Vite/tinybench declarations, final exit1. Final format:check was skipped by &&. Read-only registry/test/manifest/build-config review matches assigned implementation. Engine tsconfig types:[] omits Node ambient globals needed by test tooling; installed @types/node24.19.1 defines Event/EventTarget/AbortSignal/WebSocket. Correction assigned, not implemented or verified.",
+      "source": "user_provided_terminal_output_and_read_only_source_review",
+      "date": "2026-10-12"
+    },
+    {
+      "command": "Registry ambient-type correction: root format/lint, uncached engine typecheck/test/build, format:check; echo $?",
+      "result": "passed",
+      "evidence": "User correction batch passed with explicit exit0: root format/lint, uncached engine typecheck/test/build, all4 registry tests, and final format:check. Read-only configs confirm types:[\"node\"] for source/test checking and build override types:[] with test exclusion. Registry source reviewed previously matches the lesson. Local registry slice is checked; no new commit/remote CI or HTTP/database/Frappe parity evidence.",
+      "source": "user_provided_terminal_output_and_read_only_config_review",
+      "date": "2026-10-12"
+    },
+    {
+      "command": "Hostname boundary root format/lint, uncached engine typecheck/test/build, format:check; echo $?",
+      "result": "passed",
+      "evidence": "User hostname-boundary batch passed with explicit exit0: root format/lint, uncached engine typecheck/test/build, 11 tests across hostname4/registry7, and final format:check. Read-only source review confirms unknown input checking, bounded ASCII label validation, shared lowercase/root-dot normalization before duplicate detection and lookup, malformed input throwing INVALID_SITE_HOSTNAME, and valid unregistered names returning unknown_site. No fresh remote CI/HTTP/database/Frappe routing parity evidence.",
+      "source": "user_provided_terminal_output_and_read_only_source_review",
+      "date": "2026-10-12"
+    },
+    {
+      "command": "Public-entry pnpm install, root format/lint; echo $?",
+      "result": "partial_failure",
+      "evidence": "User public-entry batch: pnpm install succeeds and lockfile links API to local engine; root formatting succeeds; lint fails with6 no-unsafe errors in engine-public-entry.test.ts, final exit1. Chained Nx checks/final format:check did not run. Read-only index/exports/API manifest/test/Nx review matches lesson. Engine dist lacks index.js/index.d.ts while exports points there; workspace symlink is correct. Missing built declarations explain unresolved consumer types. Existing 11 engine tests retain prior passing evidence, not a new result.",
+      "source": "user_provided_terminal_output_and_read_only_source_artifact_review",
+      "date": "2026-10-12"
+    },
+    {
+      "command": "Public-entry lint prerequisite recovery; uncached engine+API checks and final format:check; echo $?",
+      "result": "passed",
+      "evidence": "User public-entry recovery batch passed with explicit exit0: root lint first builds contracts/engine then graph refresh/typed ESLint succeeds; uncached Nx engine+API typecheck/test/build succeeds, with engine11 tests and API2 tests (health plus public package consumer). Supplied task output shows engine build before API tests. Final format:check passes. Read-only root script and emitted index.js/index.d.ts confirm runtime factory and type exports. Workspace link/lockfile reviewed previously. Local public consumer integration checked; no new commit/exact-SHA remote CI, HTTP routing, authentication or database isolation evidence.",
+      "source": "user_provided_terminal_output_and_read_only_manifest_emitted_entry_review",
+      "date": "2026-10-12"
+    },
+    {
+      "command": "First HTTP Host-adapter format/lint and uncached engine+API checks; echo $?",
+      "result": "partial_failure",
+      "evidence": "User first Host-adapter batch: root format/lint passes; uncached engine11 tests and engine/API typecheck/build pass; API2 tests pass and5 fail, final exit1. All HTTP/liveness tests fail during createApi before adapter execution because live app.ts has trustProxy:\"false\" (string). Fastify interprets it as a trusted proxy address and rejects invalid IP address:false. Read-only adapter/tests otherwise match assigned chunk. Final format:check skipped. No successful new HTTP host-resolution evidence yet.",
+      "source": "user_provided_terminal_output_and_read_only_source_review",
+      "date": "2026-10-12"
+    },
+    {
+      "command": "Boolean trustProxy correction; root format/lint, uncached engine+API checks and format:check; echo $?",
+      "result": "passed",
+      "evidence": "User Host-adapter correction batch passed with explicit exit0: root lint/format, uncached engine+API typecheck/test/build, engine11/API7 tests and final format:check. Read-only app.ts confirms boolean trustProxy:false. Five adapter tests now pass: two-site host selection ignoring overrides, unknown-host404, malformed-authority400 with no success marker, site-independent liveness, and direct unexpected registry failure propagation. Prior source/test review retained. Tests use an injected test-only route; no shipped tenant route, authentication/database isolation, native unknown-error serializer or Frappe routing parity verified.",
+      "source": "user_provided_terminal_output_and_read_only_config_review",
+      "date": "2026-10-12"
+    },
+    {
+      "command": "First context-factory root format/lint and chained uncached engine/API checks; echo $?",
+      "result": "partial_failure",
+      "evidence": "User supplied first context-factory batch: root format succeeds; lint prerequisite builds contracts (cache) and engine successfully, then ESLint reports9 unsafe/unresolved-type errors in resolve-request-site.test.ts, explicit exit1. Read-only source review confirms factory/export/engine tests and fixture match assigned chunk except API test imports omit createOperationContext and OperationContext. Missing value/type bindings explain the cascading diagnostics. Chained uncached Nx checks and final format:check did not run.",
+      "source": "user_provided_terminal_output_and_read_only_source_review",
+      "date": "2026-10-12"
+    },
+    {
+      "command": "Context imports corrected; root format/lint, uncached engine/API checks and final format:check; echo $?",
+      "result": "passed",
+      "evidence": "User context-import correction batch passes with explicit exit0: root format/lint, uncached engine/API typecheck/test/build, engine16 tests (5 context,4 hostname,7 registry), API8 tests (6 site/context, health and public consumer), and final format:check. Read-only review confirms corrected runtime/type imports and immutable factory. Prior source/test review retained. Behavioral evidence covers Guest construction, user snapshot/freeze, invalid identifiers/discriminants, supported sources and two request-local Guest contexts with distinct IDs/sites despite forged identity header. No authentication, database isolation or Frappe parity established.",
+      "source": "user_provided_terminal_output_and_read_only_source_review",
+      "date": "2026-10-12"
+    },
+    {
+      "command": "Decoder root format/lint, uncached engine/API checks and final format:check; echo $?",
+      "result": "passed",
+      "evidence": "User decoder batch passes with explicit exit0: root format/lint, uncached engine/API typecheck/test/build, engine21 tests (5 decoder,5 context,4 hostname,7 registry), API8 tests and final format:check. Read-only decoder/tests/public export/consumer review matches assigned chunk. Cases verify malformed shapes/types, extra/inherited fields, independent copied values and registry hostname/duplicate rules. Public consumer composes unknown config -> decoder -> registry. No production config loader, provisioning, authentication, database isolation or Frappe parity established.",
+      "source": "user_provided_terminal_output_and_read_only_source_review",
+      "date": "2026-10-12"
+    },
+    {
+      "command": "Metadata package pnpm install/root format/lint, uncached metadata typecheck/build and final format:check; echo $?",
+      "result": "passed",
+      "evidence": "User metadata package/type batch passes with explicit exit0: pnpm12.10.1 install recognizes6 workspace projects including root; root format/lint succeeds and Nx discovers5 named projects including @closely/metadata; uncached metadata typecheck/build and final format:check pass. Read-only manifests/configs/types/public entry/ESLint constraint and emitted declarations match assigned chunk. No new runtime behavior or tests, no engine metadata consumer or negative metadata dependency probe executed; prior engine21/API8 evidence remains historical, not rerun in this batch.",
+      "source": "user_provided_terminal_output_and_read_only_source_artifact_review",
+      "date": "2026-10-12"
+    },
+    {
+      "command": "First metadata construction install/format/lint and chained metadata checks; echo $?",
+      "result": "partial_failure",
+      "evidence": "User supplied first metadata construction batch: workspace install up-to-date, root formatting succeeds; lint prerequisites use two cached dependency builds and Nx discovers five named projects; ESLint fails once at test line69 with no-unsafe-return for any[] from Array.prototype.reverse.call, final exit1. Chained metadata typecheck/test/build and final format:check did not run. Read-only factory/tests/public export/package script review matches assigned chunk. Correction assigned; no runtime metadata pass claimed.",
+      "source": "user_provided_terminal_output_and_read_only_source_review",
+      "date": "2026-10-12"
+    },
+    {
+      "command": "Metadata construction assertion correction; root format/lint, uncached metadata typecheck/test/build and format:check; echo $?",
+      "result": "passed",
+      "evidence": "User supplied metadata construction correction batch passes with explicit exit0: root formatting/lint succeeds, lint dependency builds are cached, five named Nx projects discovered; uncached metadata typecheck/test/build succeeds with3 tests; final format:check passes. Read-only constructor/tests/public export/test script and emitted factory declaration match assignment, including Object.assign array-length correction. No engine/API tests rerun, metadata consumer integration, naming validation, registry or Frappe parity established.",
+      "source": "user_provided_terminal_output_and_read_only_source_artifact_review",
+      "date": "2026-10-12"
+    },
+    {
+      "command": "Duplicate DocField-name guard; root format/lint, uncached metadata typecheck/test/build and final format:check; echo $?",
+      "result": "passed",
+      "evidence": "User duplicate fieldname batch passes with explicit exit0: root format/lint succeeds, contracts/engine lint-prerequisite builds use cache; uncached metadata typecheck/test/build succeeds with5 tests; final format:check passes. Read-only guard and tests match assignment: per-call Set detects exact duplicate fieldnames before construction, rejected input stays unchanged/unfrozen, and different DocTypes reuse names. No engine/API tests rerun or Frappe parity/metadata consumer/registry evidence added.",
+      "source": "user_provided_terminal_output_and_read_only_source_review",
+      "date": "2026-10-12"
+    },
+    {
+      "command": "Explicit name normalization; root format/lint, uncached metadata typecheck/test/build and final format:check; echo $?",
+      "result": "passed",
+      "evidence": "User-supplied explicit fieldname normalization batch passes with final exit0: root format/lint succeeds, contracts/engine lint-prerequisite builds use cache; uncached metadata typecheck/test/build succeeds with7 tests; final format:check passes. Read-only normalizer/constructor/tests/public entry match assignment: specified punctuation removal and lowercase on copied fields, duplicate check after normalization, then freezing; input names and labels/DocType name remain unchanged, normalization collisions rejected. Normalizer remains internal. No engine/API tests rerun, registry/storage or Frappe runtime parity evidence added.",
+      "source": "user_provided_terminal_output_and_read_only_source_review",
+      "date": "2026-10-13"
+    },
+    {
+      "command": "Restricted/reserved guards; root format/lint, uncached metadata typecheck/test/build and final format:check; echo $?",
+      "result": "passed",
+      "evidence": "User restricted/reserved-name batch passes with final exit0: root format/lint succeeds with cached contracts/engine declaration builds; uncached metadata typecheck/test/build succeeds with10 tests; final format:check passes. Read-only validator/name lists/constructor/tests/public entry match assignment: raw restricted guard, copied explicit normalization, normalized reserved guard with exact DocType autoname exception, duplicate guard, freeze. Helpers remain internal. No engine/API rerun, reference runtime parity, registry/storage or complete metadata validation established.",
+      "source": "user_provided_terminal_output_and_read_only_source_review",
+      "date": "2026-10-13"
+    },
+    {
+      "command": "Explicit logical name grammar; root format/lint, uncached metadata typecheck/test/build and format:check; echo $?",
+      "result": "passed",
+      "evidence": "User name-grammar batch passes with explicit final exit0: root format/lint succeeds with cached contracts/engine declarations; uncached metadata typecheck/test/build succeeds with14 tests; final format:check passes. Read-only DocType/field validators, constructor ordering, tests and public entry match assignment. Covers2-to61 ASCII logical DocType names/no padding, normalized nonempty Unicode letter/number/underscore fieldnames up to64 codepoints, invalid syntax/65 limits and representative Unicode/astral boundaries. Helpers remain internal. No engine/API rerun, full Unicode/reference runtime parity, module/controller/route checks, registry or storage evidence.",
+      "source": "user_provided_terminal_output_and_read_only_source_review",
+      "date": "2026-10-13"
+    },
+    {
+      "command": "Data-field label derivation; root format/lint, uncached metadata typecheck/test/build and format:check; echo $?",
+      "result": "passed",
+      "evidence": "User label-derivation batch passes with final exit0: root format/lint succeeds with cached contracts/engine declaration builds; uncached metadata typecheck/test/build succeeds with19 tests; final format:check passes. Read-only shared restricted helper, normalizer, constructor and tests match assignment: empty supplied name derives from label, restricted generated names gain1, blank/unusable labels and reserved/colliding generated names reject without input mutation, obsolete empty-name invalid case removed. Both collision scenarios present. No engine/API rerun, raw metadata decoding, registry/storage or Frappe runtime parity evidence.",
+      "source": "user_provided_terminal_output_and_read_only_source_review",
+      "date": "2026-10-13"
+    },
+    {
+      "command": "DocType registry; root format/lint, uncached metadata typecheck/test/build and format:check; echo $?",
+      "result": "passed",
+      "evidence": "User DocType registry batch passes with final exit0: root format/lint succeeds with cached contracts/engine builds; uncached metadata typecheck/test/build succeeds with25 tests (constructor19, registry6); final format:check passes. Read-only registry/tests/public index and emitted JS/declarations match assignment. Covers normalized known lookup, exact-case unknown/malformed distinction, duplicate model rejection, constructor validation during admission, frozen snapshot ownership and independent collections/no fallback. No engine metadata dependency/consumer, actual site integration/isolation, registry cache/database or Frappe runtime parity checked.",
+      "source": "user_provided_terminal_output_and_read_only_source_artifact_review",
+      "date": "2026-10-13"
+    },
+    {
+      "command": "Site metadata integration install/format/lint and uncached metadata/engine/API checks; final format:check; echo $?",
+      "result": "passed",
+      "evidence": "User-supplied site metadata integration batch passes with final exit0: pnpm install, root format/lint with contracts/metadata/engine prerequisite builds, uncached metadata/engine/API typecheck/test/build, metadata25/engine26/API8 tests, final format:check. Read-only factory/tests/public exports/manifest/lockfile and emitted declaration/index review match assignment. Covers explicit site selection, no fallback, duplicate/blank bindings, metadata validation propagation and caller mutation protection. No production route wiring, authentication, database isolation or Frappe runtime parity established.",
+      "source": "user_provided_terminal_output_and_read_only_source_artifact_review",
+      "date": "2026-10-13"
+    },
+    {
+      "command": "Compose config --quiet, up --wait, ps, in-container psql version/current_database/current_user; echo $?",
+      "result": "passed",
+      "evidence": "2026-10-15 user-supplied Compose config/up/ps/psql batch passed with final exit0. Pinned PostgreSQL18.6-bookworm image pulled; closely-development network, named postgres-data volume and postgres container created. Container healthy on127.0.0.1:15432->5432. SQL reports PostgreSQL18.6, database postgres, account closely_bootstrap. Read-only infra/development/compose.yaml matches assignment. This verifies container startup and in-container SQL only; host TCP authentication, Node connection, persisted site creation and survival after recreation remain unverified.",
+      "source": "user_provided_terminal_output_and_read_only_config_review",
+      "date": "2026-10-15"
+    },
+    {
+      "command": "Database creation root checks,9 tests and manual CLI success/duplicate/invalid/auth-denial/catalog verification",
+      "result": "passed",
+      "evidence": "2026-10-16 database creation batch: user-supplied root format/lint succeeds; uncached database/CLI typecheck/build and9 invalid-name tests pass; final format:check and exit0. Read-only creation function/tests/public export/CLI/package review matches correction. Manual CLI: check-database success0; closely_alpha creation success0; duplicate DATABASE_ALREADY_EXISTS1; invalid alpha INVALID_DATABASE_NAME1; wrong-password closely_denied creation fails1. PostgreSQL catalog query returns only closely_alpha and exit0. Physical database creation confirmed by supplied live output; no complete site or tenant-role isolation established.",
+      "source": "user_provided_terminal_output_and_read_only_source_review",
+      "date": "2026-10-16"
+    },
+    {
+      "command": "Full pre-commit workspace validation",
+      "result": "passed",
+      "evidence": "2026-10-16 user-supplied full checkpoint batch passed with final exit 0: frozen install, formatting, six reference checksum checks, root lint, uncached Nx typecheck/test/build for seven projects, metadata 25/engine 26/database 9/API 8 tests, parity TypeScript check and 13 comparator tests, final format:check and git diff --check. Local evidence only; no new commit, push or remote CI confirmed.",
+      "source": "user_provided_terminal_output",
+      "date": "2026-10-16"
     }
   ],
   "blockers": [],
@@ -1105,17 +1377,19 @@
     "Progress is manual; no automated documentation/progress validation exists.",
     "Previously downloaded system Docker images and shared package caches may remain; they are not active project infrastructure.",
     "Health inject red/green demonstrated: initial success and deliberate failure supported by supplied output; restored success user-reported and source reviewed. API typecheck including new test passed by user report. Shutdown runtime failure/deadline checks remain pending; first-test learning recap completed.",
-    "Nx 23.3.0 installed with supplied output; CLI v23.3.0 verified by supplied output; nx.json reviewed read-only; project identities discovered, but API-to-contracts static edge and typecheck task graph verified; contracts build before API typecheck execution verified; fresh-checkout proof, Nx API build execution verified; cache reuse verified; artifact restoration verified; source/dependency invalidation verified; shared-root input invalidation not exercised. Temporary comment cleanup verified; focused L07 recap complete. Nx generated-directory ignore rules verified; resolved API configuration verified; build cache configuration reviewed; first cache-enabled build passed; exercise cleanup/original-input reuse verified; focused L07 recap complete."
+    "Nx 23.3.0 installed with supplied output; CLI v23.3.0 verified by supplied output; nx.json reviewed read-only; project identities discovered, but API-to-contracts static edge and typecheck task graph verified; contracts build before API typecheck execution verified; fresh-checkout proof, Nx API build execution verified; cache reuse verified; artifact restoration verified; source/dependency invalidation verified; shared-root input invalidation not exercised. Temporary comment cleanup verified; focused L07 recap complete. Nx generated-directory ignore rules verified; resolved API configuration verified; build cache configuration reviewed; first cache-enabled build passed; exercise cleanup/original-input reuse verified; focused L07 recap complete.",
+    "Current registry/hostname/public entry and direct Host adapter are locally checked (engine21/API8 tests). HTTP route exists only in tests; full native unknown-error redaction, auth, Unicode/IDNA/IPv6/HTTP2/raw-header handling, provisioning and real tenant storage/isolation remain pending. Latest local pass covers decoder/context source but predates these documentation updates; registry-era work remains uncommitted and has no new exact-SHA CI evidence.",
+    "Metadata constructor and fixed registry have recorded user-supplied local checks with25 tests. Engine consumer/site selection now has local engine26/metadata25/API8 evidence; production wiring remains pending. Raw JSON decoding, full fields/modes and real tenant storage isolation remain pending; metadata dependency constraint is not independently negative-tested."
   ],
-  "workspaceState": "combined_m0_checks_passed_engine_commit_push_pending",
+  "workspaceState": "site_metadata_integration_checked",
   "workingMode": "user_implements_assistant_teaches",
-  "lastUserConfirmedImplementationStep": "User supplied combined foundation batch passed with explicit final0: frozen install pnpm12.10.1 five workspace projects, six strict checksum OKs, root format/check and graph-refresh lint/no diagnostics, uncached Nx typecheck/test/build across four projects including one API health test, explicit parity typecheck and13 comparator tests. No SQLite error. Read-only diff confirms engine source/config, boundary rule and teaching/progress/engineering docs; probes absent, contracts restored, no staged changes. New engine revision not committed/remote-verified yet.",
+  "lastUserConfirmedImplementationStep": "2026-10-16 database creation batch: user-supplied root format/lint succeeds; uncached database/CLI typecheck/build and9 invalid-name tests pass; final format:check and exit0. Read-only creation function/tests/public export/CLI/package review matches correction. Manual CLI: check-database success0; closely_alpha creation success0; duplicate DATABASE_ALREADY_EXISTS1; invalid alpha INVALID_DATABASE_NAME1; wrong-password closely_denied creation fails1. PostgreSQL catalog query returns only closely_alpha and exit0. Physical database creation confirmed by supplied live output; no complete site or tenant-role isolation established.",
   "projectName": "Closely",
   "currentCheckpoint": "docs/progress/HANDOFF.md",
-  "nextUserAction": "User formats/checks latest documentation, stages explicit reviewed engine/ESLint and documentation paths, checks staged whitespace, commits feat: add explicit engine operation context and dependency boundaries, pushes current main tracking branch, supplies commit/push/final-status output. Assistant then performs read-only exact-SHA GitHub CI verification; M0 remains open until that result. No source/build checks need repeat solely for current progress-document changes.",
+  "nextUserAction": "PR #1 https://github.com/zohaib-codes/-closely-/pull/1 is open from codex/site-foundation-checkpoint into main. Both checkpoint commits are pushed; head is 63c51cc6b861b87ad6b89dcbc7ae710f71fc8a98. Assistant read-only GitHub inspection confirms pull_request CI run 38836332274 succeeded for that exact head and GitHub reports mergeable/clean. No formal approval or merge recorded. Review found stale project-structure wording about the engine metadata consumer; assistant corrected documentation only and recorded this evidence. Next user formats, commits and pushes these documentation corrections, then supplies output. Verify CI again for the new head before guiding merge.",
   "sessionRecap": {
-    "date": "2026-10-11",
-    "status": "explained_understanding_not_confirmed",
-    "evidence": "User said they did not know the two recap answers and requested explanation before switching chats. Explained: a captured response establishes observed behavior of the pinned live Frappe environment for the specific request/actor/site; a synthetic candidate tests assumptions/comparator logic but cannot establish actual upstream behavior. Example: actual v1 message pong vs v2 data pong and Guest User403. Explained __frappe_exc_id presence/nonempty-string shape remains required while only its generated value is normalized; allowing missing field would hide a compatibility regression. These are explained concepts, not user-demonstrated understanding. Do not repeat the quiz as a gate."
+    "date": "2026-10-13",
+    "status": "site_selection_recap_correct_architecture_clarity_needed",
+    "evidence": "User correctly explains engine selects by operation site, metadata validates definitions and Beta returns unknown_doctype to prevent Alpha leakage. User reports insufficient big-picture understanding, unfamiliar vocabulary and concern about test-only callers. Accepted visible capability/flow/design/short route/one step teaching approach; requests simpler explanations based on basic CRUD experience. User explicitly requests complete usable features spanning required API/database/UI instead of isolated components. Feature-first delivery adopted; proposed debug endpoint withdrawn. Site creation/reopen is a proposed first real feature, pending concrete scoping."
   }
 }

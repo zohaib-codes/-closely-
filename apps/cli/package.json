@@ -1,0 +1,21 @@
+{
+  "name": "@closely/cli",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "build": "tsc --project tsconfig.build.json",
+    "start": "node dist/main.js"
+  },
+  "dependencies": {
+    "@closely/database": "workspace:*"
+  },
+  "nx": {
+    "tags": [
+      "scope:platform",
+      "type:app",
+      "runtime:server"
+    ]
+  }
+}

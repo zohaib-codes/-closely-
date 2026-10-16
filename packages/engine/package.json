@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "typecheck": "tsc --project tsconfig.json --noEmit",
-    "build": "tsc --project tsconfig.json"
+    "test": "vitest run src",
+    "build": "tsc --project tsconfig.build.json"
   },
   "nx": {
     "tags": [
@@ -14,10 +15,13 @@
       "runtime:server"
     ]
   },
+  "dependencies": {
+    "@closely/metadata": "workspace:*"
+  },
   "exports": {
     ".": {
-      "types": "./dist/operation-context.d.ts",
-      "default": "./dist/operation-context.js"
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
     }
   }
 }
