@@ -11,6 +11,7 @@ const invalidNames = [
   "closely_alpha\n",
   'closely_alpha"; DROP DATABASE postgres; --',
   `closely_${"a".repeat(57)}`,
+  `closely_${"a".repeat(56)}`,
 ];
 
 test.each(invalidNames)(

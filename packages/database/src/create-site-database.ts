@@ -1,7 +1,7 @@
 import { Client, DatabaseError, escapeIdentifier } from "pg";
 
 function validateDatabaseName(name: string): void {
-  const allowedNamePattern = /^closely_[a-z0-9_]{1,56}$/;
+  const allowedNamePattern = /^closely_[a-z0-9_]{1,55}$/;
 
   if (name !== name.trim() || !allowedNamePattern.test(name)) {
     throw new Error("INVALID_DATABASE_NAME");

@@ -4,7 +4,7 @@
   "currentMilestone": "M1",
   "activeTaskIds": ["META-FOUNDATION"],
   "nextTaskId": "META-FOUNDATION",
-  "latestSession": "docs/progress/sessions/2026-10-16-git-workflow.md",
+  "latestSession": "docs/progress/sessions/2026-10-16-site-account-handoff.md",
   "tasks": [
     {
       "id": "FOUNDATION-001",
@@ -1381,12 +1381,12 @@
     "Current registry/hostname/public entry and direct Host adapter are locally checked (engine21/API8 tests). HTTP route exists only in tests; full native unknown-error redaction, auth, Unicode/IDNA/IPv6/HTTP2/raw-header handling, provisioning and real tenant storage/isolation remain pending. Latest local pass covers decoder/context source but predates these documentation updates; registry-era work remains uncommitted and has no new exact-SHA CI evidence.",
     "Metadata constructor and fixed registry have recorded user-supplied local checks with25 tests. Engine consumer/site selection now has local engine26/metadata25/API8 evidence; production wiring remains pending. Raw JSON decoding, full fields/modes and real tenant storage isolation remain pending; metadata dependency constraint is not independently negative-tested."
   ],
-  "workspaceState": "site_metadata_integration_checked",
+  "workspaceState": "site_database_name_limit_checked_account_design_pending",
   "workingMode": "user_implements_assistant_teaches",
-  "lastUserConfirmedImplementationStep": "2026-10-16 database creation batch: user-supplied root format/lint succeeds; uncached database/CLI typecheck/build and9 invalid-name tests pass; final format:check and exit0. Read-only creation function/tests/public export/CLI/package review matches correction. Manual CLI: check-database success0; closely_alpha creation success0; duplicate DATABASE_ALREADY_EXISTS1; invalid alpha INVALID_DATABASE_NAME1; wrong-password closely_denied creation fails1. PostgreSQL catalog query returns only closely_alpha and exit0. Physical database creation confirmed by supplied live output; no complete site or tenant-role isolation established.",
+  "lastUserConfirmedImplementationStep": "User changed database-name suffix maximum from 56 to 55 and added rejection for closely_ plus 56 characters, preserving the 57-character case. Read-only diff confirms both edits. User-supplied database-source formatting and uncached @closely/database typecheck/test/build passed: 10 tests, exit 0. No new full-workspace lint/CI or live maximum-length database creation check supplied.",
   "projectName": "Closely",
   "currentCheckpoint": "docs/progress/HANDOFF.md",
-  "nextUserAction": "PR #1 https://github.com/zohaib-codes/-closely-/pull/1 is open from codex/site-foundation-checkpoint into main. Both checkpoint commits are pushed; head is 63c51cc6b861b87ad6b89dcbc7ae710f71fc8a98. Assistant read-only GitHub inspection confirms pull_request CI run 38836332274 succeeded for that exact head and GitHub reports mergeable/clean. No formal approval or merge recorded. Review found stale project-structure wording about the engine metadata consumer; assistant corrected documentation only and recorded this evidence. Next user formats, commits and pushes these documentation corrections, then supplies output. Verify CI again for the new head before guiding merge.",
+  "nextUserAction": "Before further runtime work, review and commit/push the small verified database-name correction with related handoff docs on codex/site-database-account (user executes commands). User-supplied documentation formatting and git diff --check passed with exit 0; commit and push remain pending. Then resume site-account design and assign one manageable implementation specification without solution code unless requested. Explain exact CLI caller, database-package responsibility, name/password handling, grants, duplicate/failure behavior, and verification before edits. No account implementation specification or files have yet been assigned.",
   "sessionRecap": {
     "date": "2026-10-13",
     "status": "site_selection_recap_correct_architecture_clarity_needed",
