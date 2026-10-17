@@ -1,10 +1,10 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-10-16",
+  "updatedAt": "2026-10-17",
   "currentMilestone": "M1",
   "activeTaskIds": ["META-FOUNDATION"],
   "nextTaskId": "META-FOUNDATION",
-  "latestSession": "docs/progress/sessions/2026-10-16-site-account-handoff.md",
+  "latestSession": "docs/progress/sessions/2026-10-17-role-permissions-handoff.md",
   "tasks": [
     {
       "id": "FOUNDATION-001",
@@ -1381,12 +1381,12 @@
     "Current registry/hostname/public entry and direct Host adapter are locally checked (engine21/API8 tests). HTTP route exists only in tests; full native unknown-error redaction, auth, Unicode/IDNA/IPv6/HTTP2/raw-header handling, provisioning and real tenant storage/isolation remain pending. Latest local pass covers decoder/context source but predates these documentation updates; registry-era work remains uncommitted and has no new exact-SHA CI evidence.",
     "Metadata constructor and fixed registry have recorded user-supplied local checks with25 tests. Engine consumer/site selection now has local engine26/metadata25/API8 evidence; production wiring remains pending. Raw JSON decoding, full fields/modes and real tenant storage isolation remain pending; metadata dependency constraint is not independently negative-tested."
   ],
-  "workspaceState": "site_role_creation_locally_checked_commit_pending",
+  "workspaceState": "owned_database_and_missing_owner_verified_commit_pending",
   "workingMode": "user_implements_assistant_teaches",
-  "lastUserConfirmedImplementationStep": "Role creation chunk checked locally: user-supplied root lint/format, uncached database/CLI typecheck/build and 20 database tests passed with exit 0. Live CLI created closely_beta (0), rejected duplicate SITE_ROLE_ALREADY_EXISTS (1), and rejected invalid name INVALID_SITE_ROLE_NAME (1). Catalog inspection returned one role with all six flags false, no closely_beta database, exit 0. Local socket login failed explicitly because role is not permitted to log in, exit 2. Source reviewed read-only; no assistant test execution.",
+  "lastUserConfirmedImplementationStep": "2026-10-17 user supplied Beta catalog ownership/closed-state, duplicate rejection exit 1 and database connection denial exit 2; missing-owner preflight showed no role/database and old generic CLI failure exit 1. User then explicitly authorized a one-time assistant implementation and verification of the improved diagnostic; assistant evidence is recorded in the current handoff/session, not counted as user implementation.",
   "projectName": "Closely",
   "currentCheckpoint": "docs/progress/HANDOFF.md",
-  "nextUserAction": "Format updated progress docs, stage the four role implementation/test/CLI files and five progress files explicitly, commit and push on codex/site-database-account. Await command output before recording commit/push success. Then design database permissions and ownership before password/login activation; closely_alpha is bootstrap-owned and closely_beta is an existing NOLOGIN role, not a complete site.",
+  "nextUserAction": "Review and checkpoint the verified explicit-owner/closed-database increment plus missing-owner diagnostic: user formats/checks latest docs, stages explicit intended source/test/architecture/progress paths, inspects staged diff, commits and pushes codex/site-database-account. Last confirmed pushed commit remains de36f17; no new PR/CI evidence. Teaching/user-owned implementation resumes after this one-time assistant authorization. Runtime login, grants, saved setup, recovery and restart remain pending.",
   "sessionRecap": {
     "date": "2026-10-13",
     "status": "site_selection_recap_correct_architecture_clarity_needed",

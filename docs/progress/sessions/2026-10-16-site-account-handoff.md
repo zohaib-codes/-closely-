@@ -51,3 +51,13 @@ Role creation chunk checked locally: user-supplied root lint/format, uncached da
 Format updated progress docs, stage the four role implementation/test/CLI files and five progress files explicitly, commit and push on codex/site-database-account. Await command output before recording commit/push success. Then design database permissions and ownership before password/login activation; closely_alpha is bootstrap-owned and closely_beta is an existing NOLOGIN role, not a complete site.
 
 No role-authentication-failure fallback probe, cross-site permissions, password configuration, restart persistence, new CI or Frappe parity established. Documentation updated after the passing formatter.
+
+## Role checkpoint committed and pushed
+
+Role checkpoint committed and pushed as de36f17c3f331bef1808ce6306d262c53e558a06 (user output exit 0; assistant confirmed local HEAD and clean tree before doc update). Next inspect effective CONNECT/CREATE/TEMPORARY privileges of closely_beta on closely_alpha with read-only SQL. Explain PUBLIC defaults separately from NOLOGIN; ownership/runtime permission design still pending. No CI checked for de36f17.
+
+Initial staged whitespace check rejected a trailing space in the SQL template. User removed it and restaged; commit and push then succeeded.
+
+## 2026-10-17 — Effective database privileges inspected
+
+2026-10-17: User-supplied effective privilege inspection for closely_beta on closely_alpha returned CONNECT=true, CREATE=false, TEMPORARY=true, exit 0. This is database privilege evidence, not successful login; NOLOGIN denial was separately verified. PUBLIC defaults explain the access. Next explain and document owner versus runtime-account responsibilities and a staged provisioning sequence before new code; no permission changes made.

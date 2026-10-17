@@ -7,6 +7,7 @@ import {
 async function main(): Promise<void> {
   const command = process.argv[2];
   const databaseName = process.argv[3];
+  const ownerRoleName = process.argv[4];
   const roleName = process.argv[3];
   if (
     command !== "check-database" &&
@@ -22,7 +23,9 @@ async function main(): Promise<void> {
 
   if (
     command === "create-site-database" &&
-    (databaseName === undefined || process.argv.length !== 4)
+    (databaseName === undefined ||
+      ownerRoleName === undefined ||
+      process.argv.length !== 5)
   ) {
     throw new Error("INVALID_ARGUMENTS");
   }
@@ -46,11 +49,11 @@ async function main(): Promise<void> {
   }
 
   if (command === "create-site-database") {
-    if (databaseName === undefined) {
+    if (databaseName === undefined || ownerRoleName === undefined) {
       throw new Error("INVALID_ARGUMENTS");
     }
 
-    await createSiteDatabase(connectionString, databaseName);
+    await createSiteDatabase(connectionString, databaseName, ownerRoleName);
     console.log("SITE_DATABASE_CREATED");
     return;
   }
@@ -79,7 +82,11 @@ try {
     "SITE_ROLE_ALREADY_EXISTS",
   ]);
 
-  if (error instanceof Error && safeCodes.has(error.message)) {
+  if (error instanceof Error && error.message === "SITE_OWNER_NOT_FOUND") {
+    console.error(
+      "SITE_OWNER_NOT_FOUND: The specified database owner role does not exist. Create the owner role first, then retry.",
+    );
+  } else if (error instanceof Error && safeCodes.has(error.message)) {
     console.error(error.message);
   } else if (process.argv[2] === "create-site-database") {
     console.error("SITE_DATABASE_CREATION_FAILED");

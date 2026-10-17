@@ -12,4 +12,4 @@ If you work in a different checkout/computer, bring these docs with the project.
 
 Before changing chats you can say: “Update the handoff; I’m switching chats.” The assistant then inspects relevant files read-only, records the exact pending action and unverified checks, and updates HANDOFF.md, CURRENT.md, state.json and the session note. No implementation is performed during the handoff.
 
-Current checkpoint (2026-10-16): create-site-role implementation, 20 database tests and live NOLOGIN role behavior checked. Role closely_beta exists; database closely_beta does not. Role chunk commit/push pending on codex/site-database-account; last confirmed remote commit dd87ebc. Follow HANDOFF.md before further implementation.
+Current checkpoint (2026-10-17): owned closed database and missing-owner diagnostics checked; assistant implemented/tested only the diagnostic under explicit one-time authorization. Missing-owner live error and absent resources verified, duplicate still rejects. Next: user commit/push; last confirmed pushed commit de36f17. Resume HANDOFF.md and user-owned teaching.
