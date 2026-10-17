@@ -12,6 +12,4 @@ If you work in a different checkout/computer, bring these docs with the project.
 
 Before changing chats you can say: “Update the handoff; I’m switching chats.” The assistant then inspects relevant files read-only, records the exact pending action and unverified checks, and updates HANDOFF.md, CURRENT.md, state.json and the session note. No implementation is performed during the handoff.
 
-Current checkpoint (2026-10-16): physical database creation and failure cases checked; closely_alpha exists. Full local workspace validation passed, including 68 package tests and 13 comparator tests. Implementation commit 15179c2 is pushed to origin/codex/site-foundation-checkpoint. Teaching/Git/progress documents still need their second commit and push; PR/CI/merge remain pending. Follow HANDOFF.md for the exact next action.
-
-Continue beginner-first, complete-feature teaching: explain the visible goal and how the pieces connect before code. After the Git checkpoint, resume persistent site-setup design. Do not repeat database creation or return to isolated helpers or the withdrawn /__debug/site proposal. Full site registration and tenant database isolation remain unfinished.
+Current checkpoint (2026-10-17): PR #2 open, full branch reviewed without blocking code findings, CI passed for cda9add. Five local progress files need user commit/push, then verify new-head CI before normal merge. No merge yet. Resume HANDOFF.md.

@@ -1,29 +1,39 @@
-# Closely — current project state
+# Closely — current checkpoint
 
-Updated 2026-10-16. User writes source and runs commands; assistant teaches, reviews read-only and maintains progress docs. M1 remains in progress; all116 parity entries remain not_started.
+Updated 2026-10-17. User writes implementation and runs commands; assistant teaches, reviews read-only and maintains documentation.
 
-## Last completed user action
+## Latest implementation and verification
 
-2026-10-16 user-supplied full checkpoint batch passed with final exit 0: frozen install, formatting, six reference checksum checks, root lint, uncached Nx typecheck/test/build for seven projects, metadata 25/engine 26/database 9/API 8 tests, parity TypeScript check and 13 comparator tests, final format:check and git diff --check. Local evidence only; no new commit, push or remote CI confirmed.
+2026-10-17 explicit one-time user authorization: assistant implemented missing-owner catalog preflight and actionable CLI message. Assistant-run root format/lint, uncached database/CLI typecheck/build, database tests, format:check and diff --check passed (exit 0). Live missing owner returned SITE_OWNER_NOT_FOUND with fixed recovery text, exit 1; catalog before/after showed role=false and database=false, exit 0. Existing Beta duplicate still returns DATABASE_ALREADY_EXISTS, exit 1. Earlier 31-test count and Beta ownership/closed connection evidence remain recorded separately. This implementation was subsequently committed/pushed at cda9add; see Git checkpoint.
 
-## Current implementation
+## Verified role checkpoint
 
-Metadata exposes normal-DocType/Data contracts, immutable validated construction and a fixed per-instance DocType registry. Engine now consumes public @closely/metadata through workspace:*; lockfile links ../metadata. createSiteMetadataRegistry constructs one private registry per exact configured site name and selects it using OperationContext.site.siteName. Unknown site/model are distinct results; no fallback. Root lint explicitly prepares contracts/metadata/engine declarations.
+User implemented createSiteRole, its public export, create-site-role CLI dispatch/error handling, and 10 invalid-name tests. User-supplied root format/lint, uncached database/CLI typecheck/build, 20 database tests and final formatting/whitespace checks passed with exit 0. Assistant inspected corrected source read-only; no assistant build/test execution.
 
-Existing hostname registry, configuration decoder, immutable operation context and test-only HTTP Host/context routes remain. Production API provides liveness only. Database package now checks connections and creates validated/quoted physical databases through pg. CLI exposes check-database and create-site-database. User created closely_alpha in the local development PostgreSQL service; it is bootstrap-owned and is not yet a registered complete site.
+Live user output: create-site-role closely_beta succeeded (0); duplicate returned SITE_ROLE_ALREADY_EXISTS (1); invalid name returned INVALID_SITE_ROLE_NAME (1). Catalog showed one role with LOGIN/SUPERUSER/CREATEDB/CREATEROLE/REPLICATION/BYPASSRLS all false, no closely_beta database, exit 0. Local socket login explicitly failed because closely_beta is not permitted to log in (2).
+
+## Git checkpoint
+
+User committed and pushed cda9add0ed35c77ce678216ff26177c0bdf96b82 (feat: create site databases with explicit ownership), exit 0. Assistant confirmed HEAD and local upstream-tracking ref match, with a clean working tree before this documentation update. Prior de36f17 role checkpoint and dd87ebc correction are included on the branch. PR #2 https://github.com/zohaib-codes/-closely-/pull/2 is open. Assistant full branch review found no blocking code findings for this increment. PR CI run 38987185589 and push run 38984922110 both passed for cda9add; GitHub reports CLEAN/mergeable. No formal approval or merge recorded. CI does not run the manual live PostgreSQL probes. Only this checkpoint documentation is newly uncommitted.
+
+## Feature and existing resources
+
+Goal: create a local site, persist setup, and reopen after restart. Full site creation is unfinished. CLI currently offers check-database, create-site-database and create-site-role; database package owns SQL/client cleanup, CLI owns arguments and safe output.
+
+- closely_bootstrap: powerful setup account, not an application user.
+- closely_alpha: existing database owned by closely_bootstrap, with previously inspected default ACL. Do not silently adopt, drop, recreate or change its ownership.
+- closely_beta: existing NOLOGIN role owns the closely_beta database. User catalog output confirms datallowconn=false; an attempted bootstrap connection was refused with exit 2. Preserve both resources.
+
+No passwords, site grants, saved credentials, setup recovery, startup connection wiring or two-site isolation implemented/verified. Production API still provides liveness only. M1 remains in progress; full Frappe parity is not established.
 
 ## Next single lesson
 
-PR #1 https://github.com/zohaib-codes/-closely-/pull/1 is open from codex/site-foundation-checkpoint into main. Both checkpoint commits are pushed; head is 63c51cc6b861b87ad6b89dcbc7ae710f71fc8a98. Assistant read-only GitHub inspection confirms pull_request CI run 38836332274 succeeded for that exact head and GitHub reports mergeable/clean. No formal approval or merge recorded. Review found stale project-structure wording about the engine metadata consumer; assistant corrected documentation only and recorded this evidence. Next user formats, commits and pushes these documentation corrections, then supplies output. Verify CI again for the new head before guiding merge.
+PR #2 is open and attached. Full branch review found no blocking code findings for the bounded prerequisite. PR CI run 38987185589 and push CI run 38984922110 succeeded for cda9add0ed35c77ce678216ff26177c0bdf96b82; GitHub mergeStateStatus CLEAN, no formal review approval recorded. User formats/stages/commits/pushes the five pending progress files, then assistant verifies CI at the new PR head before guiding a normal merge commit. No merge performed; do not keep creating another documentation-only commit merely to record the next CI refresh.
 
-## Evidence limits
+## Teaching continuity
 
-Typed startup registrations are not an unknown-input decoder or authentication boundary. Site selection is locally checked in memory, not actual tenant database isolation. Raw flags/default decoding, complete field/mode/options/permission support, module/controller/route checks, customization, cache invalidation and storage remain pending. Source review is not Frappe runtime parity. Logical identifier limits do not establish physical SQL identifier safety.
+User paused to ask what database creation versus role creation actually accomplishes. Explain using a familiar CRUD connection string: database holds data; PostgreSQL account controls server access; Closely application users and their document permissions are a separate layer. Roles are cluster-wide; matching names do not bind a role to a database. Distinguish LOGIN, database CONNECT, schema/table permissions and ownership. PUBLIC defaults mean granting own-site access alone cannot establish isolation.
 
-Remote PR CI passed for 63c51cc; later documentation corrections require fresh CI before merge. User output shows closely-development-postgres-1 running healthy; no assistant live service inventory. Documentation updates postdate the passing formatter and await the next normal check batch. No missing output from this batch. User correctly answered the site-selection recap; broader architecture understanding needs guided explanation. Questions are not a prerequisite gate.
+Continue purpose and complete feature journey before files. User prefers an independent specification without solution code, but explicitly requested exact fixes when review found issues. Give one manageable edit/check chunk, wait for evidence, and save learning questions for session end. Do not assume prior explanations establish understanding.
 
-Details: [session](sessions/2026-10-13-site-metadata-integration.md), [state](state.json).
-
-Teaching correction: see [working agreement](../learning/WORKING-AGREEMENT.md) and [session](sessions/2026-10-13-teaching-reset.md). Live read-only search confirms createSiteRegistry/createOperationContext callers are tests; app.ts registers only /health/live.
-
-Latest evidence: [PostgreSQL startup](sessions/2026-10-15-postgresql-startup.md).
+Details: [latest session](sessions/2026-10-17-role-permissions-handoff.md), [state](state.json).

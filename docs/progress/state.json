@@ -1,10 +1,10 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-10-16",
+  "updatedAt": "2026-10-17",
   "currentMilestone": "M1",
   "activeTaskIds": ["META-FOUNDATION"],
   "nextTaskId": "META-FOUNDATION",
-  "latestSession": "docs/progress/sessions/2026-10-16-git-workflow.md",
+  "latestSession": "docs/progress/sessions/2026-10-17-role-permissions-handoff.md",
   "tasks": [
     {
       "id": "FOUNDATION-001",
@@ -1381,12 +1381,12 @@
     "Current registry/hostname/public entry and direct Host adapter are locally checked (engine21/API8 tests). HTTP route exists only in tests; full native unknown-error redaction, auth, Unicode/IDNA/IPv6/HTTP2/raw-header handling, provisioning and real tenant storage/isolation remain pending. Latest local pass covers decoder/context source but predates these documentation updates; registry-era work remains uncommitted and has no new exact-SHA CI evidence.",
     "Metadata constructor and fixed registry have recorded user-supplied local checks with25 tests. Engine consumer/site selection now has local engine26/metadata25/API8 evidence; production wiring remains pending. Raw JSON decoding, full fields/modes and real tenant storage isolation remain pending; metadata dependency constraint is not independently negative-tested."
   ],
-  "workspaceState": "site_metadata_integration_checked",
+  "workspaceState": "pr2_reviewed_ci_passed_progress_commit_pending",
   "workingMode": "user_implements_assistant_teaches",
-  "lastUserConfirmedImplementationStep": "2026-10-16 database creation batch: user-supplied root format/lint succeeds; uncached database/CLI typecheck/build and9 invalid-name tests pass; final format:check and exit0. Read-only creation function/tests/public export/CLI/package review matches correction. Manual CLI: check-database success0; closely_alpha creation success0; duplicate DATABASE_ALREADY_EXISTS1; invalid alpha INVALID_DATABASE_NAME1; wrong-password closely_denied creation fails1. PostgreSQL catalog query returns only closely_alpha and exit0. Physical database creation confirmed by supplied live output; no complete site or tenant-role isolation established.",
+  "lastUserConfirmedImplementationStep": "2026-10-17 user committed/pushed cda9add0ed35c77ce678216ff26177c0bdf96b82 on codex/site-database-account, exit 0. Assistant confirmed local HEAD/upstream ref and clean tree before progress update. Implementation and validation evidence in current handoff/session; no PR or exact-head CI confirmed.",
   "projectName": "Closely",
   "currentCheckpoint": "docs/progress/HANDOFF.md",
-  "nextUserAction": "PR #1 https://github.com/zohaib-codes/-closely-/pull/1 is open from codex/site-foundation-checkpoint into main. Both checkpoint commits are pushed; head is 63c51cc6b861b87ad6b89dcbc7ae710f71fc8a98. Assistant read-only GitHub inspection confirms pull_request CI run 38836332274 succeeded for that exact head and GitHub reports mergeable/clean. No formal approval or merge recorded. Review found stale project-structure wording about the engine metadata consumer; assistant corrected documentation only and recorded this evidence. Next user formats, commits and pushes these documentation corrections, then supplies output. Verify CI again for the new head before guiding merge.",
+  "nextUserAction": "PR #2 is open and attached. Full branch review found no blocking code findings for the bounded prerequisite. PR CI run 38987185589 and push CI run 38984922110 succeeded for cda9add0ed35c77ce678216ff26177c0bdf96b82; GitHub mergeStateStatus CLEAN, no formal review approval recorded. User formats/stages/commits/pushes the five pending progress files, then assistant verifies CI at the new PR head before guiding a normal merge commit. No merge performed; do not keep creating another documentation-only commit merely to record the next CI refresh.",
   "sessionRecap": {
     "date": "2026-10-13",
     "status": "site_selection_recap_correct_architecture_clarity_needed",

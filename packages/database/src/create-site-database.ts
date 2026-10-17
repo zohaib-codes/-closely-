@@ -1,18 +1,27 @@
 import { Client, DatabaseError, escapeIdentifier } from "pg";
 
-function validateDatabaseName(name: string): void {
-  const allowedNamePattern = /^closely_[a-z0-9_]{1,56}$/;
+function validateDatabaseNameAndOwnerRoleName(
+  name: string,
+  ownerRoleName: string,
+): void {
+  const allowedNamePattern = /^closely_[a-z0-9_]{1,55}$/;
 
   if (name !== name.trim() || !allowedNamePattern.test(name)) {
     throw new Error("INVALID_DATABASE_NAME");
+  } else if (
+    ownerRoleName !== ownerRoleName.trim() ||
+    !allowedNamePattern.test(ownerRoleName)
+  ) {
+    throw new Error("INVALID_SITE_ROLE_NAME");
   }
 }
 
 export async function createSiteDatabase(
   connectionString: string,
   databaseName: string,
+  ownerRoleName: string,
 ): Promise<void> {
-  validateDatabaseName(databaseName);
+  validateDatabaseNameAndOwnerRoleName(databaseName, ownerRoleName);
 
   const client = new Client({
     connectionString,
@@ -23,8 +32,20 @@ export async function createSiteDatabase(
   try {
     await client.connect();
 
+    const ownerResult = await client.query(
+      "SELECT 1 FROM pg_catalog.pg_roles WHERE rolname = $1",
+      [ownerRoleName],
+    );
+
+    if (ownerResult.rows.length === 0) {
+      throw new Error("SITE_OWNER_NOT_FOUND");
+    }
+
     await client.query(
-      `CREATE DATABASE ${escapeIdentifier(databaseName)} TEMPLATE template0`,
+      `CREATE DATABASE ${escapeIdentifier(databaseName)}
+      OWNER ${escapeIdentifier(ownerRoleName)}
+      ALLOW_CONNECTIONS false
+      TEMPLATE template0`,
     );
   } catch (error: unknown) {
     if (error instanceof DatabaseError && error.code === "42P04") {

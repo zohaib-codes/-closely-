@@ -44,3 +44,15 @@ Accepted in the user's installed dependency selection, 2026-10-08. Closely uses 
 Typed lint tooling still declares TypeScript >=4.8.4 <6.1.0 at research time. Exact Nx/editor/lint integration is checked when introduced. Distinguish CLI typechecking, compiler API consumers and runtime transpilation; tsx is a development runner, not our typecheck gate.
 
 Evidence: [TypeScript release and side-by-side guidance](https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/), [typescript-eslint compatibility](https://typescript-eslint.io/users/dependency-versions/). Package scope is @closely/*.
+
+## ADR-018 — Separate site ownership from runtime database access
+
+Accepted explicitly by the user on 2026-10-17. Each site has a NOLOGIN owner role and a separate restricted runtime login. Runtime processes receive only required database/schema/table/sequence privileges; they must not inherit or SET ROLE into the owner. Controlled provisioning and schema changes use an administrative path. Ownership of future schema objects must be assigned deliberately; database ownership alone does not transfer all object ownership.
+
+This is a Closely adaptation: pinned Frappe PostgreSQL setup creates a password login and assigns it database ownership on PostgreSQL versions above 15. Separating ownership reduces privileges held during ordinary requests but adds grant maintenance and a distinct schema-change path, including future DocType changes. Application-user authorization remains engine policy.
+
+First increment: require an explicit existing owner in create-site-database and create the database with TEMPLATE template0 and ALLOW_CONNECTIONS false in one statement. This low-level administrative command validates identifiers; it does not yet certify an existing role's full privilege/membership policy. Provisioning must establish that policy before a site is ready. PUBLIC defaults still require explicit removal before enabling access. Disabled connections also block setup connections to the new database; subsequent configuration must deliberately sequence database-level restrictions, opening connections, schema setup and readiness.
+
+CREATE DATABASE cannot run inside a transaction block. Do not automatically drop/adopt a database on failure or retry. A lost response can leave a successfully created, closed database; inspect catalog ownership and connection state through the maintenance database before deciding recovery. Durable provisioning history, concurrency/recovery handling and site readiness remain required later work under OPS-001, not implemented guarantees of this increment. Preserve existing closely_alpha and the existing closely_beta role.
+
+Sources: [PostgreSQL 18 CREATE DATABASE](https://www.postgresql.org/docs/18/sql-createdatabase.html), [role membership](https://www.postgresql.org/docs/18/role-membership.html), [pinned Frappe setup](https://github.com/frappe/frappe/blob/6b450a166e076dd842e4db7ea0843f62881e62ac/frappe/database/postgres/setup_db.py). No runtime parity or new check results claimed.
