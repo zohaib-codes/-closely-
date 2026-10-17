@@ -217,7 +217,7 @@ Planned teaching order: shared company/currency/fiscal masters and precision rul
 
 Every lesson records explained, user-performed and checked states separately. A stage completes on its acceptance evidence. To assess engineering skills, the user should explain the design, implement a nearby change, diagnose a failure, defend a tradeoff and review a boundary violation with decreasing guidance. These are learning assessments, not a guaranteed title.
 
-The full module/feature backlog remains in [state.json](../progress/state.json) and [features.json](../parity/features.json). Detailed lesson/file lists expand before each stage. Do not pre-create empty packages or install future tools to make the roadmap look complete.
+The full historical task backlog remains in the archive linked by [state.json](../progress/state.json); current product scope remains in [features.json](../parity/features.json). The current next action is in HANDOFF.md, not historical task notes. Detailed lesson/file lists expand before each stage. Do not pre-create empty packages or install future tools to make the roadmap look complete.
 
 ## Active feature sequence — 2026-10-14
 

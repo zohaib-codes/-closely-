@@ -1,39 +1,39 @@
 # Closely — current checkpoint
 
-Updated 2026-10-17. User writes implementation and runs commands; assistant teaches, reviews read-only and maintains documentation.
+Updated 2026-10-17. User implements and runs commands; assistant teaches, reviews read-only and maintains docs. Follow START-HERE.md for selective startup. This checkpoint supersedes historical next-action notes, but actual files and evidence must still be inspected.
 
-## Latest implementation and verification
+## Objective and current scope
 
-2026-10-17 explicit one-time user authorization: assistant implemented missing-owner catalog preflight and actionable CLI message. Assistant-run root format/lint, uncached database/CLI typecheck/build, database tests, format:check and diff --check passed (exit 0). Live missing owner returned SITE_OWNER_NOT_FOUND with fixed recovery text, exit 1; catalog before/after showed role=false and database=false, exit 0. Existing Beta duplicate still returns DATABASE_ALREADY_EXISTS, exit 1. Earlier 31-test count and Beta ownership/closed connection evidence remain recorded separately. This implementation was subsequently committed/pushed at cda9add; see Git checkpoint.
+Build a usable local site: create PostgreSQL storage, save setup and reopen after restart. Full site creation is unfinished. Active work is the bounded CLI/database prerequisite that removes PUBLIC database privileges and verifies their absence. M1 remains in progress; OPS-001 is brought forward under the roadmap's feature-first sequence. No full Frappe parity or two-site isolation claim.
 
-## Verified role checkpoint
+## Implementation and recorded evidence
 
-User implemented createSiteRole, its public export, create-site-role CLI dispatch/error handling, and 10 invalid-name tests. User-supplied root format/lint, uncached database/CLI typecheck/build, 20 database tests and final formatting/whitespace checks passed with exit 0. Assistant inspected corrected source read-only; no assistant build/test execution.
+User drafted restrict-site-database-access.ts, then specifically authorized assistant completion in the prior session. Assistant completed validation/revocation/postcondition/cleanup, public export, CLI dispatch/safe errors and ten invalid-name tests. This was authorized assistant work, not independent user completion or continuing implementation permission.
 
-Live user output: create-site-role closely_beta succeeded (0); duplicate returned SITE_ROLE_ALREADY_EXISTS (1); invalid name returned INVALID_SITE_ROLE_NAME (1). Catalog showed one role with LOGIN/SUPERUSER/CREATEDB/CREATEROLE/REPLICATION/BYPASSRLS all false, no closely_beta database, exit 0. Local socket login explicitly failed because closely_beta is not permitted to log in (2).
+Prior-session assistant-run checks recorded passing: root format/lint, uncached database/CLI typecheck/build, 41 database tests, final format:check and diff --check. Live Beta restriction and repetition returned SITE_DATABASE_ACCESS_RESTRICTED/exit 0. Catalog showed Beta owner closely_beta, datallowconn=false and no PUBLIC privileges; Alpha ownership/connection setting/default PUBLIC privileges were unchanged. Missing/extra arguments, invalid name, missing database and wrong password produced safe failures/exit 1. These checks were not rerun in the current chat. Details: sessions/2026-10-17-database-access-handoff.md.
 
-## Git checkpoint
+Current-chat read-only review inspected source/tests/export/CLI and progress diff. User then supplied successful format:check and staged whitespace/stat checks with final exit 0; assistant confirmed all ten intended files staged. These formatting results PRECEDE the workflow documentation edits below.
 
-User committed and pushed cda9add0ed35c77ce678216ff26177c0bdf96b82 (feat: create site databases with explicit ownership), exit 0. Assistant confirmed HEAD and local upstream-tracking ref match, with a clean working tree before this documentation update. Prior de36f17 role checkpoint and dd87ebc correction are included on the branch. PR #2 https://github.com/zohaib-codes/-closely-/pull/2 is open. Assistant full branch review found no blocking code findings for this increment. PR CI run 38987185589 and push run 38984922110 both passed for cda9add; GitHub reports CLEAN/mergeable. No formal approval or merge recorded. CI does not run the manual live PostgreSQL probes. Only this checkpoint documentation is newly uncommitted.
+## Git and working tree
 
-## Feature and existing resources
+Last inspected branch: codex/site-database-access, HEAD 9fdabfdb11c471b8c5d6359c4239762c1415cc8c (PR #2 merge), no upstream. Prior PR #2 CI passed for ebd4ab7; it does not cover current access changes. No access checkpoint commit/push/PR/CI yet.
 
-Goal: create a local site, persist setup, and reopen after restart. Full site creation is unfinished. CLI currently offers check-database, create-site-database and create-site-role; database package owns SQL/client cleanup, CLI owns arguments and safe output.
+Ten paths were staged by the user: apps/cli/src/main.ts; packages/database/src/index.ts, restrict-site-database-access.ts and its test; docs/progress/CURRENT.md, HANDOFF.md, NEW-CHAT-PROMPT.md, state.json and sessions/2026-10-17-role-permissions-handoff.md plus 2026-10-17-database-access-handoff.md. Assistant subsequently edited workflow docs WITHOUT staging, committing or changing implementation. Some docs now have staged and newer unstaged versions; new archive/session files are untracked. Inspect both diffs and restage intended docs before committing. Never overwrite or silently unstage the user's snapshot.
 
-- closely_bootstrap: powerful setup account, not an application user.
-- closely_alpha: existing database owned by closely_bootstrap, with previously inspected default ACL. Do not silently adopt, drop, recreate or change its ownership.
-- closely_beta: existing NOLOGIN role owns the closely_beta database. User catalog output confirms datallowconn=false; an attempted bootstrap connection was refused with exit 2. Preserve both resources.
+## Latest decision and next single action
 
-No passwords, site grants, saved credentials, setup recovery, startup connection wiring or two-site isolation implemented/verified. Production API still provides liveness only. M1 remains in progress; full Frappe parity is not established.
+User requested lower startup overhead without losing cross-chat reliability. Assistant changed only workflow/progress docs: one authoritative HANDOFF, small state index, CURRENT pointer, selective startup and generic new-chat prompt. The complete previous tracker is preserved byte-for-byte in archive/state-through-2026-10-17.json. Detailed rationale/verification: sessions/2026-10-17-workflow-streamlining.md. No product scope or engineering gate removed.
 
-## Next single lesson
+Next: user runs formatting check for the changed docs, then we inspect/restage explicit intended documentation alongside the already-staged implementation. Review the complete staged diff before commit. Suggested implementation checkpoint message remains feat: restrict public access to site databases; workflow changes may be separately grouped if useful, preserving existing staged work. Then first push uses git push -u origin codex/site-database-access; await output, review PR and CI at its actual head before merge. Do not repeat passed runtime checks merely for documentation changes. No new runtime lesson before this checkpoint.
 
-PR #2 is open and attached. Full branch review found no blocking code findings for the bounded prerequisite. PR CI run 38987185589 and push CI run 38984922110 succeeded for cda9add0ed35c77ce678216ff26177c0bdf96b82; GitHub mergeStateStatus CLEAN, no formal review approval recorded. User formats/stages/commits/pushes the five pending progress files, then assistant verifies CI at the new PR head before guiding a normal merge commit. No merge performed; do not keep creating another documentation-only commit merely to record the next CI refresh.
+## Limits and protected resources
 
-## Teaching continuity
+Insufficient-grant/postcondition-failure live path remains untested; no automated PostgreSQL integration or concurrency proof. Revocation followed by verification failure can leave restrictions applied; no automatic regrant. PUBLIC removal does not remove direct/member grants.
 
-User paused to ask what database creation versus role creation actually accomplishes. Explain using a familiar CRUD connection string: database holds data; PostgreSQL account controls server access; Closely application users and their document permissions are a separate layer. Roles are cluster-wide; matching names do not bind a role to a database. Distinguish LOGIN, database CONNECT, schema/table permissions and ownership. PUBLIC defaults mean granting own-site access alone cannot establish isolation.
+closely_bootstrap is a powerful setup account. Preserve closely_alpha (bootstrap-owned, default privileges) and closely_beta (NOLOGIN owner role, database connections disabled). Development PostgreSQL was running at the last live probe; current process state is not reverified. No secrets belong in docs/Git. Runtime login/grants, persisted credentials, setup recovery, startup wiring, restart and two-site denial tests remain pending. Production API still exposes liveness only.
 
-Continue purpose and complete feature journey before files. User prefers an independent specification without solution code, but explicitly requested exact fixes when review found issues. Give one manageable edit/check chunk, wait for evidence, and save learning questions for session end. Do not assume prior explanations establish understanding.
+## Teaching and reading pointers
 
-Details: [latest session](sessions/2026-10-17-role-permissions-handoff.md), [state](state.json).
+Prefer an independent specification without solution code unless requested; explain purpose, whole feature journey, file responsibility and tradeoffs, then one edit/check step. Link focused official docs; learning questions belong at session end. No unanswered coding question or pending runtime output; workflow formatting is pending.
+
+For this Git step: AGENTS Git rules and actual staged/unstaged diff. Before later runtime work: ROADMAP M1.06/M1.08/M1.10 and feature-first delivery, engineering/handbook.md, engineering/project-structure.md and testing-and-operations.md, parity/features.json OPS-001. Retrieve exact historical commands from the linked implementation session only as needed. state.json indexes older task evidence; never treat its archive as current status.
