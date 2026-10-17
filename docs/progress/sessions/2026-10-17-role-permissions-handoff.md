@@ -83,3 +83,13 @@ Preflight remains a diagnostic check, not a lock against concurrent role removal
 ## Pre-commit review
 
 Read-only source/diff review complete; current branch codex/site-database-account has no committed divergence from its local upstream-tracking ref (0/0; no live remote refresh). Corrected stale Beta resource summary in CURRENT/HANDOFF and clarified user versus assistant evidence in state.json. Assign explicit staging of three source/test files, ADR document and six progress documents (ten paths total), staged review, commit and push. No Git mutation performed by assistant.
+
+## Ownership checkpoint committed and pushed
+
+User output confirms commit/push cda9add0ed35c77ce678216ff26177c0bdf96b82, exit 0. Assistant confirmed HEAD/upstream-tracking ref match and clean working tree before this doc update. Attached formatting output passed; staged diff was displayed. Read-only gh pr list found no open PR for this branch. Open a PR from codex/site-database-account to main for restricted site roles and explicit-owner closed database creation, including missing-owner diagnostics and identifier limit correction. Read-only gh pr list found no open PR for this branch. User creates PR; assistant reviews full branch diff and exact-head CI before any merge. New runtime-login/grant work waits until this coherent prerequisite is reviewed. User runs Git mutations.
+
+## PR #2 reviewed
+
+PR #2 is open and attached. Full branch review found no blocking code findings for the bounded prerequisite. PR CI run 38987185589 and push CI run 38984922110 succeeded for cda9add0ed35c77ce678216ff26177c0bdf96b82; GitHub mergeStateStatus CLEAN, no formal review approval recorded. User formats/stages/commits/pushes the five pending progress files, then assistant verifies CI at the new PR head before guiding a normal merge commit. No merge performed; do not keep creating another documentation-only commit merely to record the next CI refresh.
+
+Scope limitation: unit tests cover identifier validation; live role attributes, ownership, duplicate/missing-owner failure and connection-denial evidence are manual checks, not automated PostgreSQL CI. Runtime account, grants, durable setup/recovery and restart remain outside the increment.

@@ -4,7 +4,7 @@ Updated 2026-10-17. User writes implementation and runs commands; assistant teac
 
 ## Latest implementation and verification
 
-2026-10-17 explicit one-time user authorization: assistant implemented missing-owner catalog preflight and actionable CLI message. Assistant-run root format/lint, uncached database/CLI typecheck/build, database tests, format:check and diff --check passed (exit 0). Live missing owner returned SITE_OWNER_NOT_FOUND with fixed recovery text, exit 1; catalog before/after showed role=false and database=false, exit 0. Existing Beta duplicate still returns DATABASE_ALREADY_EXISTS, exit 1. Earlier 31-test count and Beta ownership/closed connection evidence remain recorded separately. No commit/push performed.
+2026-10-17 explicit one-time user authorization: assistant implemented missing-owner catalog preflight and actionable CLI message. Assistant-run root format/lint, uncached database/CLI typecheck/build, database tests, format:check and diff --check passed (exit 0). Live missing owner returned SITE_OWNER_NOT_FOUND with fixed recovery text, exit 1; catalog before/after showed role=false and database=false, exit 0. Existing Beta duplicate still returns DATABASE_ALREADY_EXISTS, exit 1. Earlier 31-test count and Beta ownership/closed connection evidence remain recorded separately. This implementation was subsequently committed/pushed at cda9add; see Git checkpoint.
 
 ## Verified role checkpoint
 
@@ -14,9 +14,7 @@ Live user output: create-site-role closely_beta succeeded (0); duplicate returne
 
 ## Git checkpoint
 
-Branch codex/site-database-account. Last confirmed commit/push de36f17c3f331bef1808ce6306d262c53e558a06, feat: create restricted PostgreSQL site roles. User supplied successful push and exit 0; assistant confirmed local HEAD and clean tree before subsequent documentation updates. Preceding correction dd87ebc is also pushed. No PR or CI result checked for this increment. Prior PR #1 was merged; do not repeat that workflow.
-
-Current uncommitted work includes create-site-database.ts, its tests, CLI main.ts, architecture and progress documentation. Source and targeted live checks passed; latest documentation wording needs the final user-run formatting check before staging. Commit/push this coherent increment after review and verification.
+User committed and pushed cda9add0ed35c77ce678216ff26177c0bdf96b82 (feat: create site databases with explicit ownership), exit 0. Assistant confirmed HEAD and local upstream-tracking ref match, with a clean working tree before this documentation update. Prior de36f17 role checkpoint and dd87ebc correction are included on the branch. PR #2 https://github.com/zohaib-codes/-closely-/pull/2 is open. Assistant full branch review found no blocking code findings for this increment. PR CI run 38987185589 and push run 38984922110 both passed for cda9add; GitHub reports CLEAN/mergeable. No formal approval or merge recorded. CI does not run the manual live PostgreSQL probes. Only this checkpoint documentation is newly uncommitted.
 
 ## Feature and existing resources
 
@@ -30,7 +28,7 @@ No passwords, site grants, saved credentials, setup recovery, startup connection
 
 ## Next single lesson
 
-Review and checkpoint the verified explicit-owner/closed-database increment plus missing-owner diagnostic: user formats/checks latest docs, stages explicit intended source/test/architecture/progress paths, inspects staged diff, commits and pushes codex/site-database-account. Last confirmed pushed commit remains de36f17; no new PR/CI evidence. Teaching/user-owned implementation resumes after this one-time assistant authorization. Runtime login, grants, saved setup, recovery and restart remain pending.
+PR #2 is open and attached. Full branch review found no blocking code findings for the bounded prerequisite. PR CI run 38987185589 and push CI run 38984922110 succeeded for cda9add0ed35c77ce678216ff26177c0bdf96b82; GitHub mergeStateStatus CLEAN, no formal review approval recorded. User formats/stages/commits/pushes the five pending progress files, then assistant verifies CI at the new PR head before guiding a normal merge commit. No merge performed; do not keep creating another documentation-only commit merely to record the next CI refresh.
 
 ## Teaching continuity
 
