@@ -1,5 +1,7 @@
 # Learning and implementation agreement
 
+Current concise policy lives in root AGENTS.md; startup follows ../progress/START-HERE.md. This document preserves detailed teaching rationale and dated decisions. Read relevant sections when needed; dated next-action statements are historical and never override the current HANDOFF.md.
+
 Accepted from the user's correction on 2026-10-08. This overrides the earlier autonomous scaffolding workflow.
 
 ## Goal and ownership

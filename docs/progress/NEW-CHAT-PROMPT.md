@@ -1,15 +1,9 @@
 # Prompt for a new chat
 
-Open a new local chat in the same project folder /home/zabii/frappe clone, then paste:
+Open this project folder and paste:
 
 ```text
-Continue Closely in this project. Read AGENTS.md, docs/progress/START-HERE.md and docs/progress/HANDOFF.md, then the relevant lesson documents. Check the actual files and resume from the recorded checkpoint.
-
-Keep our coding-led teaching style. Before each new package/file, explain in plain English the real action it supports, where it fits in the full system, why we chose that responsibility and what failure it prevents. Do not assume architecture knowledge or give unexplained file instructions. Link focused official docs, explain the code, then give one manageable edit-and-check chunk and let me write and run everything. Ask learning questions at the end of the coding session. Do not implement on my behalf or assume pending checks passed. Maintain the progress docs as we go.
+Continue Closely. Follow AGENTS.md and docs/progress/START-HERE.md, read the current HANDOFF.md, and verify the relevant files/Git state. Resume the recorded next step with our user-owned, coding-led teaching style. Retrieve historical details only when needed; do not assume pending checks passed. Maintain the checkpoint as we go.
 ```
 
-If you work in a different checkout/computer, bring these docs with the project. A fresh chat needs access to the files; a prompt alone does not supply their contents. Do not paste the entire old conversation when these records are current.
-
-Before changing chats you can say: “Update the handoff; I’m switching chats.” The assistant then inspects relevant files read-only, records the exact pending action and unverified checks, and updates HANDOFF.md, CURRENT.md, state.json and the session note. No implementation is performed during the handoff.
-
-Current checkpoint (2026-10-17): PR #2 open, full branch reviewed without blocking code findings, CI passed for cda9add. Five local progress files need user commit/push, then verify new-head CI before normal merge. No merge yet. Resume HANDOFF.md.
+Before switching, say: “Update the handoff; I’m switching chats.” Keep the project files available in the new chat. The checkpoint supplies current status; this reusable prompt deliberately contains no dated status. Do not paste the whole conversation.

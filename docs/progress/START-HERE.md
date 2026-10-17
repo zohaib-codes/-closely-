@@ -1,34 +1,31 @@
-# Session startup and handoff
+# Resume Closely reliably
 
-Every new chat must read this before assuming progress or executing work.
+## Required startup
 
-## Startup
+1. Apply root AGENTS.md. If its complete instructions are already supplied in the chat, do not reread the same file unless there is evidence it changed.
+2. Read [HANDOFF.md](HANDOFF.md), the single current checkpoint. Do not also load CURRENT.md, the full tracker archive, historical sessions, the full working agreement or the whole roadmap by default.
+3. Inspect branch, HEAD, working tree and upstream read-only. Inspect the exact source/diff relevant to the next action, including staged versus unstaged changes. Read only enough to establish the current behavior; a checkpoint is a navigation aid, not proof of implementation.
+4. Follow the checkpoint's reading pointers. Before runtime guidance, read the relevant roadmap milestone/lesson, engineering handbook and relevant engineering/feature sections. For a Git-only checkpoint, review the diff and Git rules; unrelated runtime lessons can wait.
+5. State confirmed status and give one manageable user-owned step. Never restart completed lessons solely because this is a new chat.
 
-1. Read root AGENTS.md and [learning agreement](../learning/WORKING-AGREEMENT.md).
-2. Read [checkpoint](HANDOFF.md), [current state](CURRENT.md) and [task tracker](state.json). Read the latest session only if more detail is needed; do not load the entire historical log.
-3. Read ../learning/ROADMAP.md, the relevant lesson/official reading, engineering/architecture docs and feature entry.
-4. Inspect relevant existing files read-only. Read CURRENT.md for actual files. Inspect current state: Closely manifests, lockfile and dependency tree now exist; source/configuration/check completion must be verified rather than assumed. Config files now exist; consult HANDOFF.md for the pending source action.
-5. Resume from the user's last confirmed action. If none is recorded, start the first conceptual lesson. A plan or previous assistant implementation does not establish user completion.
+## Expand context when needed
 
-## Records
+Search first, then read matching sections. Use state.json for history pointers; extract the relevant task/check from its historical tracker instead of printing the whole JSON. Read the linked session when exact commands, authorship, output, rationale or unresolved questions are absent from HANDOFF.md. Read WORKING-AGREEMENT.md for a teaching ambiguity; consult ADRs and reference-lock.json for architecture/reference questions.
 
-- state.json: authoritative task status and recorded evidence; maintained manually.
-- CURRENT.md: concise readable summary, maintained manually alongside state.json.
-- sessions/: learning handoffs and historical records; latestSession identifies the current handoff.
-- ../parity/features.json: product capability status, separate from learning/tooling progress.
-- ../architecture/decisions.md: architectural decisions and explicit differences.
-- ../research/reference-lock.json: pinned behavioral source and snapshot identities.
+If files, user reports and checkpoint disagree, inspect the specific evidence and explain the discrepancy. Ask only when the missing fact blocks a safe next step. Do not fill gaps with memory or inference, silently assume checks passed, or discard a relevant requirement to meet a reading budget. Large diffs may require more reading; retrieve them in bounded sections rather than truncating them.
 
-## During a lesson
+## Record ownership
 
-Explain purpose, architecture, code and commands before the user acts. Give one manageable action and wait for their result. Update progress only from actual evidence; preserve questions and incomplete verification. Do not run installation/build/test commands or modify implementation on the user's behalf without specific authorization.
+- AGENTS.md: current teaching, engineering and Git rules.
+- HANDOFF.md: current actionable status, preferably 500–800 words; exceed this when necessary to preserve critical facts.
+- state.json: small index of current milestone and evidence/history locations; no duplicated narrative.
+- CURRENT.md: stable pointer to HANDOFF.md; no updates needed during ordinary work.
+- sessions/: dated detailed evidence and decisions; older statements remain historical.
+- archive/: preserved old trackers, retrieved selectively.
+- ROADMAP.md and parity/features.json: full lesson gates and product scope; shrinking startup never reduces scope.
 
-## Handoff
+## During work and chat switches
 
-Record what was explained, the last user-confirmed action, files actually created by the user, exact verification results, open questions and the next single lesson. Keep state.json and CURRENT.md consistent manually. No automated documentation/progress tools exist yet. Record retained services if any; never include secrets.
+Update HANDOFF.md after meaningful progress, decisions or blockers, and before a requested chat switch. Record objective/scope, actual user versus authorized assistant work, branch/commit/staging/upstream, local versus remote evidence, failed/unrun checks, exact next action, open questions, protected resources and reading pointers. Put lengthy logs/rationale in a dated session and link them. Update state.json only when its pointers or milestone change. Keep NEW-CHAT-PROMPT.md generic.
 
-Current human instructions take precedence. Fix stale summaries with an explanation. Do not silently change stack, baseline, tenancy or scope. All planned automation and production gates remain future user-built work.
-
-## Switching chats
-
-Keep [NEW-CHAT-PROMPT.md](NEW-CHAT-PROMPT.md) as the reusable entry message. Refresh HANDOFF.md, CURRENT.md, state.json and a dated note at meaningful progress/decision boundaries and before a requested handoff. Record failures and unsupplied outputs. Read only current/relevant docs to reduce context use; detailed historical notes remain available when needed.
+Do not rewrite several summaries or create another documentation-only commit merely to record a commit/CI refresh. Preserve all unfinished work. No startup/build/test/Git mutation is authorized by these instructions; no automatic progress validator exists. Tell the user what documentation changed.

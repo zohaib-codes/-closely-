@@ -2,6 +2,7 @@ import {
   checkPostgresConnection,
   createSiteDatabase,
   createSiteRole,
+  restrictSiteDatabaseAccess,
 } from "@closely/database";
 
 async function main(): Promise<void> {
@@ -12,7 +13,8 @@ async function main(): Promise<void> {
   if (
     command !== "check-database" &&
     command !== "create-site-database" &&
-    command !== "create-site-role"
+    command !== "create-site-role" &&
+    command !== "restrict-site-database-access"
   ) {
     throw new Error("UNKNOWN_COMMAND");
   }
@@ -36,6 +38,13 @@ async function main(): Promise<void> {
     throw new Error("INVALID_ARGUMENTS");
   }
 
+  if (
+    command === "restrict-site-database-access" &&
+    (databaseName === undefined || process.argv.length !== 4)
+  ) {
+    throw new Error("INVALID_ARGUMENTS");
+  }
+
   const connectionString = process.env["CLOSELY_DATABASE_URL"];
 
   if (connectionString === undefined || connectionString.trim().length === 0) {
@@ -55,6 +64,16 @@ async function main(): Promise<void> {
 
     await createSiteDatabase(connectionString, databaseName, ownerRoleName);
     console.log("SITE_DATABASE_CREATED");
+    return;
+  }
+
+  if (command === "restrict-site-database-access") {
+    if (databaseName === undefined) {
+      throw new Error("INVALID_ARGUMENTS");
+    }
+
+    await restrictSiteDatabaseAccess(connectionString, databaseName);
+    console.log("SITE_DATABASE_ACCESS_RESTRICTED");
     return;
   }
 
@@ -86,12 +105,21 @@ try {
     console.error(
       "SITE_OWNER_NOT_FOUND: The specified database owner role does not exist. Create the owner role first, then retry.",
     );
+  } else if (
+    error instanceof Error &&
+    error.message === "SITE_DATABASE_ACCESS_NOT_RESTRICTED"
+  ) {
+    console.error(
+      "SITE_DATABASE_ACCESS_NOT_RESTRICTED: Could not verify removal of PUBLIC database privileges. Check the setup account's privileges, then retry.",
+    );
   } else if (error instanceof Error && safeCodes.has(error.message)) {
     console.error(error.message);
   } else if (process.argv[2] === "create-site-database") {
     console.error("SITE_DATABASE_CREATION_FAILED");
   } else if (process.argv[2] === "create-site-role") {
     console.error("SITE_ROLE_CREATION_FAILED");
+  } else if (process.argv[2] === "restrict-site-database-access") {
+    console.error("SITE_DATABASE_ACCESS_RESTRICTION_FAILED");
   } else {
     console.error("DATABASE_CHECK_FAILED");
   }

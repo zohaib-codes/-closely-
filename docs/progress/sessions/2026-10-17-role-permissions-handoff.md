@@ -93,3 +93,23 @@ User output confirms commit/push cda9add0ed35c77ce678216ff26177c0bdf96b82, exit 
 PR #2 is open and attached. Full branch review found no blocking code findings for the bounded prerequisite. PR CI run 38987185589 and push CI run 38984922110 succeeded for cda9add0ed35c77ce678216ff26177c0bdf96b82; GitHub mergeStateStatus CLEAN, no formal review approval recorded. User formats/stages/commits/pushes the five pending progress files, then assistant verifies CI at the new PR head before guiding a normal merge commit. No merge performed; do not keep creating another documentation-only commit merely to record the next CI refresh.
 
 Scope limitation: unit tests cover identifier validation; live role attributes, ownership, duplicate/missing-owner failure and connection-denial evidence are manual checks, not automated PostgreSQL CI. Runtime account, grants, durable setup/recovery and restart remain outside the increment.
+
+## Merge completed; database-access branch started
+
+PR #2 merged as 9fdabfdb11c471b8c5d6359c4239762c1415cc8c after PR CI 38987399505 and push CI 38987396281 passed for ebd4ab74c5473197ba30cb58a7497a6ee089c8ef. User fast-forwarded main to that merge, deleted the fully merged local codex/site-database-account branch, and created codex/site-database-access (exit 0). Assistant confirmed current branch at merge commit and clean tree before this documentation update. New branch has no upstream yet. Only progress docs now changed; no new runtime implementation.
+
+On codex/site-database-access, inspect Beta PUBLIC database privileges read-only using pg_database and aclexplode(COALESCE(datacl, acldefault('d', datdba))), filtering grantee=0. Explain datallowconn=false blocks connections independently of CONNECT privilege. Expect PUBLIC CONNECT/TEMPORARY pending actual output. Then specify one CLI-connected repeatable database-access restriction step before runtime login; do not enable connections or modify Alpha. User owns implementation and command execution.
+
+## PUBLIC privilege baseline and restriction specification
+
+User supplied Beta PUBLIC ACL inspection: CONNECT and TEMPORARY present while datallowconn=false; two rows, exit 0. This is the before-state for restriction, not a successful connection.
+
+Implement restrict-site-database-access <databaseName>: new database-package restrictSiteDatabaseAccess function and export, CLI dispatch/actionable failures, invalid-name tests. Validate before connection; execute one quoted REVOKE ALL PRIVILEGES ON DATABASE ... FROM PUBLIC without CASCADE; verify via parameterized pg_database/aclexplode query that the database exists and no PUBLIC database privileges remain before reporting success. Postcondition avoids false success from REVOKE warnings/partial authority. Preserve datallowconn/owner and all other databases. Repeated execution succeeds when already restricted. No automatic rollback/regrant on uncertain failures; retry is safe. User implements and runs focused checks; review before live Beta restriction. No new runtime code assigned to assistant.
+
+Removing PUBLIC privileges does not remove direct grants or memberships or prove complete isolation. This step leaves Beta closed and Alpha unchanged. Live success/repeat/no-public/owner-and-closed-state checks remain pending.
+
+## Authorized access-restriction implementation and verification
+
+2026-10-17 user explicitly authorized assistant completion of this task. Assistant completed the existing user draft (removed empty catch, named restrictSiteDatabaseAccess, added postcondition), public export, CLI and 10 invalid-name tests. Assistant-run root format/lint, uncached database/CLI typecheck/build, 41 database tests, format:check and diff --check passed. Live Beta restriction and repeat both returned SITE_DATABASE_ACCESS_RESTRICTED/exit 0. Catalog: Beta owner closely_beta, datallowconn=false, PUBLIC privileges empty; Alpha owner/bootstrap, datallowconn=true and default PUBLIC CONNECT/TEMPORARY unchanged. Live missing/extra CLI arguments, invalid name, missing database and wrong password all produced expected safe errors with exit 1. Insufficient-grant/postcondition-failure path not independently exercised; no concurrency/isolation guarantee.
+
+Review and commit/push coherent restrict-site-database-access increment on codex/site-database-access after final staged review. New branch has no upstream. User owns Git mutations and subsequent implementation unless separately authorized. Runtime login, grants, saved credentials/setup, recovery and restart remain pending; Beta remains closed. Actual SQL evidence is live manual probing, not automated integration tests.
